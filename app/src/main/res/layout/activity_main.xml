@@ -35,7 +35,10 @@
                 android:layout_height="fill_parent"
                 android:id="@+id/tournamentList"
                 android:choiceMode="singleChoice"
-                android:layout_gravity="right|bottom" />
+                android:divider="#FFEAEAEA"
+                android:layout_gravity="left|top" />
+
+
         </FrameLayout>
 
     </LinearLayout>

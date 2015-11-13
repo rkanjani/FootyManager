@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <FrameLayout
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:id="@+id/frameLayout2"
+            android:background="#030303"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tournamentLogo"
+                android:layout_gravity="center"
+                android:background="#9d9d9d"
+                android:layout_margin="2dp" />
+        </FrameLayout>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.24"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/frameLayout2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:weightSum="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/tournamentName"
+                android:layout_weight="0.35"
+                android:layout_marginLeft="5dp"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/tournamentType"
+                android:layout_weight="0.31"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/tournamentSize"
+                android:layout_weight="0.35"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>
