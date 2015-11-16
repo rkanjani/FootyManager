@@ -5,10 +5,13 @@ import java.util.ArrayList;
 
 import java.util.ArrayList;
 
+import java.util.ArrayList;
+
 /**
  * Created by rohan on 2015-11-12.
  */
 public class Tournament {
+
     private String tournamentName;
     private String tournamentType;
     List<Team> teams = new ArrayList<Team>();
@@ -51,9 +54,6 @@ public class Tournament {
     public void addTeam(String teamName) {
         Team createTeam = new Team(teamName);
         teams.add(createTeam);
-
-        ArrayList<Team> teamList = new ArrayList(); //declares an empty array for list of teams
-        boolean started = false;
     }
 
     public void deleteTeam (Team delTeam){
