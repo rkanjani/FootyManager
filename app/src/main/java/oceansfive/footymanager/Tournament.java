@@ -29,7 +29,7 @@ public class Tournament {
         return games;
     }
 
-    public void createGames(teams){
+    public void createGames(List teams){
         Collections.shuffle(teams);
         Team[] teamArr = new Team[teams.size()];
         teams.toArray(teamArr);
