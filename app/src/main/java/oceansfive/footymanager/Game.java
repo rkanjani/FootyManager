@@ -16,6 +16,7 @@ public class Game {
         this.team2 = team2;
     }
 
+    //sets the score of a game
     public void enterScore(int score1, int score2){
         team1Score = score1;
         team2Score = score2;
