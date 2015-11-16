@@ -4,46 +4,35 @@ package oceansfive.footymanager;
  * Created by Hottie2body on 15-11-15.
  */
 public class Game {
-    private String location;
-    private String date;
-    private int homeScore = undefined;
-    private int awayScore = undefined;
+    //I took out location and date as it is weird to code for now
+    private int team1Score = -1;
+    private int team2Score = -1;
     private Team winner = null;
-    private Team homeTeam;
-    private Team awayTeam;
+    private Team team1;
+    private Team team2;
 
-    public void Game(String location, String date, Team homeTeam, Team awayTeam){
-        this.location=location;
-        this.date=date;
-        this.homeTeam=homeTeam;
-        this.awayTeam=awayTeam;
+    public void Game(Team team1, Team team2){
+        this.team1 = team1;
+        this.team2 = team2;
     }
 
-    public void enterScore(int home, int away){
-        homeScore = home;
-        awayScore = away;
-        if (home>away){
-            winner = homeTeam;
+    public void enterScore(int score1, int score2){
+        team1Score = score1;
+        team2Score = score2;
+        if (score1>score2){
+            winner = team1;
         }
         else{
-            winner = awayTeam;
+            winner = team2;
         }
     }
 
-    public String getLocation(){
-        return location;
+    public Team getTeam1(){
+        return team1;
     }
 
-    public String getDate(){
-        return date;
-    }
-
-    public Team getHomeTeam(){
-        return homeTeam;
-    }
-
-    public Team getAwayTeam(){
-        return awayTeam;
+    public Team getTeam2(){
+        return team2;
     }
 
     public Team getWinner(){
@@ -51,7 +40,7 @@ public class Game {
     }
 
     public String getScore(){
-        return homeScore + " - " + awayScore;
+        return team1Score + " - " + team2Score;
     }
 
 }
