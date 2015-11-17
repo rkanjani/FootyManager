@@ -33,7 +33,8 @@
         android:layout_toRightOf="@+id/frameLayout"
         android:layout_toEndOf="@+id/frameLayout"
         android:layout_marginLeft="5dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:id="@+id/linearLayout2">
 
         <EditText
             android:layout_width="match_parent"
@@ -63,7 +64,8 @@
         android:layout_below="@+id/frameLayout"
         android:gravity="top"
         android:layout_marginTop="20dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:id="@+id/linearLayout">
 
         <Button
             style="?android:attr/buttonStyleSmall"
