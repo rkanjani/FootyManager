@@ -1,5 +1,6 @@
 package oceansfive.footymanager;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,12 +8,22 @@ import java.util.List;
  * Created by rohan on 2015-11-10.
  */
 public class TournamentData {
-    private static TournamentData ourInstance = new TournamentData();
 
-    public static TournamentData getInstance() {
-        return ourInstance;
+    List<Tournament> tournamentList = new ArrayList();
+    public TournamentData(){
+        System.out.println("TournamentData created!");
     }
-    ////THESE LISTS NEED TO BE REPLACED BY INSTANCES OF A TOURNAMENT
+
+    public void addTournament(Tournament temp){//currently does not accept size or logo... should be implemented into Tournament
+        tournamentList.add(temp);
+    }
+
+    public List<Tournament> getTournamentList(){
+        return tournamentList;
+    }
+
+
+    /*
     List tournamentNames = Arrays.asList(
             "La Liga",
             "English Premier League",
@@ -70,4 +81,5 @@ public class TournamentData {
 
     private TournamentData() {
     }
+    */
 }
