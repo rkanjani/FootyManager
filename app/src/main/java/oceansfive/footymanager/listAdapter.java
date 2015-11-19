@@ -20,30 +20,34 @@ public class listAdapter extends BaseAdapter {
 
     Context context;
     private static LayoutInflater inflater = null;
-    List<Tournament> tournamentList;
 
     //***Later we should pass an array of tournaments instead of 4 Lists****//
+    List names, sizes, images, types;
 
-
-    public listAdapter(Context context, List<Tournament> tournamentList) {
+    public listAdapter(Context context, List names, List types, List sizes, List images) {
         // TODO Auto-generated constructor stub
-        this.tournamentList=tournamentList;
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.context = context;
+        this.names = names;
+        this.sizes = sizes;
+        this.types = types;
+        this.images = images;
+        inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return tournamentList.size();
+        return names.size();
     }
 
     @Override
     public Object getItem(int position) {
         // TODO Auto-generated method stub
-        return tournamentList.get(position);
+        return names.get(position);
     }
     @Override
-    public long getItemId(int position) {//change parm to tournament and return tournament if in list
+    public long getItemId(int position) {
         // TODO Auto-generated method stub
         return position;
     }
@@ -63,9 +67,9 @@ public class listAdapter extends BaseAdapter {
 
 
 
-        name.setText(tournamentList.get(position).getTournamentName().toString());
-        size.setText("Number of teams: " + tournamentList.get(position).teams.size());//returns the number of teams in a specific number
-        type.setText(tournamentList.get(position).getTournamentType().toString());
+        name.setText(names.get(position).toString());
+        size.setText("Number of teams: " + sizes.get(position).toString());
+        type.setText(types.get(position).toString());
         //logo.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
 
         return vi;

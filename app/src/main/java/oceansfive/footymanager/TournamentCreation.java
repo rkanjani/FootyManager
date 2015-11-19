@@ -1,7 +1,6 @@
 package oceansfive.footymanager;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
@@ -88,35 +87,6 @@ public class TournamentCreation extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_LOGO);
-    }
-
-    public void createTournament(View view) {
-
-        Intent data = new Intent();
-        Button typeButton = (Button)findViewById(R.id.tournamentStyleButton);
-        TextView nameTextView = (TextView)findViewById(R.id.tournamentNameText);
-        String name =nameTextView.getText().toString();
-        String type =typeButton.getText().toString();
-
-        if(!name.equals("") && !type.equals("Tournament Type")) {
-            data.putExtra("type", type);
-            data.putExtra("name", name);
-            setResult(RESULT_OK, data);
-        }
-        else {
-            Context context = getApplicationContext();
-            CharSequence text = "STOP BEING A LAZY SHIT AND FILL IN THE CATERGORIES ABOVE.";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-            return;
-        }
-
-        finish();
-    }
-    public void cancel(View view){
-        setResult(RESULT_CANCELED);
-        finish();
     }
 
 }

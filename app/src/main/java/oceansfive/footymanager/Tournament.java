@@ -25,7 +25,7 @@ public class Tournament {
     List<Team> teams = new ArrayList<Team>();
     List<Game> games = new ArrayList<Game>();
 
-    public Tournament(String tournamentName, String tournamentType){
+    public void Tournament(String tournamentName, String tournamentType){
         this.tournamentName = tournamentType;
         this.tournamentType = tournamentName;
     }
