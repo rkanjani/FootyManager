@@ -29,7 +29,6 @@ public class listAdapter extends BaseAdapter {
         // TODO Auto-generated constructor stub
         this.tournamentList=tournamentList;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
     }
 
     @Override
@@ -58,7 +57,10 @@ public class listAdapter extends BaseAdapter {
         TextView name = (TextView) vi.findViewById(R.id.tournamentName);
         TextView size = (TextView) vi.findViewById(R.id.tournamentSize);
         TextView type = (TextView) vi.findViewById(R.id.tournamentType);
+
         ImageView logo = (ImageView) vi.findViewById(R.id.tournamentLogo);
+        String uri = "@drawable/tourneylogo"+Integer.toString(position);
+
 
 
         name.setText(tournamentList.get(position).getTournamentName().toString());

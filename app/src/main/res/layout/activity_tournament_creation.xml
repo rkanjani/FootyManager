@@ -33,8 +33,7 @@
         android:layout_toRightOf="@+id/frameLayout"
         android:layout_toEndOf="@+id/frameLayout"
         android:layout_marginLeft="5dp"
-        android:weightSum="1"
-        android:id="@+id/linearLayout2">
+        android:weightSum="1">
 
         <EditText
             android:layout_width="match_parent"

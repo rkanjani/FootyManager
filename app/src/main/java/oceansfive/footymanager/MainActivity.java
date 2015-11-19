@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
         /* MOVED TO ON RESUME
         ListView tournamentList = (ListView) findViewById(R.id.tournamentList);
-<<<<<<< HEAD
         tournamentList.setAdapter(new listAdapter(this, data.getTournamentList()));
 
         tournamentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -51,9 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
             }
         });
-=======
-        tournamentList.setAdapter(new listAdapter(this, data.tournaments));
->>>>>>> origin/master
 
         registerForContextMenu(tournamentList);
          */
@@ -70,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         tournamentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                final String item = parent.getItemAtPosition(position).toString();
+                final String item = (String) parent.getItemAtPosition(position);
                 Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
             }
         });

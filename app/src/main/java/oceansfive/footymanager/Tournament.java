@@ -13,29 +13,21 @@ import java.util.ArrayList;
  * Created by rohan on 2015-11-12.
  */
 public class Tournament {
-    
+    ArrayList<Team> teamList=new ArrayList(); //declares an empty array for list of teams
     boolean started= false;
 
-    String tournamentName;
-    protected String tournamentType;
-    String tournamentLogo;
-    int tournamentSize;
+    void addTeam(Team temp){
+        System.out.println("test");
+    }
 
+    private String tournamentName;
+    private String tournamentType;
     List<Team> teams = new ArrayList<Team>();
     List<Game> games = new ArrayList<Game>();
 
-
-    public Tournament(String tournamentName, String tournamentType) {
+    public Tournament(String tournamentName, String tournamentType){
         this.tournamentName = tournamentType;
         this.tournamentType = tournamentName;
-    }
-
-    public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo){
-        this.tournamentName = tournamentName;
-        this.tournamentType = tournamentType;
-        this.tournamentLogo = tournamentLogo;
-        this.tournamentSize = tournamentSize;
-
     }
 
     public String getTournamentName(){
@@ -45,12 +37,6 @@ public class Tournament {
     public String getTournamentType() {
         return tournamentType;
     }
-    public int getSize(){
-        return tournamentSize;
-    }
-    public String getLogo(){
-        return tournamentLogo;
-    }
     public List<Team> getTeams(){
         return teams;
     }
@@ -58,6 +44,7 @@ public class Tournament {
     public List<Game> getGames(){
         return games;
     }
+
     public void createGames(List teams){
         Collections.shuffle(teams);
         Team[] teamArr = new Team[teams.size()];
@@ -73,14 +60,11 @@ public class Tournament {
 
     }
     public void addTeam(String teamName) {
-        Team createdTeam = new Team(teamName);
-        teams.add(createdTeam);
-    }
-    public void deleteTeam (Team delTeam){
-        teams.remove(delTeam);
+        Team createTeam = new Team(teamName);
+        teams.add(createTeam);
     }
 
-    public String toString(){
-        return tournamentName;
+    public void deleteTeam (Team delTeam){
+        teams.remove(delTeam);
     }
 }
