@@ -1,17 +1,28 @@
 package oceansfive.footymanager;
+
+
 import java.util.*;
+
+import java.util.ArrayList;
+
+
 /**
  * Created by rohan on 2015-11-12.
  */
 public class Tournament {
+
     private String tournamentName;
     private String tournamentType;
+    private String tournamentLogo;
+    private int tournamentSize;
     List<Team> teams = new ArrayList<Team>();
     List<Game> games = new ArrayList<Game>();
 
-    public void Tournament(String tournamentName, String tournamentType){
-        this.tournamentName = tournamentType;
-        this.tournamentType = tournamentName;
+    public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo){
+        this.tournamentName = tournamentName;
+        this.tournamentType = tournamentType;
+        this.tournamentSize = tournamentSize;
+        this.tournamentLogo = tournamentLogo;
     }
 
     public String getTournamentName(){
@@ -29,7 +40,13 @@ public class Tournament {
         return games;
     }
 
-    // creates game for the specific tournament
+    public String getTournamentLogo(){
+        return tournamentLogo;
+    }
+    public int getTournamentSize(){
+        return tournamentSize;
+    }
+
     public void createGames(List teams){
         Collections.shuffle(teams);
         Team[] teamArr = new Team[teams.size()];
@@ -71,8 +88,7 @@ public class Tournament {
 
     }
 
-    //adds a team to the team list
-    public void addTeam(String teamName){
+    public void addTeam(String teamName) {
         Team createTeam = new Team(teamName);
         teams.add(createTeam);
     }
@@ -80,5 +96,9 @@ public class Tournament {
     //deletes team from team list
     public void deleteTeam (Team delTeam){
         teams.remove(delTeam);
+    }
+
+    public String toString(){
+        return tournamentName;
     }
 }

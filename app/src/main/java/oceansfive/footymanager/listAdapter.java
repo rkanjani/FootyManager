@@ -22,15 +22,12 @@ public class listAdapter extends BaseAdapter {
     private static LayoutInflater inflater = null;
 
     //***Later we should pass an array of tournaments instead of 4 Lists****//
-    List names, sizes, images, types;
+    List<Tournament> tournaments;
 
-    public listAdapter(Context context, List names, List types, List sizes, List images) {
+    public listAdapter(Context context, List<Tournament> tournaments) {
         // TODO Auto-generated constructor stub
         this.context = context;
-        this.names = names;
-        this.sizes = sizes;
-        this.types = types;
-        this.images = images;
+        this.tournaments = tournaments;
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -38,13 +35,13 @@ public class listAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return names.size();
+        return tournaments.size();
     }
 
     @Override
     public Object getItem(int position) {
         // TODO Auto-generated method stub
-        return names.get(position);
+        return tournaments.get(position);
     }
     @Override
     public long getItemId(int position) {
@@ -63,14 +60,14 @@ public class listAdapter extends BaseAdapter {
         TextView type = (TextView) vi.findViewById(R.id.tournamentType);
 
         ImageView logo = (ImageView) vi.findViewById(R.id.tournamentLogo);
-        String uri = "@drawable/tourneylogo"+Integer.toString(position);
+        String uri = tournaments.get(position).getTournamentLogo();
 
 
 
-        name.setText(names.get(position).toString());
-        size.setText("Number of teams: " + sizes.get(position).toString());
-        type.setText(types.get(position).toString());
-        //logo.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
+        name.setText(tournaments.get(position).getTournamentName());
+        size.setText("Number of teams: " + tournaments.get(position).getTournamentSize());
+        type.setText(tournaments.get(position).getTournamentType());
+        logo.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
 
         return vi;
     }

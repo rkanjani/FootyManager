@@ -12,10 +12,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.DialogInterface;
 import android.widget.Button;
+import android.app.ActionBar;
+import android.view.MenuItem;
 
 import org.w3c.dom.Text;
 
@@ -27,7 +30,6 @@ public class TournamentCreation extends AppCompatActivity {
 
     private String selectedLogoPath;
     private String filemanagerstring;
-
     private String selectedStyle = null;
 
 
@@ -38,6 +40,11 @@ public class TournamentCreation extends AppCompatActivity {
         setTitle("Create Tournament");
 
 
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivityForResult(myIntent, 0);
+        return true;
     }
 
     public String getPath(Uri uri) {
@@ -68,7 +75,7 @@ public class TournamentCreation extends AppCompatActivity {
     public void tournamentStyleSelect(View view){
         TextView title, message;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final Button tournamentStyle = (Button)findViewById(R.id.tournamentStyleButton);
+        final Button tournamentStyle = (Button)findViewById(R.id.tournamentType);
         builder.setTitle("Select a tournament style");
         builder.setItems(tournamentTypes, new DialogInterface.OnClickListener() {
             @Override

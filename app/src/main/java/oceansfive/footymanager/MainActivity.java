@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         ListView tournamentList = (ListView) findViewById(R.id.tournamentList);
-        tournamentList.setAdapter(new listAdapter(this, data.tournamentNames, data.tournamentTypes, data.tournamentSizes, data.tournamentLogos));
+        tournamentList.setAdapter(new listAdapter(this, data.tournaments));
 
 
-
+        //Click on element in tournament list
         tournamentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                final String item = (String) parent.getItemAtPosition(position);
+                final String item = (String) parent.getItemAtPosition(position).toString();
                 Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
             }
         });
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                                     ContextMenu.ContextMenuInfo menuInfo) {
         if (v.getId()==R.id.tournamentList) {
             AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-            menu.setHeaderTitle(data.tournamentNames.get(info.position).toString());
+            menu.setHeaderTitle(data.tournaments.get(info.position).toString());
             String[] menuItems = new String[] {"Edit", "Delete"};
             for (int i = 0; i<menuItems.length; i++) {
                 menu.add(Menu.NONE, i, i, menuItems[i]);
