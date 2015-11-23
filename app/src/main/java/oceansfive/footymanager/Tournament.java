@@ -1,16 +1,10 @@
 package oceansfive.footymanager;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
+
 
 import java.util.*;
 
 import java.util.ArrayList;
 
-import java.util.ArrayList;
-
-import java.util.ArrayList;
-
-import java.util.ArrayList;
 
 /**
  * Created by rohan on 2015-11-12.
@@ -25,8 +19,8 @@ public class Tournament {
     List<Game> games = new ArrayList<Game>();
 
     public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo){
-        this.tournamentName = tournamentType;
-        this.tournamentType = tournamentName;
+        this.tournamentName = tournamentName;
+        this.tournamentType = tournamentType;
         this.tournamentSize = tournamentSize;
         this.tournamentLogo = tournamentLogo;
     }

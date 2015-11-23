@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
         tournamentList.setAdapter(new listAdapter(this, data.tournaments));
 
 
-
+        //Click on element in tournament list
         tournamentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                final String item = (String) parent.getItemAtPosition(position);
+                final String item = (String) parent.getItemAtPosition(position).toString();
                 Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
             }
         });
