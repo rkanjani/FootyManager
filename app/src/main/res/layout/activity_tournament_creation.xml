@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/tournamentLogo"
-            android:layout_gravity="center"
+            android:layout_gravity="left|center_vertical"
             android:src="@drawable/default_logo"
             android:background="#cecbcb"
             android:layout_margin="2dp"
@@ -38,7 +38,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="68dp"
-            android:id="@+id/editText"
+            android:id="@+id/tournamentName"
             android:gravity="bottom|center"
             android:layout_gravity="bottom|center"
             android:editable="true"
@@ -63,19 +63,34 @@
         android:layout_below="@+id/frameLayout"
         android:gravity="top"
         android:layout_marginTop="20dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:id="@+id/linearLayout">
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Tournament Type"
-            android:id="@+id/tournamentStyleButton"
+            android:id="@+id/tournamentType"
             android:layout_gravity="center"
             android:textSize="15dp"
             android:onClick="tournamentStyleSelect" />
 
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="right|bottom"
+        android:clickable="true"
+        android:src="@drawable/checkmark"
+        android:id="@+id/saveTournament"
+        android:onClick="addTournament"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp" />
 
 
 </RelativeLayout>

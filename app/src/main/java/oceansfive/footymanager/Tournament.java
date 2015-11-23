@@ -1,4 +1,7 @@
 package oceansfive.footymanager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+
 import java.util.*;
 
 import java.util.ArrayList;
@@ -13,21 +16,19 @@ import java.util.ArrayList;
  * Created by rohan on 2015-11-12.
  */
 public class Tournament {
-    ArrayList<Team> teamList=new ArrayList(); //declares an empty array for list of teams
-    boolean started= false;
-
-    void addTeam(Team temp){
-        System.out.println("test");
-    }
 
     private String tournamentName;
     private String tournamentType;
+    private String tournamentLogo;
+    private int tournamentSize;
     List<Team> teams = new ArrayList<Team>();
     List<Game> games = new ArrayList<Game>();
 
-    public void Tournament(String tournamentName, String tournamentType){
+    public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo){
         this.tournamentName = tournamentType;
         this.tournamentType = tournamentName;
+        this.tournamentSize = tournamentSize;
+        this.tournamentLogo = tournamentLogo;
     }
 
     public String getTournamentName(){
@@ -45,6 +46,12 @@ public class Tournament {
         return games;
     }
 
+    public String getTournamentLogo(){
+        return tournamentLogo;
+    }
+    public int getTournamentSize(){
+        return tournamentSize;
+    }
     public void createGames(List teams){
         Collections.shuffle(teams);
         Team[] teamArr = new Team[teams.size()];
@@ -66,5 +73,9 @@ public class Tournament {
 
     public void deleteTeam (Team delTeam){
         teams.remove(delTeam);
+    }
+
+    public String toString(){
+        return tournamentName;
     }
 }
