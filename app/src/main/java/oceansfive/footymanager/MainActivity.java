@@ -5,17 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
-
-import static android.widget.ListView.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,14 +29,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         ListView tournamentList = (ListView) findViewById(R.id.tournamentList);
-        tournamentList.setAdapter(new listAdapter(this, data.tournaments));
+        tournamentList.setAdapter(new tournamentListAdapter(this, data.tournaments));
 
 
         //Click on element in tournament list
         tournamentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 final String item = (String) parent.getItemAtPosition(position).toString();
-                Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), EditTournament.class); //Application Context and Activity
+                intent.putExtra("tournament", position);
+                startActivityForResult(intent, position);
             }
         });
 
@@ -50,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
 
     public void arrayToList(String [] arr, ArrayList<String> list){
@@ -76,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public boolean onContextItemSelected(MenuItem item){
         if(item.getTitle()=="Edit"){
-            //Change activity to edit screen
+            Intent intent = new Intent(getApplicationContext(), EditTournament.class); //Application Context and Activity
+            intent.putExtra("tournament", item.getItemId());
+            startActivityForResult(intent, item.getItemId());
         }
         else if(item.getTitle()=="Delete"){
             //Delete tournament from the list

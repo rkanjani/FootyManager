@@ -1,7 +1,6 @@
 package oceansfive.footymanager;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created by rohan on 2015-11-12.
  */
-public class listAdapter extends BaseAdapter {
+public class tournamentListAdapter extends BaseAdapter {
 
     Context context;
     private static LayoutInflater inflater = null;
@@ -24,7 +22,7 @@ public class listAdapter extends BaseAdapter {
     //***Later we should pass an array of tournaments instead of 4 Lists****//
     List<Tournament> tournaments;
 
-    public listAdapter(Context context, List<Tournament> tournaments) {
+    public tournamentListAdapter(Context context, List<Tournament> tournaments) {
         // TODO Auto-generated constructor stub
         this.context = context;
         this.tournaments = tournaments;
@@ -54,14 +52,13 @@ public class listAdapter extends BaseAdapter {
         // TODO Auto-generated method stub
         View vi = convertView;
         if (vi == null)
-            vi = inflater.inflate(R.layout.row, null);
+            vi = inflater.inflate(R.layout.tournament_row_item, null);
         TextView name = (TextView) vi.findViewById(R.id.tournamentName);
         TextView size = (TextView) vi.findViewById(R.id.tournamentSize);
         TextView type = (TextView) vi.findViewById(R.id.tournamentType);
 
         ImageView logo = (ImageView) vi.findViewById(R.id.tournamentLogo);
         String uri = tournaments.get(position).getTournamentLogo();
-
 
 
         name.setText(tournaments.get(position).getTournamentName());
