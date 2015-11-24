@@ -15,7 +15,7 @@ public class Tournament {
     private String tournamentType;
     private String tournamentLogo;
     private int tournamentSize;
-    List<Team> teams = new ArrayList<Team>();
+    Team[] teams;
     List<Game> games = new ArrayList<Game>();
 
     public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo){
@@ -23,6 +23,7 @@ public class Tournament {
         this.tournamentType = tournamentType;
         this.tournamentSize = tournamentSize;
         this.tournamentLogo = tournamentLogo;
+        teams = new Team[tournamentSize];
     }
 
     public String getTournamentName(){
@@ -32,7 +33,7 @@ public class Tournament {
     public String getTournamentType() {
         return tournamentType;
     }
-    public List<Team> getTeams(){
+    public Team[] getTeams(){
         return teams;
     }
 
@@ -87,15 +88,14 @@ public class Tournament {
     public void createPlayoffs(List Teams){
 
     }
-
-    public void addTeam(String teamName) {
-        Team createTeam = new Team(teamName);
-        teams.add(createTeam);
+    public void addTeam(Team t, int position){
+        teams[position] = t;
     }
-
-    //deletes team from team list
-    public void deleteTeam (Team delTeam){
-        teams.remove(delTeam);
+    public void addTeamRoster(Team[] teams){
+        this.teams = teams;
+    }
+    public void setTournamentName(String name){
+        tournamentName = name;
     }
 
     public String toString(){

@@ -37,6 +37,7 @@ public class TournamentCreation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournament_creation);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Create Tournament");
 
 
@@ -47,23 +48,6 @@ public class TournamentCreation extends AppCompatActivity {
         return true;
     }
 
-    public String getPath(Uri uri) {
-        // Displays error if image cannot be chosen
-        if( uri == null ) {
-            Toast.makeText(getApplicationContext(), "Image cannot be chosen", Toast.LENGTH_SHORT).show();
-            return null;
-        }
-        // Tries to look for images in gallery
-        String[] projection = { MediaStore.Images.Media.DATA };
-        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
-        if( cursor != null ){
-            int column_index = cursor
-                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        }
-        else return null;
-    }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == SELECT_LOGO) {
             Uri selectedImageUri = data.getData();

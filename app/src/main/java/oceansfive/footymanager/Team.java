@@ -7,19 +7,22 @@ import java.util.*;
  */
 public class Team {
     private String teamName;
+    private String teamLogo;
     private List<Player> players = new ArrayList<Player>();
 
     //keeps track of the size of the team.
     private int teamSize = 0;
 
-    public Team(String teamName)
+    public Team(String teamName, String teamLogo)
     {
         this.teamName = teamName;
+        this.teamLogo = teamLogo;
     }
 
     public String getTeamName(){
         return teamName;
     }
+    public String getTeamLogo() { return teamLogo; }
 
     //adds player to the team
     public void addPlayer(String name, char position, int jerseyNumber){
@@ -34,6 +37,13 @@ public class Team {
     //deletes player
     public void deletePlayer(Player guy){
         players.remove(guy);
+    }
+
+    public void setTeamName(String teamName){
+        this.teamName = teamName;
+    }
+    public void setTeamLogo(String teamLogo){
+        this.teamLogo = teamLogo;
     }
 
     //edits the players posiiton

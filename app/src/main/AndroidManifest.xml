@@ -26,9 +26,11 @@
         </activity>
         <activity android:name=".TournamentCreation" >
         </activity>
-        <activity android:name=".team_info" >
+        <activity android:name=".EditTournament" android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".enter_score" >
+        <activity android:name=".TeamInfo" >
+        </activity>
+        <activity android:name=".EnterScore" >
         </activity>
     </application>
 
