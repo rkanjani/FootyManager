@@ -5,7 +5,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="oceansfive.footymanager.team_info">
+    tools:context="oceansfive.footymanager.TeamInfo">
 
     <LinearLayout
         android:orientation="vertical"
