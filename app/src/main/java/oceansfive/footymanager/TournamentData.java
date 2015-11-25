@@ -1,7 +1,13 @@
 package oceansfive.footymanager;
 
+import android.support.annotation.NonNull;
+
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by rohan on 2015-11-10.
@@ -25,7 +31,8 @@ public class TournamentData {
     Tournament nine = new Tournament("Football League Championship", "Knock Out", 22, "@drawable/logo8");
 
 
-    List<Tournament> tournaments = Arrays.asList(
+
+    List<Tournament> tournaments = new LinkedList<Tournament>(Arrays.asList(
             one,
             two,
             three,
@@ -35,7 +42,8 @@ public class TournamentData {
             seven,
             eight,
             nine
-    );
+    ));
+
 
 
 

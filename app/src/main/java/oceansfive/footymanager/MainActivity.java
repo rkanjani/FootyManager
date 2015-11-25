@@ -15,13 +15,16 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     TournamentData data = TournamentData.getInstance();
+    private static int menuItemSelected;
+    tournamentListAdapter listAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("Active Tournaments");
-
+        listAdapter = new tournamentListAdapter(this, data.tournaments);
         View tournamentListView = (View)findViewById(R.id.addTournament);
 
 
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         ListView tournamentList = (ListView) findViewById(R.id.tournamentList);
-        tournamentList.setAdapter(new tournamentListAdapter(this, data.tournaments));
+        tournamentList.setAdapter(listAdapter);
 
 
         //Click on element in tournament list
@@ -45,10 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         registerForContextMenu(tournamentList);
 
-
     }
-
-
 
     public void arrayToList(String [] arr, ArrayList<String> list){
         for(int x = 0; x<arr.length; x++){
@@ -65,7 +65,10 @@ public class MainActivity extends AppCompatActivity {
                                     ContextMenu.ContextMenuInfo menuInfo) {
         if (v.getId()==R.id.tournamentList) {
             AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+            menuItemSelected = ((AdapterView.AdapterContextMenuInfo) menuInfo).position;
+
             menu.setHeaderTitle(data.tournaments.get(info.position).toString());
+
             String[] menuItems = new String[] {"Edit", "Delete"};
             for (int i = 0; i<menuItems.length; i++) {
                 menu.add(Menu.NONE, i, i, menuItems[i]);
@@ -75,11 +78,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean onContextItemSelected(MenuItem item){
         if(item.getTitle()=="Edit"){
             Intent intent = new Intent(getApplicationContext(), EditTournament.class); //Application Context and Activity
-            intent.putExtra("tournament", item.getItemId());
-            startActivityForResult(intent, item.getItemId());
+            intent.putExtra("tournament", menuItemSelected);
+            startActivityForResult(intent, 0);
+
         }
         else if(item.getTitle()=="Delete"){
-            //Delete tournament from the list
+            int position = menuItemSelected;
+            String name = data.tournaments.get(position).toString().concat(" removed!");
+            data.tournaments.remove(position);
+            listAdapter.notifyDataSetChanged();
+            Toast.makeText(getApplicationContext(), name,Toast.LENGTH_LONG).show();
         }
         return true;
     }

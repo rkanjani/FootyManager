@@ -22,7 +22,6 @@ import static android.support.v4.app.ActivityCompat.startActivityForResult;
 public class teamListAdapter extends BaseAdapter{
     Context context;
     private static LayoutInflater inflater = null;
-    private static String newTeamName = null;
 
     TournamentData data = TournamentData.getInstance();
     Team[] teams;
@@ -52,6 +51,13 @@ public class teamListAdapter extends BaseAdapter{
     public long getItemId(int position) {
         // TODO Auto-generated method stub
         return position;
+    }
+    public boolean fieldsFilled(){
+        for(int x=0;x<teams.length;x++){
+            if(teams[x] == null)
+                    return false;
+        }
+        return true;
     }
 
 

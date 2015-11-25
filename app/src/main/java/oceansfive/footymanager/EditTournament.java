@@ -1,32 +1,25 @@
 package oceansfive.footymanager;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.content.Context;
-import android.app.ActionBar;
 import android.view.MenuItem;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
-import java.util.Objects;
 
 public class EditTournament extends AppCompatActivity {
 
     TournamentData data = TournamentData.getInstance();
     private static final int SELECT_TOURNAMENT_LOGO = 1;
+    private static boolean teamNamesFilled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,21 +30,29 @@ public class EditTournament extends AppCompatActivity {
 
         final Tournament tournament = data.tournaments.get(getIntent().getExtras().getInt("tournament"));
 
+        teamListAdapter adapter = new teamListAdapter(this, tournament);
+
         setTitle("Edit Tournament");
 
         TextView tournamentName = (TextView) findViewById(R.id.tournamentNameDisplay);
-        TextView numOfTeams = (TextView) findViewById(R.id.numOfTeams);
+        TextView numOfTeams = (TextView) findViewById(R.id.tournamentNumOfTeams);
         TextView style = (TextView) findViewById(R.id.tournamentStyle);
         ImageView logo = (ImageView) findViewById(R.id.tournamentLogo);
+        Button startTournament = (Button) findViewById(R.id.startTournament);
 
         tournamentName.setText(tournament.getTournamentName());
         numOfTeams.setText(Integer.toString(tournament.getTournamentSize()));
         style.setText(tournament.getTournamentType());
         logo.setImageResource(context.getResources().getIdentifier(tournament.getTournamentLogo(), "drawable", context.getPackageName()));
 
+        if(adapter.fieldsFilled())
+            teamNamesFilled=true;
+        else
+            teamNamesFilled=false;
+
 
         ListView teamList = (ListView) findViewById(R.id.teamList);
-        teamList.setAdapter(new teamListAdapter(this, tournament));
+        teamList.setAdapter(adapter);
 
         TextWatcher tournamentNameWatcher = new TextWatcher() {
             //Changes Tournament name to new name
@@ -64,7 +65,6 @@ public class EditTournament extends AppCompatActivity {
 
 
         tournamentName.addTextChangedListener(tournamentNameWatcher);
-
 
     }
     @Override
@@ -88,6 +88,13 @@ public class EditTournament extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_TOURNAMENT_LOGO);
+    }
+    //Code for when the tournament is started
+    public void startTournament(View view){
+        EditText tournamentName = (EditText) findViewById(R.id.tournamentNameDisplay);
+
+        if(!teamNamesFilled || tournamentName.getText()==null)
+            return;
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

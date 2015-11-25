@@ -98,35 +98,31 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Number of teams: "
-        android:id="@+id/numOfTeamsText"
+        android:id="@+id/TextView"
         android:layout_below="@+id/linearLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/numOfTeams"
-        android:layout_below="@+id/linearLayout"
-        android:layout_toRightOf="@+id/numOfTeamsText"
-        android:layout_alignBottom="@+id/numOfTeamsText"
-        android:layout_alignRight="@+id/frameLayout3"
-        android:layout_alignEnd="@+id/frameLayout3"
-        android:textAlignment="textEnd" />
-
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/tournamentStyle"
-        android:layout_alignRight="@+id/frameLayout3"
-        android:layout_alignEnd="@+id/frameLayout3"
-        android:layout_alignLeft="@+id/numOfTeams"
-        android:layout_alignStart="@+id/numOfTeams"
         android:layout_above="@+id/frameLayout3"
         android:layout_alignTop="@+id/linearLayout"
-        android:textAlignment="textEnd" />
+        android:textAlignment="textEnd"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/tournamentNumOfTeams"
+        android:textAlignment="textEnd"
+        android:layout_below="@+id/tournamentStyle"
+        android:layout_alignRight="@+id/linearLayout2"
+        android:layout_alignEnd="@+id/linearLayout2" />
 
     <Button
         android:layout_width="wrap_content"
@@ -138,6 +134,7 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/frameLayout3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="startTournament" />
 
 </RelativeLayout>
