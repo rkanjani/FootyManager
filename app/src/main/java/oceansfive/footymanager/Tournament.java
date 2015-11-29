@@ -1,16 +1,10 @@
 package oceansfive.footymanager;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
+
 
 import java.util.*;
 
 import java.util.ArrayList;
 
-import java.util.ArrayList;
-
-import java.util.ArrayList;
-
-import java.util.ArrayList;
 
 /**
  * Created by rohan on 2015-11-12.
@@ -21,14 +15,36 @@ public class Tournament {
     private String tournamentType;
     private String tournamentLogo;
     private int tournamentSize;
-    List<Team> teams = new ArrayList<Team>();
+    Team[] teams;
     List<Game> games = new ArrayList<Game>();
 
     public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo){
-        this.tournamentName = tournamentType;
-        this.tournamentType = tournamentName;
+        this.tournamentName = tournamentName;
+        this.tournamentType = tournamentType;
         this.tournamentSize = tournamentSize;
         this.tournamentLogo = tournamentLogo;
+        teams = new Team[tournamentSize];
+    }
+
+    public Team[] getRanking()
+    {
+        for (int i = teams.length - 1; i >= 0; i--)
+        {
+            for (int j = 1; j<= i; j++ )
+            {
+                if ( teams[j-1].getWins() > teams[j].getWins())
+                {
+                    Team temp = teams[j-1];
+                    teams[j-1] = teams[j];
+                    teams[j] = temp;
+                }
+            }
+
+        }
+
+        return this.teams;
+
+
     }
 
     public String getTournamentName(){
@@ -38,7 +54,7 @@ public class Tournament {
     public String getTournamentType() {
         return tournamentType;
     }
-    public List<Team> getTeams(){
+    public Team[] getTeams(){
         return teams;
     }
 
@@ -52,27 +68,55 @@ public class Tournament {
     public int getTournamentSize(){
         return tournamentSize;
     }
+
     public void createGames(List teams){
         Collections.shuffle(teams);
         Team[] teamArr = new Team[teams.size()];
         teams.toArray(teamArr);
 
-        if(tournamentType.equals("Round Robin")){
+        if(tournamentType.equals("Round Robin") || tournamentType.equals("Combinational")){
             for(int i=0; i<teamArr.length-1; i++){
                 for(int j=i+1; j<teamArr.length; j++){
                     Game game1 = new Game(teamArr[i], teamArr[j]);
                 }
             }
         }
+        else if(tournamentType.equals("Knock Out")) {
+            int i = 0;
+            int j = teamArr.length;
+
+            if (j % 2 == 0) {
+                while (i < j) {
+                    Game game1 = new Game(teamArr[i], teamArr[j]);
+                    i++;
+                    j--;
+                }
+            } else {
+                while (i <= j) {
+                    if (i == j) {
+                        Game game3 = new Game(teamArr[i], null);
+                        i++;
+                    }
+                    Game game2 = new Game(teamArr[i], teamArr[j]);
+                    i++;
+                    j--;
+                }
+            }
+        }
+    }
+
+    //creates bracket for combinational tournament
+    public void createPlayoffs(List Teams){
 
     }
-    public void addTeam(String teamName) {
-        Team createTeam = new Team(teamName);
-        teams.add(createTeam);
+    public void addTeam(Team t, int position){
+        teams[position] = t;
     }
-
-    public void deleteTeam (Team delTeam){
-        teams.remove(delTeam);
+    public void addTeamRoster(Team[] teams){
+        this.teams = teams;
+    }
+    public void setTournamentName(String name){
+        tournamentName = name;
     }
 
     public String toString(){
