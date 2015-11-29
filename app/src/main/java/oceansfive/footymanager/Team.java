@@ -85,8 +85,4 @@ public class Team {
         return ("Wins: " + this.wins + "  Losses: " + getLosses());
     }
 
-
-
-
-
 }
