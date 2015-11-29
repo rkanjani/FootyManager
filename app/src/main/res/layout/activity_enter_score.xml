@@ -98,8 +98,12 @@
                     android:layout_height="100dp"
                     android:id="@+id/away_team_logo"
                     android:layout_gravity="center"
+<<<<<<< HEAD
                     android:src="@drawable/default_logo"
                     android:background="#505050" />
+=======
+                    android:src="@drawable/logo1" />
+>>>>>>> master
             </LinearLayout>
 
         </LinearLayout>

@@ -9,6 +9,8 @@ public class Team {
     private String teamName;
     private String teamLogo;
     private List<Player> players = new ArrayList<Player>();
+    private int wins;
+    private int gamesPlayed;
 
     //keeps track of the size of the team.
     private int teamSize = 0;
@@ -17,6 +19,8 @@ public class Team {
     {
         this.teamName = teamName;
         this.teamLogo = teamLogo;
+        this.wins = 0;
+        this.gamesPlayed = 0;
     }
 
     public String getTeamName(){
@@ -46,9 +50,27 @@ public class Team {
         this.teamLogo = teamLogo;
     }
 
-    //edits the players posiiton
+    //edits the players positon
     public void editPlayerPosition(Player p1, char pos){
         p1.setPosition(pos);
     }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public int getLosses()
+    {
+        return gamesPlayed - wins;
+    }
+
+    public String winsToString()
+    {
+        return ("Wins: " + this.wins + "  Losses: " + getLosses());
+    }
+
+
+
+
 
 }
