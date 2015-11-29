@@ -69,7 +69,35 @@ public class Tournament {
         return tournamentSize;
     }
 
-    public void createGames(List teams){
+    //Creates the games in a round robin
+    public Game[] createRoundRobin(Team[] teams)
+    {
+        Game games[] = new Game[teams.length*(teams.length-1)/2];
+        int gameNum = 0;
+        for(int i = 0; i < teams.length-1; i++)
+        {
+            for(int j=i+1; j < teams.length; j++)
+            {
+                games[gameNum] = new Game(teams[i], teams[j]);
+            }
+        }
+        Collections.shuffle((Arrays.asList(games)));
+        return games;
+    }
+    //Creates the games in a round robin
+    public Game[] createKnockout(Team[] teams)
+    {
+        Game games[] = new Game[teams.length / 2];
+
+        for (int i = 0; i < teams.length -1; i++)
+        {
+            games[i] = new Game(teams[i], teams[teams.length-1-i]);
+        }
+
+        return games;
+    }
+
+    /*public void createGames(List teams){
         Collections.shuffle(teams);
         Team[] teamArr = new Team[teams.size()];
         teams.toArray(teamArr);
@@ -104,6 +132,7 @@ public class Tournament {
             }
         }
     }
+    */
 
     //creates bracket for combinational tournament
     public void createPlayoffs(List Teams){
