@@ -43,8 +43,6 @@ public class Tournament {
         }
 
         return this.teams;
-
-
     }
 
     public String getTournamentName(){
