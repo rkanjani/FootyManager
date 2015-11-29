@@ -26,6 +26,13 @@ public class Tournament {
         teams = new Team[tournamentSize];
     }
 
+    public void rankTeams()
+    {
+        Team temp = teams[0];
+
+        
+    }
+
     public String getTournamentName(){
         return tournamentName;
     }
