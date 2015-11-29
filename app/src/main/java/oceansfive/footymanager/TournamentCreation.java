@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.content.DialogInterface;
 import android.widget.Button;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class TournamentCreation extends AppCompatActivity {
 
@@ -97,15 +98,23 @@ public class TournamentCreation extends AppCompatActivity {
         ImageView logo = (ImageView) findViewById(R.id.tournamentLogo);
         Button type = (Button) findViewById(R.id.tournamentType);
         Drawable image = logo.getDrawable();
+        String goodToast = "Successfully added "+name.getText();
+        String badToast = "Could not "+name.getText();
+
 
         //Tournament information must be filled out before continuing -- (f5c5c71) is the default image id
         if(numOfTeams.getValue()>1 && !name.getText().equals(null) && !type.getText().equals("Tournament Type")){
+            Tournament tournament = new Tournament(name.getText().toString(), type.getText().toString(), numOfTeams.getValue(), logo.getDrawable().toString());
+            data.tournaments.add(tournament);
+            Toast.makeText(getApplicationContext(), goodToast, Toast.LENGTH_LONG).show();
             Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
             startActivityForResult(myIntent, 0);
         }
 
-        Tournament tournament = new Tournament(name.getText().toString(), type.getText().toString(), numOfTeams.getValue(), logo.getDrawable().toString());
-        data.tournaments.add(tournament);
+        Toast.makeText(getApplicationContext(), badToast, Toast.LENGTH_LONG).show();
+
+
+
 
     }
 

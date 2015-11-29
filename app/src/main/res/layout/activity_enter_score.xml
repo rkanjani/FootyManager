@@ -97,7 +97,7 @@
                     android:layout_height="100dp"
                     android:id="@+id/away_team_logo"
                     android:layout_gravity="center"
-                    android:src="@drawable/logo6" />
+                    android:src="@drawable/logo1" />
             </LinearLayout>
 
         </LinearLayout>
