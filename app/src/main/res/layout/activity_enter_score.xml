@@ -27,7 +27,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Team Canada"
+                    android:text="Team 1"
                     android:id="@+id/home_team_name"
                     android:textColor="#000000"
                     android:textSize="20dp"
@@ -37,8 +37,14 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:id="@+id/home_team"
+<<<<<<< HEAD
                     android:src="@drawable/logo4"
                     android:layout_gravity="left" />
+=======
+                    android:src="@drawable/default_logo"
+                    android:layout_gravity="center"
+                    android:background="#505050" />
+>>>>>>> master
 
             </LinearLayout>
 
@@ -102,7 +108,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Barcelona"
+                    android:text="team 2"
                     android:id="@+id/away_team"
                     android:textColor="#000000"
                     android:textSize="20dp"
@@ -112,8 +118,16 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:id="@+id/away_team_logo"
+<<<<<<< HEAD
                     android:layout_gravity="bottom|center|right"
                     android:src="@drawable/logo1" />
+=======
+                    android:layout_gravity="center"
+                    android:src="@drawable/default_logo"
+                    android:background="#505050" />
+
+
+>>>>>>> master
             </LinearLayout>
 
         </LinearLayout>
