@@ -9,6 +9,8 @@ public class Team {
     private String teamName;
     private String teamLogo;
     private List<Player> players = new ArrayList<Player>();
+    private int wins;
+    private int losses;
 
     //keeps track of the size of the team.
     private int teamSize = 0;
@@ -50,5 +52,7 @@ public class Team {
     public void editPlayerPosition(Player p1, char pos){
         p1.setPosition(pos);
     }
+
+    
 
 }
