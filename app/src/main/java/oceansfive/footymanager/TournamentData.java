@@ -1,7 +1,13 @@
 package oceansfive.footymanager;
 
+import android.support.annotation.NonNull;
+
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by rohan on 2015-11-10.
@@ -14,10 +20,10 @@ public class TournamentData {
     }
     ////THESE LISTS NEED TO BE REPLACED BY INSTANCES OF A TOURNAMENT
 
-    Tournament one = new Tournament("La Liga", "Round Robin", 20, "@drawable/logo0");
-    Tournament two = new Tournament("English Premier League", "Combinational", 21, "@drawable/logo1");
+    Tournament one = new Tournament("La Liga", "Round Robin", 6, "@drawable/logo0");
+    Tournament two = new Tournament("English Premier League", "Combinational", 4, "@drawable/logo1");
     Tournament three = new Tournament("Bundesliga", "Knock Out", 24, "@drawable/logo2");
-    Tournament four = new Tournament("Major League Soccer", "Round Robin", 13, "@drawable/logo3" );
+    Tournament four = new Tournament("Major League Soccer", "Round Robin", 13, "@drawable/logo3");
     Tournament five = new Tournament("International Football", "Combinational", 16, "@drawable/logo4");
     Tournament six = new Tournament("RPL", "Knock Out", 17, "@drawable/logo5");
     Tournament seven = new Tournament("EUFA Champions League", "Round Robin", 12, "@drawable/logo6");
@@ -25,7 +31,8 @@ public class TournamentData {
     Tournament nine = new Tournament("Football League Championship", "Knock Out", 22, "@drawable/logo8");
 
 
-    List tournaments = Arrays.asList(
+
+    List<Tournament> tournaments = new LinkedList<Tournament>(Arrays.asList(
             one,
             two,
             three,
@@ -35,7 +42,10 @@ public class TournamentData {
             seven,
             eight,
             nine
-    );
+    ));
+
+
+
 
     private TournamentData() {
     }

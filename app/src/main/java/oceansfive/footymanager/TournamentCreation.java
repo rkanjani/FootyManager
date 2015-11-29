@@ -2,25 +2,18 @@ package oceansfive.footymanager;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.BitmapFactory;
-import android.provider.MediaStore;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.net.Uri;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.content.DialogInterface;
 import android.widget.Button;
-import android.app.ActionBar;
 import android.view.MenuItem;
-
-import org.w3c.dom.Text;
 
 public class TournamentCreation extends AppCompatActivity {
 
@@ -32,12 +25,32 @@ public class TournamentCreation extends AppCompatActivity {
     private String filemanagerstring;
     private String selectedStyle = null;
 
+    private static TournamentData data = TournamentData.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournament_creation);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Create Tournament");
+
+        NumberPicker np = (NumberPicker) findViewById(R.id.TextView);
+        ImageView logo = (ImageView) findViewById(R.id.tournamentLogo);
+
+
+        String [] teamSizes = new String[65];
+
+        for(int x=0;x<teamSizes.length;x++)
+            teamSizes[x] = Integer.toString(x);
+
+        np.setMinValue(0);
+        np.setMaxValue(teamSizes.length - 1);
+        np.setWrapSelectorWheel(false);
+        np.setDisplayedValues(teamSizes);
+        np.setValue(2);
+        np.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+
+        logo.setTag(R.drawable.default_logo, "default_logo");
 
 
     }
@@ -47,23 +60,6 @@ public class TournamentCreation extends AppCompatActivity {
         return true;
     }
 
-    public String getPath(Uri uri) {
-        // Displays error if image cannot be chosen
-        if( uri == null ) {
-            Toast.makeText(getApplicationContext(), "Image cannot be chosen", Toast.LENGTH_SHORT).show();
-            return null;
-        }
-        // Tries to look for images in gallery
-        String[] projection = { MediaStore.Images.Media.DATA };
-        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
-        if( cursor != null ){
-            int column_index = cursor
-                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        }
-        else return null;
-    }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == SELECT_LOGO) {
             Uri selectedImageUri = data.getData();
@@ -94,6 +90,23 @@ public class TournamentCreation extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_LOGO);
+    }
+    public void addTournament(View view){
+        NumberPicker numOfTeams = (NumberPicker) findViewById(R.id.TextView);
+        EditText name = (EditText) findViewById(R.id.tournamentName);
+        ImageView logo = (ImageView) findViewById(R.id.tournamentLogo);
+        Button type = (Button) findViewById(R.id.tournamentType);
+        Drawable image = logo.getDrawable();
+
+        //Tournament information must be filled out before continuing -- (f5c5c71) is the default image id
+        if(numOfTeams.getValue()>1 && !name.getText().equals(null) && !type.getText().equals("Tournament Type")){
+            Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivityForResult(myIntent, 0);
+        }
+
+        Tournament tournament = new Tournament(name.getText().toString(), type.getText().toString(), numOfTeams.getValue(), logo.getDrawable().toString());
+        data.tournaments.add(tournament);
+
     }
 
 }
