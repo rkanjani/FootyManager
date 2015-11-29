@@ -34,7 +34,7 @@ public class Team {
     public String getTeamName(){
         return teamName;
     }
-    public Drawable getTeamLogo() { return teamLogo.; }
+    public Drawable getTeamLogo() { return teamLogo; }
 
     //adds player to the team
     public void addPlayer(String name, char position, int jerseyNumber){
