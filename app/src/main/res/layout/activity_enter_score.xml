@@ -40,10 +40,6 @@
                     android:id="@+id/home_team"
                     android:src="@drawable/default_logo"
                     android:background="#505050" />
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 
             </LinearLayout>
 
@@ -120,10 +116,7 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:id="@+id/away_team_logo"
-<<<<<<< HEAD
                     android:layout_gravity="center"
-=======
->>>>>>> master
                     android:src="@drawable/default_logo"
                     android:background="#505050" />
 
