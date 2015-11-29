@@ -26,11 +26,25 @@ public class Tournament {
         teams = new Team[tournamentSize];
     }
 
-    public void rankTeams()
+    public Team[] getRanking()
     {
-        Team temp = teams[0];
+        for (int i = teams.length - 1; i >= 0; i--)
+        {
+            for (int j = 1; j<= i; j++ )
+            {
+                if ( teams[j-1].getWins() > teams[j].getWins())
+                {
+                    Team temp = teams[j-1];
+                    teams[j-1] = teams[j];
+                    teams[j] = temp;
+                }
+            }
 
-        
+        }
+
+        return this.teams;
+
+
     }
 
     public String getTournamentName(){
