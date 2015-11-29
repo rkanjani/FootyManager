@@ -39,9 +39,9 @@ public class ScheduleListAdapter extends BaseAdapter {
         ImageView teamWin = (ImageView) vi.findViewById(R.id.teamLogo);
 
 
-        team1.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
-        team2.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
-        teamWin.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
+        //team1.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
+        //team2.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
+        //teamWin.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
 
         return vi;
     }
