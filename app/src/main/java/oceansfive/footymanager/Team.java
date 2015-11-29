@@ -80,13 +80,16 @@ public class Team {
         return yellowCards;
     }
 
+    public void setYellowCards(int yellowCards){
+        this.yellowCards = yellowCards;
+    }
+    public void setRedCards(int redCards){
+        this.redCards = redCards;
+    }
+
     public String winsToString()
     {
         return ("Wins: " + this.wins + "  Losses: " + getLosses());
     }
-
-
-
-
 
 }
