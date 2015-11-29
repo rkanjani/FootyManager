@@ -20,15 +20,15 @@ public class TournamentData {
     }
     ////THESE LISTS NEED TO BE REPLACED BY INSTANCES OF A TOURNAMENT
 
-    Tournament one = new Tournament("La Liga", "Round Robin", 6, "@drawable/logo0");
-    Tournament two = new Tournament("English Premier League", "Combinational", 4, "@drawable/logo1");
-    Tournament three = new Tournament("Bundesliga", "Knock Out", 24, "@drawable/logo2");
-    Tournament four = new Tournament("Major League Soccer", "Round Robin", 13, "@drawable/logo3");
-    Tournament five = new Tournament("International Football", "Combinational", 16, "@drawable/logo4");
-    Tournament six = new Tournament("RPL", "Knock Out", 17, "@drawable/logo5");
-    Tournament seven = new Tournament("EUFA Champions League", "Round Robin", 12, "@drawable/logo6");
-    Tournament eight = new Tournament("Europa League", "Combinational", 9, "@drawable/logo7");
-    Tournament nine = new Tournament("Football League Championship", "Knock Out", 22, "@drawable/logo8");
+    Tournament one = new Tournament("La Liga", "Round Robin", 6, "@drawable/logo0", null);
+    Tournament two = new Tournament("English Premier League", "Combinational", 4, "@drawable/logo1", null);
+    Tournament three = new Tournament("Bundesliga", "Knock Out", 24, "@drawable/logo2", null);
+    Tournament four = new Tournament("Major League Soccer", "Round Robin", 13, "@drawable/logo3", null);
+    Tournament five = new Tournament("International Football", "Combinational", 16, "@drawable/logo4", null);
+    Tournament six = new Tournament("RPL", "Knock Out", 17, "@drawable/logo5", null);
+    Tournament seven = new Tournament("EUFA Champions League", "Round Robin", 12, "@drawable/logo6", null);
+    Tournament eight = new Tournament("Europa League", "Combinational", 9, "@drawable/logo7", null);
+    Tournament nine = new Tournament("Football League Championship", "Knock Out", 22, "@drawable/logo8", null);
 
 
 

@@ -18,11 +18,12 @@ public class Tournament {
     Team[] teams;
     List<Game> games = new ArrayList<Game>();
 
-    public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo){
+    public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo, Team[] teams){
         this.tournamentName = tournamentName;
         this.tournamentType = tournamentType;
         this.tournamentSize = tournamentSize;
         this.tournamentLogo = tournamentLogo;
+        this.teams = teams;
         teams = new Team[tournamentSize];
     }
 
@@ -43,8 +44,6 @@ public class Tournament {
         }
 
         return this.teams;
-
-
     }
 
     public String getTournamentName(){
