@@ -5,15 +5,19 @@ package oceansfive.footymanager;
  */
 public class Game {
     //I took out location and date as it is weird to code for now
-    private int team1Score = -1;
-    private int team2Score = -1;
+    private int team1Score;
+    private int team2Score;
     private Team winner = null;
     private Team team1;
     private Team team2;
+    private boolean gamePlayed;
 
     public Game(Team team1, Team team2){
         this.team1 = team1;
         this.team2 = team2;
+        team1Score = -1;
+        team2Score = -1;
+        gamePlayed = false;
     }
 
     //sets the score of a game
@@ -26,6 +30,10 @@ public class Game {
         else{
             winner = team2;
         }
+    }
+
+    public boolean isGamePlayed(){
+        return gamePlayed;
     }
 
     public Team getTeam1(){
@@ -42,6 +50,10 @@ public class Game {
 
     public String getScore(){
         return team1Score + " - " + team2Score;
+    }
+
+    public void finishGame(){
+        gamePlayed = true;
     }
 
 }
