@@ -8,27 +8,28 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="70dp"
+        android:paddingTop="10px">
 
         <FrameLayout
             android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="false"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
             android:id="@+id/frameLayout2">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
                 android:id="@+id/standingsNum"
-                android:layout_gravity="center_horizontal|top" />
+                android:layout_gravity="center_horizontal|top"
+                android:gravity="center" />
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="60dp"
+            android:layout_width="70dp"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/frameLayout2"
@@ -38,7 +39,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/ingTeamLogo"
+                android:id="@+id/teamLogo"
                 android:background="#9d9d9d"
                 android:layout_gravity="right|top" />
         </FrameLayout>
@@ -52,20 +53,18 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="45dp"
-                android:text="New Text"
-                android:id="@+id/txtTeamName"
+                android:id="@+id/teamName"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
 
-                                                         />
+                android:gravity="left|center" />
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="New Text"
-                android:id="@+id/txtWinsLosses"
-                android:layout_below="@+id/txtTeamName"
+                android:id="@+id/winLoss"
+                android:layout_below="@+id/teamName"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
