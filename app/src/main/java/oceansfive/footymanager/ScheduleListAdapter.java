@@ -22,7 +22,7 @@ public class ScheduleListAdapter extends BaseAdapter {
     //***Later we should pass an array of tournaments instead of 4 Lists****//
     List<Team> teams;
 
-    public ScheduleListAdapter(Context context, List<Team> teams) {
+    public ScheduleListAdapter(Context context, Tournament Tournaments) {
         // TODO Auto-generated constructor stub
         this.context = context;
         this.teams = teams;
