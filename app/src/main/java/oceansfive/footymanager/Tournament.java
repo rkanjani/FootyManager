@@ -81,6 +81,7 @@ public class Tournament {
                 games[gameNum] = new Game(teams[i], teams[j]);
             }
         }
+        Collections.shuffle((Arrays.asList(games)));
         return games;
     }
     //Creates the games in a round robin
