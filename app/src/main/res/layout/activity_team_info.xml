@@ -19,15 +19,16 @@
             android:paddingBottom="20px">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:id="@+id/teamLogo"
-                android:src="@drawable/team_canada_logo" />
+                android:src="@drawable/default_logo"
+                android:background="#505050" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Team Canada"
+                android:text="Team Name"
                 android:id="@+id/teamName"
                 android:textSize="70px"
                 android:layout_gravity="center"
@@ -52,7 +53,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="50"
+                android:text="0"
                 android:id="@+id/numOfWin"
                 android:textColor="#000000"
                 android:textSize="70px" />
@@ -69,7 +70,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Loss: "
+                android:text="Losses: "
                 android:id="@+id/teamLoss"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#000000"
@@ -78,7 +79,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="25"
+                android:text="0"
                 android:id="@+id/numOfLoss"
                 android:textColor="#000000"
                 android:textSize="70px" />
@@ -119,7 +120,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"
+                    android:text="0"
                     android:id="@+id/numOfRed"
                     android:textSize="70px"
                     android:textColor="#000000"
@@ -147,7 +148,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3"
+                    android:text="0"
                     android:id="@+id/numOfYellow"
                     android:layout_gravity="center_horizontal"
                     android:textColor="#000000"
