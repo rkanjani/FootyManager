@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.widget.*;
 
 public class EnterScore extends AppCompatActivity {
+
     TournamentData data  = TournamentData.getInstance();
     final Game game = data.tournaments.get(getIntent().getExtras().getInt("tournament")).games.get(getIntent().getExtras().getInt("game"));
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
