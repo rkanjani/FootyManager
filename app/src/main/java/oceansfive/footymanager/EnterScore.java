@@ -8,13 +8,25 @@ public class EnterScore extends AppCompatActivity {
 
     TournamentData data  = TournamentData.getInstance();
     final Game game = data.tournaments.get(getIntent().getExtras().getInt("tournament")).games.get(getIntent().getExtras().getInt("game"));
-
+    Team team1 = game.getTeam1();
+    Team team2 = game.getTeam2();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_score);
         setTitle("Enter Score");
+
+        TextView homeName = (TextView) findViewById(R.id.home_team_name);
+        homeName.setText(team1.getTeamName());
+
+        //check if logo thing works first in team info
+
+        TextView awayName = (TextView) findViewById(R.id.away_team_name);
+        awayName.setText(team2.getTeamName());
+
+        //check if logo thing works first in team info
+
     }
 
     public void enterGame(){
@@ -25,12 +37,10 @@ public class EnterScore extends AppCompatActivity {
         game.enterScore(homeScore, awayScore);
 
         EditText home_yellow = (EditText) findViewById(R.id.home_yellow);
-        Team team1 = game.getTeam1();
         int homeYellow = Integer.parseInt(home_yellow.getText().toString());
         team1.setYellowCards(homeYellow);
 
         EditText away_yellow = (EditText) findViewById(R.id.away_yellow);
-        Team team2 = game.getTeam2();
         int awayYellow = Integer.parseInt(away_yellow.getText().toString());
         team2.setYellowCards(awayYellow);
 

@@ -31,38 +31,9 @@ public class Team {
         this.yellowCards = 0;
     }
 
-    public String getTeamName(){
-        return teamName;
-    }
+    //Getters
+    public String getTeamName(){ return teamName; }
     public String getTeamLogo() { return teamLogo; }
-
-    //adds player to the team
-    public void addPlayer(String name, char position, int jerseyNumber){
-        if(teamSize<=28) {
-            Player player1 = new Player(name, position, jerseyNumber);
-            players.add(player1);
-            teamSize++;
-        }
-        System.out.println("no more space on the roster");
-    }
-
-    //deletes player
-    public void deletePlayer(Player guy){
-        players.remove(guy);
-    }
-
-    public void setTeamName(String teamName){
-        this.teamName = teamName;
-    }
-    public void setTeamLogo(String teamLogo){
-        this.teamLogo = teamLogo;
-    }
-
-    //edits the players positon
-    public void editPlayerPosition(Player p1, char pos){
-        p1.setPosition(pos);
-    }
-
     public int getWins() {
         return wins;
     }
@@ -80,11 +51,34 @@ public class Team {
         return yellowCards;
     }
 
+    //Setters
+    public void setTeamName(String teamName){ this.teamName = teamName;}
+    public void setTeamLogo(String teamLogo){ this.teamLogo = teamLogo; }
     public void setYellowCards(int yellowCards){
         this.yellowCards = yellowCards;
     }
     public void setRedCards(int redCards){
         this.redCards = redCards;
+    }
+
+    //adds player to the team
+    public void addPlayer(String name, char position, int jerseyNumber){
+        if(teamSize<=28) {
+            Player player1 = new Player(name, position, jerseyNumber);
+            players.add(player1);
+            teamSize++;
+        }
+        System.out.println("no more space on the roster");
+    }
+
+    //deletes player
+    public void deletePlayer(Player guy){
+        players.remove(guy);
+    }
+
+    //edits the players positon
+    public void editPlayerPosition(Player p1, char pos){
+        p1.setPosition(pos);
     }
 
     public String winsToString()

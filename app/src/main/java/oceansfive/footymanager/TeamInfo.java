@@ -3,6 +3,7 @@ package oceansfive.footymanager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.*;
+import android.content.Context;
 
 public class TeamInfo extends AppCompatActivity {
     TournamentData data  = TournamentData.getInstance();
@@ -19,7 +20,9 @@ public class TeamInfo extends AppCompatActivity {
 
         ImageView img= (ImageView) findViewById(R.id.image);
 
-       // img.setImageDrawable(team.getTeamLogo());
+        Context context = img.getContext();
+        int id = context.getResources().getIdentifier(team.getTeamLogo(), "drawable", context.getPackageName());
+        img.setImageResource(id);
 
 
         TextView wins = (TextView) findViewById(R.id.numOfWin);

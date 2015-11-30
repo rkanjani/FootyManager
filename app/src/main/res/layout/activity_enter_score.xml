@@ -23,7 +23,8 @@
                 android:layout_width="82dp"
                 android:layout_height="fill_parent"
                 android:gravity="top|left"
-                android:layout_gravity="top|left">
+                android:layout_gravity="top|left"
+                android:id="@+id/homeTeamStuff">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -49,7 +50,8 @@
                 android:layout_height="fill_parent"
                 android:layout_gravity="center"
                 android:layout_weight="0.88"
-                android:gravity="center">
+                android:gravity="center"
+                android:id="@+id/score">
 
                 <EditText
                     android:layout_width="50dp"
@@ -100,13 +102,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:gravity="top|right"
-                android:layout_gravity="top|center_vertical|right">
+                android:layout_gravity="top|center_vertical|right"
+                android:id="@+id/away_team_stuff">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Team 2"
-                    android:id="@+id/away_team"
+                    android:id="@+id/away_team_name"
                     android:textColor="#000000"
                     android:textSize="20dp"
                     android:layout_gravity="top|center_horizontal|right"
@@ -128,7 +131,8 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/yellow_card_title">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -144,7 +148,8 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/enter_yellow">
 
             <EditText
                 android:layout_width="wrap_content"
@@ -184,7 +189,8 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" >
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/red_card_title">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -200,7 +206,8 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" >
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/enter_red">
 
             <EditText
                 android:layout_width="wrap_content"

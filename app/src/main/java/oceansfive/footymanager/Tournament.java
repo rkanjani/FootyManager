@@ -50,27 +50,36 @@ public class Tournament {
         return this.teams;
     }
 
-    public String getTournamentName(){
-        return tournamentName;
-    }
-
+    //Getters
+    public String getTournamentName(){ return tournamentName; }
     public String getTournamentType() {
         return tournamentType;
     }
     public Team[] getTeams(){
         return teams;
     }
-
     public List<Game> getGames(){
         return games;
     }
+    public String getTournamentLogo(){ return tournamentLogo; }
+    public int getTournamentSize(){ return tournamentSize; }
 
-    public String getTournamentLogo(){
-        return tournamentLogo;
+    //Setters
+    public void setTournamentName(String name){
+        tournamentName = name;
     }
-    public int getTournamentSize(){
-        return tournamentSize;
+    public void setTournamentType(String tournamentType){
+        this.tournamentType = tournamentType;
     }
+
+    public void addTeam(Team t, int position){
+        teams[position] = t;
+    }
+    public void addTeamRoster(Team[] teams){
+        this.teams = teams;
+    }
+
+    public void setTournamentLogo(String tournamentLogo){ this.tournamentLogo = tournamentLogo; }
 
     //Creates the games in a round robin
     public Game[] createRoundRobin(Team[] teams)
@@ -87,6 +96,7 @@ public class Tournament {
         Collections.shuffle((Arrays.asList(games)));
         return games;
     }
+
     //Creates the games in a round robin
     public Game[] createKnockout(Team[] teams)
     {
@@ -141,15 +151,8 @@ public class Tournament {
     public void createPlayoffs(List Teams){
 
     }
-    public void addTeam(Team t, int position){
-        teams[position] = t;
-    }
-    public void addTeamRoster(Team[] teams){
-        this.teams = teams;
-    }
-    public void setTournamentName(String name){
-        tournamentName = name;
-    }
+
+
 
     public String toString(){
         return tournamentName;
