@@ -20,6 +20,10 @@ public class Game {
         gamePlayed = false;
     }
 
+    public Game(Team team1){
+        this.team1 = team1;
+    }
+
     //sets the score of a game
     public void enterScore(int score1, int score2){
         team1Score = score1;
@@ -46,6 +50,10 @@ public class Game {
 
     public Team getWinner(){
         return winner;
+    }
+
+    public void setTeam2(Team team2){
+        this.team2 = team2;
     }
 
     public String getScore(){
