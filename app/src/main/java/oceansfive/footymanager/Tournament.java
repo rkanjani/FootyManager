@@ -1,6 +1,8 @@
 package oceansfive.footymanager;
 
 
+import android.graphics.drawable.Drawable;
+
 import java.util.*;
 
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ public class Tournament {
     Team[] teams;
     List<Game> games = new ArrayList<Game>();
 
+
     public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo, Team[] teams){
         this.tournamentName = tournamentName;
         this.tournamentType = tournamentType;
@@ -25,6 +28,7 @@ public class Tournament {
         this.tournamentLogo = tournamentLogo;
         this.teams = teams;
         teams = new Team[tournamentSize];
+
     }
 
     public Team[] getRanking()

@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class Team {
     private String teamName;
-    private Drawable teamLogo;
+    private String teamLogo;
     private List<Player> players = new ArrayList<Player>();
     private int wins;
     private int gamesPlayed;
@@ -21,7 +21,7 @@ public class Team {
     //keeps track of the size of the team.
     private int teamSize = 0;
 
-    public Team(String teamName, Drawable teamLogo)
+    public Team(String teamName, String teamLogo)
     {
         this.teamName = teamName;
         this.teamLogo = teamLogo;
@@ -34,7 +34,7 @@ public class Team {
     public String getTeamName(){
         return teamName;
     }
-    public Drawable getTeamLogo() { return teamLogo; }
+    public String getTeamLogo() { return teamLogo; }
 
     //adds player to the team
     public void addPlayer(String name, char position, int jerseyNumber){
@@ -54,7 +54,7 @@ public class Team {
     public void setTeamName(String teamName){
         this.teamName = teamName;
     }
-    public void setTeamLogo(Drawable teamLogo){
+    public void setTeamLogo(String teamLogo){
         this.teamLogo = teamLogo;
     }
 

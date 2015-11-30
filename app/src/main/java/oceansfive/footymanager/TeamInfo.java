@@ -19,7 +19,7 @@ public class TeamInfo extends AppCompatActivity {
 
         ImageView img= (ImageView) findViewById(R.id.image);
 
-        img.setImageDrawable(team.getTeamLogo());
+       // img.setImageDrawable(team.getTeamLogo());
 
 
         TextView wins = (TextView) findViewById(R.id.numOfWin);
