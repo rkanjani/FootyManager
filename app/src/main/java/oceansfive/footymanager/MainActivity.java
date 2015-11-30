@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Active Tournaments");
         listAdapter = new tournamentListAdapter(this, data.tournaments);
-        View tournamentListView = (View)findViewById(R.id.addTournament);
+        View addTournamentButton = (View)findViewById(R.id.addTournament);
 
 
-        tournamentListView.bringToFront();
+        addTournamentButton.bringToFront();
 
 
         ListView tournamentList = (ListView) findViewById(R.id.tournamentList);
@@ -50,12 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void arrayToList(String [] arr, ArrayList<String> list){
+    /*public void arrayToList(String [] arr, ArrayList<String> list){
         for(int x = 0; x<arr.length; x++){
             list.add(arr[x]);
         }
 
-    }
+    }*/
+
     public void addTournament(View view) {
         Intent intent = new Intent(getApplicationContext(), TournamentCreation.class); //Application Context and Activity
         startActivityForResult (intent,0);

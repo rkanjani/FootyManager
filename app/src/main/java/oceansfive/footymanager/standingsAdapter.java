@@ -26,7 +26,10 @@ public class standingsAdapter extends BaseAdapter {
         this.tournament = tournament;
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //this.standings = tournament.getRanking();
+        this.standings = tournament.getRanking();
+
+        for(int x=0;x<standings.length;x++)
+            System.out.println(standings[x].getTeamName());
     }
 
     @Override
@@ -34,6 +37,9 @@ public class standingsAdapter extends BaseAdapter {
         View vi = convertView;
         if (vi == null)
             vi = inflater.inflate(R.layout.tournament_row_item, null);
+
+
+
         TextView name = (TextView) vi.findViewById(R.id.teamName);
         TextView winLossRatio = (TextView) vi.findViewById(R.id.winLoss);
         TextView standing = (TextView) vi.findViewById(R.id.standingsNum);

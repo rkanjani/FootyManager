@@ -67,7 +67,6 @@ public class teamListAdapter extends BaseAdapter{
         View vi = convertView;
         if (vi == null)
             vi = inflater.inflate(R.layout.edit_team_row_item, null);
-
         final int index = position;
         final EditText name = (EditText) vi.findViewById(R.id.teamName);
 
@@ -79,10 +78,10 @@ public class teamListAdapter extends BaseAdapter{
         }
 
         TextWatcher teamNameWatcher = new TextWatcher() {
-
+            int tournamentIndex = data.tournaments.indexOf(tournament);
             //Changes a Team name to new name
             public void afterTextChanged(Editable s) {
-                tournament.teams[index] = new Team(s.toString(), null);
+                data.tournaments.get(tournamentIndex).teams[index] = new Team(s.toString(), null);
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
