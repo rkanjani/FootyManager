@@ -75,17 +75,20 @@ public class Tournament {
     //Creates the games in a round robin
     public Game[] createRoundRobin(Team[] teams)
     {
-        Game games[] = new Game[teams.length*(teams.length-1)/2];
+        Game [] gameSchedule = new Game[teams.length*(teams.length-1)/2];
         int gameNum = 0;
         for(int i = 0; i < teams.length-1; i++)
         {
             for(int j=i+1; j < teams.length; j++)
             {
-                games[gameNum] = new Game(teams[i], teams[j]);
+                gameSchedule[gameNum] = new Game(teams[i], teams[j]);
+                gameNum++;
             }
         }
-        Collections.shuffle((Arrays.asList(games)));
-        return games;
+        Collections.shuffle((Arrays.asList(gameSchedule)));
+
+        games = Arrays.asList(gameSchedule);
+        return gameSchedule;
     }
     //Creates the games in a round of knockout
     public Game[] createKnockout(Team[] teams)
@@ -182,6 +185,9 @@ public class Tournament {
         }
     }
     */
+    public void updateGame(int index, Game game){
+        Collections.replaceAll(games, games.get(index), game);
+    }
 
     //creates bracket for combinational tournament
     public void createPlayoffs(List Teams){
@@ -199,5 +205,11 @@ public class Tournament {
 
     public String toString(){
         return tournamentName;
+    }
+
+    public void getGameSchedule(){
+        for(int x=0; x<games.size(); x++){
+            System.out.println("Game "+(x+1)+": "+games.get(x).getTeam1() + " plays" + games.get(x).getTeam2());
+        }
     }
 }

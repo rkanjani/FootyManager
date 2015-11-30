@@ -84,10 +84,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/frameLayout3">
+        android:id="@+id/frameLayout3"
+        android:layout_above="@+id/startTournament">
 
         <ListView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/teamList"
             android:layout_gravity="center" />
@@ -126,15 +127,14 @@
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="90dp"
         android:text="Start Tournament"
         android:id="@+id/startTournament"
-        android:layout_alignRight="@+id/frameLayout3"
-        android:layout_alignEnd="@+id/frameLayout3"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/frameLayout3"
+        android:onClick="startTournament"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="startTournament" />
+        android:layout_alignRight="@+id/frameLayout3"
+        android:layout_alignEnd="@+id/frameLayout3" />
 
 </RelativeLayout>
