@@ -96,18 +96,68 @@ public class Tournament {
         Collections.shuffle((Arrays.asList(games)));
         return games;
     }
+<<<<<<< HEAD
 
     //Creates the games in a round robin
+=======
+    //Creates the games in a round of knockout
+>>>>>>> master
     public Game[] createKnockout(Team[] teams)
     {
-        Game games[] = new Game[teams.length / 2];
+        Game games[] = null;
 
-        for (int i = 0; i < teams.length -1; i++)
+        // Perfect Tournament of 2^n teams
+        if  (((Math.log(teams.length) / Math.log(2)) % 1) == 0) {
+            games = new Game[teams.length / 2];
+
+            for (int i = 0; i < teams.length - 1; i++) {
+                games[i] = new Game(teams[i], teams[teams.length - 1 - i]);
+            }
+
+
+        }
+        else // Tournament is not Perfect
         {
-            games[i] = new Game(teams[i], teams[teams.length-1-i]);
+            int n = 0;
+            double extraGames = 0;
+            while(teams.length - Math.pow(2, n) > 0) {
+                extraGames = teams.length - Math.pow(2, n);
+                n++;
+            }
+            games = new Game[(int)extraGames]; // Total Games for first round + extra when not perfect bracket
+            int num = 0;
+            for (int i = teams.length; i > teams.length - extraGames; i=i-2)
+            {
+                games[i] = new Game(teams[i], teams[i-1]);
+            }
+        }
+        return games;
+    }
+
+    public void updateRound(Game[] games)
+    {
+        if  (((Math.log(teams.length) / Math.log(2)) % 1) == 0) { //Tournament is not perfect
+            int n = 0;
+            double extraGames = 0;
+            while (teams.length - Math.pow(2, n) > 0) {
+                extraGames = teams.length - Math.pow(2, n);
+                n++;
+            }
+            n--;
+            Team newTeam[] = new Team[(int) Math.pow(2, n)];
+
+            for (int i = 0; i < teams.length - (extraGames * 2); i++) //Fills the first portion of the array
+            {
+                newTeam[i] = teams[i];
+            }
+            for(int i = teams.length - (int)(extraGames * 2); i < newTeam.length; i++ ) //Fills the second portion with the winners of the last games.
+            {
+                newTeam[i] = games[i - (teams.length - (int)(extraGames *2))].getWinner();
+            }
+
+
         }
 
-        return games;
     }
 
     /*public void createGames(List teams){
