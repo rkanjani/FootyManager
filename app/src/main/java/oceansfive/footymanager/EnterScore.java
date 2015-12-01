@@ -12,6 +12,7 @@ public class EnterScore extends AppCompatActivity {
     TournamentData data  = TournamentData.getInstance();
     private static int tournamentIndex;
     private static int gameIndex;
+    boolean scoreEntered = false;
 
 
     @Override

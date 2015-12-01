@@ -107,7 +107,7 @@ public class Team {
 
     public String winsToString()
     {
-        return ("Wins: " + this.wins + "  Losses: " + getLosses());
+        return ("Wins: " + this.wins + "    Losses: " + getLosses());
     }
 
 }
