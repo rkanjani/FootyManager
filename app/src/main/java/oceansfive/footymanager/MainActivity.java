@@ -39,9 +39,17 @@ public class MainActivity extends AppCompatActivity {
         tournamentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 final String item = (String) parent.getItemAtPosition(position).toString();
-                Intent intent = new Intent(getApplicationContext(), EditTournament.class); //Application Context and Activity
-                intent.putExtra("tournament", position);
-                startActivityForResult(intent, position);
+
+                if(!data.tournaments.get(position).getTournamentStatus()){
+                    Intent intent = new Intent(getApplicationContext(), EditTournament.class); //Application Context and Activity
+                    intent.putExtra("tournament", position);
+                    startActivityForResult(intent, position);
+                }
+                else{
+                    Intent intent = new Intent(getApplicationContext(), Schedule.class); //Application Context and Activity
+                    intent.putExtra("tournament", position);
+                    startActivityForResult(intent, position);
+                }
             }
         });
 

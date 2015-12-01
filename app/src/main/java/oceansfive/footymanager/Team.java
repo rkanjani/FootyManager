@@ -13,9 +13,11 @@ public class Team {
     private String teamLogo;
     private List<Player> players = new ArrayList<Player>();
     private int wins;
+    private int losses;
     private int gamesPlayed;
     private int redCards;
     private int yellowCards;
+    private int totalGoals;
 
 
     //keeps track of the size of the team.
@@ -26,9 +28,11 @@ public class Team {
         this.teamName = teamName;
         this.teamLogo = teamLogo;
         this.wins = 0;
+        this.losses = 0;
         this.gamesPlayed = 0;
         this.redCards = 0;
         this.yellowCards = 0;
+        this.totalGoals = 0;
     }
 
     public String getTeamName(){
@@ -67,9 +71,19 @@ public class Team {
         return wins;
     }
 
+    public void addWin(){
+        wins++;
+    }
+    public void addLoss(){
+        losses++;
+    }
+
     public int getLosses()
     {
-        return gamesPlayed - wins;
+        return losses;
+    }
+    public void addGoals(int goals){
+        totalGoals = totalGoals+goals;
     }
 
     public int getRedCards(){
@@ -78,6 +92,10 @@ public class Team {
 
     public int getYellowCards(){
         return yellowCards;
+    }
+
+    public int getTotalGoals(){
+        return totalGoals;
     }
 
     public void setYellowCards(int yellowCards){
