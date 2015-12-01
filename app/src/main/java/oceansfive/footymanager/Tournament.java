@@ -93,8 +93,18 @@ public class Tournament {
                 games[gameNum] = new Game(teams[i], teams[j]);
             }
         }
+<<<<<<< HEAD
         Collections.shuffle((Arrays.asList(games)));
         return games;
+=======
+        for(int x=0;x<gameSchedule.length;x++)
+            System.out.println(gameSchedule[x]);
+
+        Collections.shuffle((Arrays.asList(gameSchedule)));
+
+        games = Arrays.asList(gameSchedule);
+        return gameSchedule;
+>>>>>>> master
     }
 <<<<<<< HEAD
 
