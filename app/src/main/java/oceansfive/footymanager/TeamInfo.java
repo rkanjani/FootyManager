@@ -24,29 +24,29 @@ public class TeamInfo extends AppCompatActivity {
 
         setTitle("Team Information");
 
-        TextView teamName = (TextView) findViewById(R.id.teamName);
+        TextView teamName = (TextView) findViewById(R.id.team_name);
 
         teamName.setText(team.getTeamName());
 
-        ImageView img= (ImageView) findViewById(R.id.image);
+        ImageView img= (ImageView) findViewById(R.id.team_logo);
 
        // img.setImageDrawable(team.getTeamLogo());
 
         teamName.setKeyListener(null);
 
-        TextView totalGoals = (TextView) findViewById(R.id.totalGoals);
+        TextView totalGoals = (TextView) findViewById(R.id.num_total_goals);
         totalGoals.setText(Integer.toString(team.getTotalGoals()));
 
-        TextView wins = (TextView) findViewById(R.id.numOfWin);
+        TextView wins = (TextView) findViewById(R.id.num_wins);
         wins.setText(Integer.toString(team.getWins()));
 
-        TextView losses = (TextView) findViewById(R.id.numOfLoss);
+        TextView losses = (TextView) findViewById(R.id.num_losses);
         losses.setText(Integer.toString(team.getLosses()));
 
-        TextView red = (TextView) findViewById(R.id.numOfYellow);
+        TextView red = (TextView) findViewById(R.id.num_yellow);
         red.setText(Integer.toString(team.getYellowCards()));
 
-        TextView yellow = (TextView) findViewById(R.id.numOfRed);
+        TextView yellow = (TextView) findViewById(R.id.num_red);
         yellow.setText(Integer.toString(team.getRedCards()));
 
 
