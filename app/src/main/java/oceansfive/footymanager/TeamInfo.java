@@ -1,10 +1,12 @@
 package oceansfive.footymanager;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.*;
+import java.io.InputStream;
 
 public class TeamInfo extends AppCompatActivity {
 
@@ -28,9 +30,11 @@ public class TeamInfo extends AppCompatActivity {
 
         teamName.setText(team.getTeamName());
 
-        ImageView img= (ImageView) findViewById(R.id.team_logo);
+       String logo = team.getTeamLogo();
+        int drawableResourceId = this.getResources().getIdentifier(logo, "drawable", this.getPackageName());
+        ImageView imageView = (ImageView) findViewById(R.id.team_logo);
+        imageView.setImageResource(drawableResourceId);
 
-       // img.setImageDrawable(team.getTeamLogo());
 
         teamName.setKeyListener(null);
 
