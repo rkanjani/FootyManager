@@ -87,6 +87,9 @@ public class Tournament {
                 gameNum++;
             }
         }
+        for(int x=0;x<gameSchedule.length;x++)
+            System.out.println(gameSchedule[x]);
+
         Collections.shuffle((Arrays.asList(gameSchedule)));
 
         games = Arrays.asList(gameSchedule);
