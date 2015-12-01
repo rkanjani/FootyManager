@@ -7,6 +7,12 @@ import android.widget.*;
 public class EnterScore extends AppCompatActivity {
 
     TournamentData data  = TournamentData.getInstance();
+<<<<<<< HEAD
+=======
+    private static int tournamentIndex;
+    private static int gameIndex;
+    boolean scoreEntered = false;
+>>>>>>> master
 
     final Game game = data.tournaments.get(getIntent().getExtras().getInt("tournament")).games.get(getIntent().getExtras().getInt("game"));
     Team team1 = game.getTeam1();

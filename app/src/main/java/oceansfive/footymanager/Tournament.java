@@ -94,9 +94,12 @@ public class Tournament {
             }
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         Collections.shuffle((Arrays.asList(games)));
         return games;
 =======
+=======
+>>>>>>> master
         for(int x=0;x<gameSchedule.length;x++)
             System.out.println(gameSchedule[x]);
 
