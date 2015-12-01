@@ -3,6 +3,7 @@ package oceansfive.footymanager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -19,6 +20,7 @@ public class Schedule extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         tournamentIndex = getIntent().getExtras().getInt("tournament");
         final int [] values = new int[2];
 
@@ -45,11 +47,22 @@ public class Schedule extends AppCompatActivity {
             }
         });
 
-
     }
     public void goToRanking(View view){
+        data.tournaments.set(tournamentIndex, tournament);
         Intent intent = new Intent(getApplicationContext(), Ranking.class);
         intent.putExtra("tournament", tournamentIndex);
         startActivityForResult(intent, 0);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivityForResult(intent, 0);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

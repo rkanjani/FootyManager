@@ -17,6 +17,7 @@ public class Tournament {
     private String tournamentType;
     private String tournamentLogo;
     private int tournamentSize;
+    boolean tournamentStarted;
     Team[] teams;
     List<Game> games = new ArrayList<Game>();
 
@@ -27,26 +28,27 @@ public class Tournament {
         this.tournamentSize = tournamentSize;
         this.tournamentLogo = tournamentLogo;
         this.teams = teams;
+        this.tournamentStarted = false;
         teams = new Team[tournamentSize];
 
     }
 
+    //Has to be fixed to take into account losses
     public Team[] getRanking()
     {
-        for (int i = teams.length - 1; i >= 0; i--)
+        for (int i = 0; i < teams.length; i++)
         {
-            for (int j = 1; j<= i; j++ )
+            for (int j = i+1; j<teams.length; j++ )
             {
-                if ( teams[j-1].getWins() > teams[j].getWins())
+                if ( teams[j].getWins() > teams[i].getWins())
                 {
-                    Team temp = teams[j-1];
-                    teams[j-1] = teams[j];
+                    Team temp = teams[i];
+                    teams[i] = teams[j];
                     teams[j] = temp;
                 }
             }
 
         }
-
         return this.teams;
     }
 
@@ -192,6 +194,12 @@ public class Tournament {
     //creates bracket for combinational tournament
     public void createPlayoffs(List Teams){
 
+    }
+    public void startTournament(){
+        tournamentStarted = true;
+    }
+    public boolean getTournamentStatus(){
+        return tournamentStarted;
     }
     public void addTeam(Team t, int position){
         teams[position] = t;

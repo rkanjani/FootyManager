@@ -3,6 +3,7 @@ package oceansfive.footymanager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
@@ -17,6 +18,7 @@ public class EnterScore extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_score);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Enter Score");
         int [] locations = getIntent().getIntArrayExtra("tournamentGameInfo");
         tournamentIndex = locations[0];
@@ -64,29 +66,52 @@ public class EnterScore extends AppCompatActivity {
         int awayScore = Integer.parseInt(away_score.getText().toString());
         game.enterScore(homeScore, awayScore);
 
+        game.getTeam1().addGoals(homeScore);
+        game.getTeam2().addGoals(awayScore);
+
         EditText home_yellow = (EditText) findViewById(R.id.home_yellow);
         Team team1 = game.getTeam1();
-        int homeYellow = Integer.parseInt(home_yellow.getText().toString());
+        int homeYellow = returnNumber(home_yellow.getText().toString());
         team1.setYellowCards(homeYellow);
 
         EditText away_yellow = (EditText) findViewById(R.id.away_yellow);
         Team team2 = game.getTeam2();
-        int awayYellow = Integer.parseInt(away_yellow.getText().toString());
+        int awayYellow = returnNumber(away_yellow.getText().toString());
         team2.setYellowCards(awayYellow);
 
         EditText home_red = (EditText) findViewById(R.id.home_red);
-        int homeRed = Integer.parseInt(home_red.getText().toString());
+        int homeRed = returnNumber(home_red.getText().toString());
         team1.setRedCards(homeRed);
 
         EditText away_red = (EditText) findViewById(R.id.away_red);
-        int awayRed = Integer.parseInt(away_red.getText().toString());
+        int awayRed = returnNumber(away_red.getText().toString());
         team2.setRedCards(awayRed);
 
         game.finishGame();
 
-
         Intent intent = new Intent(getApplicationContext(), Schedule.class); //Application Context and Activity
         intent.putExtra("tournament", tournamentIndex);
         startActivityForResult(intent, 0);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(getApplicationContext(), Schedule.class);
+                intent.putExtra("tournament", tournamentIndex);
+                startActivityForResult(intent, 0);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    public int returnNumber(String s){
+        if(s.equals("") || s == null){
+            return 0;
+        }
+        else{
+            return Integer.parseInt(s);
+        }
+
     }
 }

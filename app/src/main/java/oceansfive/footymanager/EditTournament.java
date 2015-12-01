@@ -97,6 +97,7 @@ public class EditTournament extends AppCompatActivity {
         /*if(!teamNamesFilled || tournamentName.getText()==null)
             return;*/
         //System.out.println(tournament.teams.length);
+        data.tournaments.get(data.tournaments.indexOf(tournament)).startTournament();
         data.tournaments.get(data.tournaments.indexOf(tournament)).createRoundRobin(tournament.getTeams());
         Intent intent = new Intent(getApplicationContext(), Schedule.class); //Application Context and Activity
         intent.putExtra("tournament", data.tournaments.indexOf(tournament));

@@ -28,17 +28,13 @@ public class standingsAdapter extends BaseAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.standings = tournament.getRanking();
 
-        for(int x=0;x<standings.length;x++)
-            System.out.println(standings[x].getTeamName());
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
         if (vi == null)
-            vi = inflater.inflate(R.layout.tournament_row_item, null);
-
-
+            vi = inflater.inflate(R.layout.standings_row, null);
 
         TextView name = (TextView) vi.findViewById(R.id.teamName);
         TextView winLossRatio = (TextView) vi.findViewById(R.id.winLoss);
@@ -46,10 +42,9 @@ public class standingsAdapter extends BaseAdapter {
 
         ImageView logo = (ImageView) vi.findViewById(R.id.teamLogo);
 
-
         name.setText(standings[position].getTeamName());
         winLossRatio.setText("Wins: " + standings[position].getWins() + " Losses: " + standings[position].getLosses());
-        standing.setText(position+1);
+        standing.setText("#"+Integer.toString(position+1));
         //logo.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
 
         return vi;

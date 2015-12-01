@@ -12,6 +12,7 @@ public class Game {
     private int team1Red = 0;
     private int team2Red = 0;
     private Team winner = null;
+    private Team loser = null;
     private Team team1;
     private Team team2;
     private boolean gamePlayed;
@@ -32,12 +33,6 @@ public class Game {
     public void enterScore(int score1, int score2){
         team1Score = score1;
         team2Score = score2;
-        if (score1>score2){
-            winner = team1;
-        }
-        else{
-            winner = team2;
-        }
     }
 
     public boolean isGamePlayed(){
@@ -63,6 +58,10 @@ public class Game {
         return winner;
     }
 
+    public Team getLoser(){
+        return loser;
+    }
+
     public void setTeam2(Team team2){
         this.team2 = team2;
     }
@@ -72,10 +71,28 @@ public class Game {
     }
 
     public void finishGame(){
+
+        if (team1Score>team2Score){
+            winner = team1;
+            loser = team2;
+            winner.addWin();
+            loser.addLoss();
+        }
+        else if(team1Score<team2Score){
+            winner = team2;
+            loser = team1;
+            winner.addWin();
+            loser.addLoss();
+        }
+        else{
+            winner = null;
+        }
+
+
         gamePlayed = true;
     }
 
-    public void setTeam1Fouls(int [] fouls){
+    /*public void setTeam1Fouls(int [] fouls){
         team1Yellow = fouls[0];
         team1Red = fouls[1];
 
@@ -94,7 +111,9 @@ public class Game {
 
         team2.setRedCards(currentReds+team2Red);
         team2.setYellowCards(currentYellows+team2Yellow);
-    }
+    }*/
+
+
     public int[] getTeam1Fouls(){
         int [] fouls = new int[2];
         fouls[0] = team1Yellow;
@@ -109,7 +128,7 @@ public class Game {
     }
 
     public String toString(){
-        return team1.getTeamName() + " plays " + team2.getTeamName();
+        return team1.getTeamName() + ": " + team1Score + "  " + team2.getTeamName() + ": "+team2Score;
     }
 
 }
