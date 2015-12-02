@@ -15,11 +15,12 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:weightSum="1">
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="124dp"
+                android:layout_width="82dp"
                 android:layout_height="fill_parent"
                 android:gravity="top|left"
                 android:layout_gravity="top|left">
@@ -37,25 +38,25 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:id="@+id/home_team"
-<<<<<<< HEAD
-                    android:src="@drawable/logo4"
-                    android:layout_gravity="left" />
-=======
                     android:src="@drawable/default_logo"
-                    android:layout_gravity="center"
                     android:background="#505050" />
+<<<<<<< HEAD
+=======
+
 >>>>>>> master
 
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="141dp"
                 android:layout_height="fill_parent"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_weight="0.88"
+                android:gravity="center">
 
                 <EditText
-                    android:layout_width="45dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:ems="2"
@@ -67,19 +68,19 @@
                     android:textSize="45dp"
                     android:paddingLeft="20px"
                     android:paddingRight="20px"
-                    android:gravity="top" />
+                    android:gravity="center_horizontal" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" - "
+                    android:layout_width="55dp"
+                    android:layout_height="50dp"
+                    android:text="-"
                     android:id="@+id/dash"
-                    android:textSize="50px"
+                    android:textSize="30dp"
                     android:textColor="#000000"
                     android:layout_gravity="center"
                     android:paddingRight="20px"
                     android:paddingLeft="20px"
-                    android:gravity="top" />
+                    android:gravity="center" />
 
                 <EditText
                     android:layout_width="45dp"
@@ -94,13 +95,13 @@
                     android:textSize="45dp"
                     android:paddingLeft="20px"
                     android:paddingRight="20px"
-                    android:gravity="top" />
+                    android:gravity="top|center_horizontal" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:gravity="top|right"
                 android:layout_gravity="top|center_vertical|right">
@@ -108,26 +109,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="team 2"
+                    android:text="Team 2"
                     android:id="@+id/away_team"
                     android:textColor="#000000"
                     android:textSize="20dp"
-                    android:layout_gravity="top|center_horizontal|right" />
+                    android:layout_gravity="top|center_horizontal|right"
+                    android:gravity="center" />
 
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:id="@+id/away_team_logo"
 <<<<<<< HEAD
-                    android:layout_gravity="bottom|center|right"
-                    android:src="@drawable/logo1" />
-=======
                     android:layout_gravity="center"
+=======
+>>>>>>> master
                     android:src="@drawable/default_logo"
                     android:background="#505050" />
 
-
->>>>>>> master
             </LinearLayout>
 
         </LinearLayout>
@@ -164,7 +163,7 @@
                 android:textColor="#000000"
                 android:text="0"
                 android:layout_gravity="center"
-                android:gravity="left" />
+                android:gravity="center_horizontal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -178,7 +177,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="center_horizontal"
                 android:inputType="number"
                 android:ems="2"
                 android:id="@+id/away_yellow"
@@ -220,7 +219,7 @@
                 android:textColor="#000000"
                 android:text="0"
                 android:layout_gravity="center"
-                android:gravity="left" />
+                android:gravity="center_horizontal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -234,7 +233,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="center_horizontal"
                 android:inputType="number"
                 android:ems="2"
                 android:id="@+id/away_red"
@@ -254,7 +253,8 @@
                 android:layout_gravity="bottom|right"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="16dp"
-                android:src="@drawable/checkmark" />
+                android:src="@drawable/checkmark"
+                android:onClick="enterGame()" />
         </FrameLayout>
     </LinearLayout>
 </RelativeLayout>
