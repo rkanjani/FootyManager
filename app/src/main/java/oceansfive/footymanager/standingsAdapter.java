@@ -18,6 +18,7 @@ public class standingsAdapter extends BaseAdapter {
     TournamentData data = TournamentData.getInstance();
     Tournament tournament;
     Team[] standings;
+
     private Context context;
 
     public standingsAdapter(Context context, Tournament tournament) {
