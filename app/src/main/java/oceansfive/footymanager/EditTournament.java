@@ -98,7 +98,15 @@ public class EditTournament extends AppCompatActivity {
             return;*/
         //System.out.println(tournament.teams.length);
         data.tournaments.get(data.tournaments.indexOf(tournament)).startTournament();
-        data.tournaments.get(data.tournaments.indexOf(tournament)).createRoundRobin(tournament.getTeams());
+        if(tournament.getTournamentType().equals("Round Robin")){
+            data.tournaments.get(data.tournaments.indexOf(tournament)).createRoundRobin(tournament.getTeams());
+        }
+        else if(tournament.getTournamentType().equals("Knock-Out")){
+            data.tournaments.get(data.tournaments.indexOf(tournament)).createKnockout(tournament.getTeams());
+        }
+        else if(tournament.getTournamentType().equals("Combinational")){
+            data.tournaments.get(data.tournaments.indexOf(tournament)).createRoundRobin(tournament.getTeams());
+        }
         Intent intent = new Intent(getApplicationContext(), Schedule.class); //Application Context and Activity
         intent.putExtra("tournament", data.tournaments.indexOf(tournament));
         startActivityForResult(intent, 0);
