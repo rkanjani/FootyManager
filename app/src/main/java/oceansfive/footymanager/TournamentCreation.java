@@ -26,6 +26,7 @@ public class TournamentCreation extends AppCompatActivity {
     private String selectedLogoPath;
     private String filemanagerstring;
     private String selectedStyle = null;
+    private String currentImage;
 
     private static TournamentData data = TournamentData.getInstance();
 
@@ -35,6 +36,7 @@ public class TournamentCreation extends AppCompatActivity {
         setContentView(R.layout.activity_tournament_creation);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Create Tournament");
+        currentImage="noImage";
 
         NumberPicker np = (NumberPicker) findViewById(R.id.TextView);
         ImageView logo = (ImageView) findViewById(R.id.tournamentLogo);
@@ -67,14 +69,17 @@ if (resultCode == RESULT_OK) {
 
             if(requestCode == SELECT_LOGO){
 
+                this.currentImage =data.getStringExtra("image");
+                int image = this.getResources().getIdentifier(currentImage, "drawable", this.getPackageName());
 
-                String temp = data.getStringExtra("image");
-                int image = this.getResources().getIdentifier(temp, "drawable", this.getPackageName());
-                Context context = getApplicationContext();
-                CharSequence text = "result "+image;
+
+                /*Context context = getApplicationContext();
+                CharSequence text = "result "+currentImage;
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                toast.show();*/
+
+
                 ((ImageView) findViewById(R.id.tournamentLogo)).setImageResource(image);
 
             }
@@ -108,18 +113,22 @@ if (resultCode == RESULT_OK) {
         startActivityForResult(intent,SELECT_LOGO);
     }
     public void addTournament(View view){
+
+        Toast.makeText(getApplicationContext(), "whats up "+currentImage, Toast.LENGTH_LONG).show();
         NumberPicker numOfTeams = (NumberPicker) findViewById(R.id.TextView);
         EditText name = (EditText) findViewById(R.id.tournamentName);
         ImageView logo = (ImageView) findViewById(R.id.tournamentLogo);
         Button type = (Button) findViewById(R.id.tournamentType);
         Drawable image = logo.getDrawable();
+
+
         String goodToast = "Successfully added "+name.getText();
         String badToast = "Could not "+name.getText();
 
 
         //Tournament information must be filled out before continuing -- (f5c5c71) is the default image id
         if(numOfTeams.getValue()>1 && !name.getText().equals(null) && !type.getText().equals("Tournament Type")){
-            Tournament tournament = new Tournament(name.getText().toString(), type.getText().toString(), numOfTeams.getValue(), logo.getDrawable().toString(), new Team[numOfTeams.getValue()]);
+            Tournament tournament = new Tournament(name.getText().toString(), type.getText().toString(), numOfTeams.getValue(), this.currentImage, new Team[numOfTeams.getValue()]);
             data.tournaments.add(tournament);
             Toast.makeText(getApplicationContext(), goodToast, Toast.LENGTH_LONG).show();
             Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);

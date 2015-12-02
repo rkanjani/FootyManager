@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
     public void addTournament(View view) {
-        Intent intent = new Intent(getApplicationContext(), TournamentCreation.class); //Application Context and Activity
+        Intent intent = new Intent(getApplicationContext(), winner.class); //Application Context and Activity
         startActivityForResult (intent,0);
     }
 
