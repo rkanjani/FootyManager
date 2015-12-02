@@ -26,7 +26,7 @@ public class TournamentData {
     Team t1 = new Team("Real Madrid", "logo0");
     Team t2 = new Team("Man U", "logo1");
     Team t3 = new Team("Barcelona", "logo2");
-    Team t4 = new Team("TFC", "@drawable/logo3");
+    Team t4 = new Team("TFC", "logo3");
     Team t5 = new Team("Liverpool", "logo1");
     Team t6 = new Team("Chelsea", "logo0");
     Team t7 = new Team("Manchester City", "logo1");
@@ -47,10 +47,10 @@ public class TournamentData {
     Team [] teams16 = new Team [] {t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16};
 
 
-    Tournament one = new Tournament("La Liga", "Round Robin", 4, "@drawable/logo0", teams4);
-    Tournament two = new Tournament("English Premier League", "Combinational", 8, "@drawable/logo1", teams8);
-    Tournament three = new Tournament("Bundesliga", "Knock Out", 2, "@drawable/logo2", teams2);
-    Tournament four = new Tournament("Major League Soccer", "Round Robin", 16, "@drawable/logo3", teams16);
+    Tournament one = new Tournament("La Liga", "Round Robin", 4, "logo0", teams4);
+    Tournament two = new Tournament("English Premier League", "Combinational", 8, "logo1", teams8);
+    Tournament three = new Tournament("Bundesliga", "Knock Out", 2, "logo2", teams2);
+    Tournament four = new Tournament("Major League Soccer", "Round Robin", 16, "logo3", teams16);
 
 
 

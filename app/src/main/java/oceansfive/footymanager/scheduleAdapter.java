@@ -86,15 +86,15 @@ public class scheduleAdapter extends BaseAdapter{
 
         gameNumber.setText("#"+Integer.toString(position+1));
 
-        /*String logo1 = games.get(position).getTeam1().getTeamLogo();
+        String logo1 = games.get(position).getTeam1().getTeamLogo();
         int drawableResourceId = context.getResources().getIdentifier(logo1, "drawable", context.getPackageName());
         ImageView imageView1 = (ImageView) vi.findViewById(R.id.teamLogoOne);
-        imageView1.setImageResource(drawableResourceId);*/
+        imageView1.setImageResource(drawableResourceId);
 
-        /*String logo2 = games.get(position).getTeam2().getTeamLogo();
+        String logo2 = games.get(position).getTeam2().getTeamLogo();
         int drawableResourceId2 = context.getResources().getIdentifier(logo2, "drawable", context.getPackageName());
         ImageView imageView2 = (ImageView) vi.findViewById(R.id.teamLogoTwo);
-        imageView2.setImageResource(drawableResourceId2);*/
+        imageView2.setImageResource(drawableResourceId2);
 
 
 
