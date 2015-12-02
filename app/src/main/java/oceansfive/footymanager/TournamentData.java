@@ -13,6 +13,9 @@ import java.util.ListIterator;
  * Created by rohan on 2015-11-10.
  */
 public class TournamentData {
+
+    static String [] logos={"logo1","logo2","logo3","logo4"};
+
     private static TournamentData ourInstance = new TournamentData();
 
     public static TournamentData getInstance() {

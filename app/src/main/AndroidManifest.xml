@@ -36,6 +36,10 @@
         </activity>
         <activity android:name=".EnterScore" >
         </activity>
+
+        <activity android:name=".SelectLogo" >
+        </activity>
+
         <activity android:name=".Schedule" >
         </activity>
     </application>
