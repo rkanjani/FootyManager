@@ -46,10 +46,13 @@ public class standingsAdapter extends BaseAdapter {
         name.setText(standings[position].getTeamName());
         winLossRatio.setText("Wins: " + standings[position].getWins() + " Losses: " + standings[position].getLosses());
         standing.setText("#"+Integer.toString(position+1));
-        String logo = standings[position].getTeamLogo();
-        int drawableResourceId = context.getResources().getIdentifier(logo, "drawable", context.getPackageName());
-        ImageView imageView1 = (ImageView) vi.findViewById(R.id.teamLogo);
-        imageView1.setImageResource(drawableResourceId);
+
+        if(standings[position].getTeamLogo() != null) {
+            String logo = standings[position].getTeamLogo();
+            int drawableResourceId = context.getResources().getIdentifier(logo, "drawable", context.getPackageName());
+            ImageView imageView1 = (ImageView) vi.findViewById(R.id.teamLogo);
+            imageView1.setImageResource(drawableResourceId);
+        }
 
         return vi;
     }
