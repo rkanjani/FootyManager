@@ -30,10 +30,12 @@ public class TeamInfo extends AppCompatActivity {
 
         teamName.setText(team.getTeamName());
 
-       String logo = team.getTeamLogo();
-        int drawableResourceId = this.getResources().getIdentifier(logo, "drawable", this.getPackageName());
-        ImageView imageView = (ImageView) findViewById(R.id.team_logo);
-        imageView.setImageResource(drawableResourceId);
+        if(team.getTeamLogo() != null) {
+            String logo = team.getTeamLogo();
+            int drawableResourceId = this.getResources().getIdentifier(logo, "drawable", this.getPackageName());
+            ImageView imageView = (ImageView) findViewById(R.id.team_logo);
+            imageView.setImageResource(drawableResourceId);
+        }
 
 
         teamName.setKeyListener(null);
