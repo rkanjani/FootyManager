@@ -40,8 +40,6 @@ public class standingsAdapter extends BaseAdapter {
         TextView winLossRatio = (TextView) vi.findViewById(R.id.winLoss);
         TextView standing = (TextView) vi.findViewById(R.id.standingsNum);
 
-        ImageView logo = (ImageView) vi.findViewById(R.id.teamLogo);
-
         name.setText(standings[position].getTeamName());
         winLossRatio.setText("Wins: " + standings[position].getWins() + " Losses: " + standings[position].getLosses());
         standing.setText("#"+Integer.toString(position+1));

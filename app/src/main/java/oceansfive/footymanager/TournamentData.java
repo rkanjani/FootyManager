@@ -20,22 +20,22 @@ public class TournamentData {
     }
     ////THESE LISTS NEED TO BE REPLACED BY INSTANCES OF A TOURNAMENT
 
-    Team t1 = new Team("Real Madrid", "@drawable/logo0");
-    Team t2 = new Team("Man U", "@drawable/logo1");
-    Team t3 = new Team("Barcelona", "@drawable/logo2");
+    Team t1 = new Team("Real Madrid", "logo0");
+    Team t2 = new Team("Man U", "logo1");
+    Team t3 = new Team("Barcelona", "logo2");
     Team t4 = new Team("TFC", "@drawable/logo3");
-    Team t5 = new Team("Liverpool", "@drawable/logo1");
-    Team t6 = new Team("Chelsea", "@drawable/logo0");
-    Team t7 = new Team("Manchester City", "@drawable/logo1");
-    Team t8 = new Team("BVB", "@drawable/logo2");
-    Team t9 = new Team("Spain", "@drawable/logo3");
-    Team t10 = new Team("Germany", "@drawable/logo1");
-    Team t11 = new Team("Argentina", "@drawable/logo0");
-    Team t12 = new Team("Arsenal", "@drawable/logo1");
-    Team t13 = new Team("Birmingham City", "@drawable/logo2");
-    Team t14 = new Team("Montreal Wings", "@drawable/logo3");
-    Team t15 = new Team("Ajax Crawlers", "@drawable/logo1");
-    Team t16 = new Team("Vaughn Birds", "@drawable/logo0");
+    Team t5 = new Team("Liverpool", "logo1");
+    Team t6 = new Team("Chelsea", "logo0");
+    Team t7 = new Team("Manchester City", "logo1");
+    Team t8 = new Team("BVB", "logo2");
+    Team t9 = new Team("Spain", "logo3");
+    Team t10 = new Team("Germany", "logo1");
+    Team t11 = new Team("Argentina", "logo0");
+    Team t12 = new Team("Arsenal", "logo1");
+    Team t13 = new Team("Birmingham City", "logo2");
+    Team t14 = new Team("Montreal Wings", "logo3");
+    Team t15 = new Team("Ajax Crawlers", "logo1");
+    Team t16 = new Team("Vaughn Birds", "logo0");
 
 
     Team [] teams4 = new Team [] {t1, t2, t3, t4};
