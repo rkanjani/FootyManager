@@ -8,17 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 /**
  * Created by Samsore on 2015-11-29.
  */
 public class standingsAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
-
-    Context context;
     TournamentData data = TournamentData.getInstance();
     Tournament tournament;
     Team[] standings;
+    private Context context;
 
     public standingsAdapter(Context context, Tournament tournament) {
         // TODO Auto-generated constructor stub
@@ -40,12 +40,15 @@ public class standingsAdapter extends BaseAdapter {
         TextView winLossRatio = (TextView) vi.findViewById(R.id.winLoss);
         TextView standing = (TextView) vi.findViewById(R.id.standingsNum);
 
-        ImageView logo = (ImageView) vi.findViewById(R.id.teamLogo);
+
 
         name.setText(standings[position].getTeamName());
         winLossRatio.setText("Wins: " + standings[position].getWins() + " Losses: " + standings[position].getLosses());
         standing.setText("#"+Integer.toString(position+1));
-        //logo.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
+        String logo = standings[position].getTeamLogo();
+        int drawableResourceId = context.getResources().getIdentifier(logo, "drawable", context.getPackageName());
+        ImageView imageView1 = (ImageView) vi.findViewById(R.id.teamLogo);
+        imageView1.setImageResource(drawableResourceId);
 
         return vi;
     }
