@@ -14,62 +14,63 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20px">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:id="@+id/teamLogo"
-                android:src="@drawable/default_logo"
+                android:id="@+id/team_logo"
                 android:background="#505050" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/teamName" />
-
+                android:text="Default"
+                android:id="@+id/team_name"
+                android:textColor="#000000"
+                android:textSize="100px"
+                android:layout_gravity="center"
+                android:paddingLeft="25dp" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:paddingBottom="50px">
+            android:paddingTop="50dp"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wins:"
-                android:id="@+id/teamWin"
+                android:text="Total Goals: "
+                android:id="@+id/total_goals"
+                android:textColor="#000000"
+                android:textSize="70px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/num_total_goals"
                 android:textSize="70px"
-                android:textColor="#000000" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/numOfWin"
                 android:textColor="#000000"
-                android:textSize="70px" />
-
+                android:paddingLeft="25dp" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:paddingBottom="50px">
+            android:paddingTop="50dp"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Losses: "
-                android:id="@+id/teamLoss"
-                android:layout_gravity="center_horizontal"
+                android:text="Wins: "
+                android:id="@+id/wins"
                 android:textColor="#000000"
                 android:textSize="70px" />
 
@@ -77,40 +78,64 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/numOfLoss"
+                android:id="@+id/num_wins"
                 android:textColor="#000000"
-                android:textSize="70px" />
-
+                android:textSize="70px"
+                android:paddingLeft="25dp" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:gravity="center"
+            android:paddingTop="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loss: "
+                android:id="@+id/losses"
+                android:textColor="#000000"
+                android:textSize="70px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/num_losses"
+                android:textSize="70px"
+                android:textColor="#000000"
+                android:paddingLeft="25dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="50dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cards: "
                 android:id="@+id/cards"
-                android:textSize="70px"
                 android:textColor="#000000"
-                android:layout_gravity="center" />
+                android:textSize="70px" />
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="50px"
-                android:paddingRight="50px"
+                android:paddingLeft="25dp"
                 android:layout_gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Red"
-                    android:id="@+id/redCards"
+                    android:id="@+id/red"
                     android:textColor="#000000"
                     android:textSize="70px" />
 
@@ -118,26 +143,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:id="@+id/numOfRed"
-                    android:textSize="70px"
+                    android:id="@+id/num_red"
                     android:textColor="#000000"
-                    android:layout_gravity="center_horizontal" />
-
+                    android:textSize="70px"
+                    android:layout_gravity="center" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="50px"
-                android:paddingLeft="50px"
-                android:layout_gravity="center|right"
-                android:layout_marginRight="20px">
+                android:paddingLeft="25dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yellow"
+                    android:text="Yellow "
                     android:id="@+id/yellow"
                     android:textColor="#000000"
                     android:textSize="70px" />
@@ -146,13 +167,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:id="@+id/numOfYellow"
-                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/num_yellow"
+                    android:textSize="70px"
                     android:textColor="#000000"
-                    android:textSize="70px" />
-
+                    android:layout_gravity="center" />
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

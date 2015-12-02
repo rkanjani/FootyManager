@@ -20,6 +20,7 @@ public class EditTournament extends AppCompatActivity {
     TournamentData data = TournamentData.getInstance();
     private static final int SELECT_TOURNAMENT_LOGO = 1;
     private static boolean teamNamesFilled = false;
+    private static Tournament tournament = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class EditTournament extends AppCompatActivity {
         setContentView(R.layout.activity_edit_tournament);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final Tournament tournament = data.tournaments.get(getIntent().getExtras().getInt("tournament"));
+        tournament = data.tournaments.get(getIntent().getExtras().getInt("tournament"));
 
         teamListAdapter adapter = new teamListAdapter(this, tournament);
 
@@ -93,15 +94,29 @@ public class EditTournament extends AppCompatActivity {
     public void startTournament(View view){
         EditText tournamentName = (EditText) findViewById(R.id.tournamentNameDisplay);
 
-        if(!teamNamesFilled || tournamentName.getText()==null)
-            return;
+        /*if(!teamNamesFilled || tournamentName.getText()==null)
+            return;*/
+        //System.out.println(tournament.teams.length);
+        data.tournaments.get(data.tournaments.indexOf(tournament)).startTournament();
+        if(tournament.getTournamentType().equals("Round Robin")){
+            data.tournaments.get(data.tournaments.indexOf(tournament)).createRoundRobin(tournament.getTeams());
+        }
+        else if(tournament.getTournamentType().equals("Knock-Out")){
+            data.tournaments.get(data.tournaments.indexOf(tournament)).createKnockout(tournament.getTeams());
+        }
+        else if(tournament.getTournamentType().equals("Combinational")){
+            data.tournaments.get(data.tournaments.indexOf(tournament)).createRoundRobin(tournament.getTeams());
+        }
+        Intent intent = new Intent(getApplicationContext(), Schedule.class); //Application Context and Activity
+        intent.putExtra("tournament", data.tournaments.indexOf(tournament));
+        startActivityForResult(intent, 0);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == SELECT_TOURNAMENT_LOGO) {
             Uri selectedImageUri = data.getData();
             ((ImageView) findViewById(R.id.tournamentLogo)).setImageURI(selectedImageUri);
-
         }
     }
+
 }

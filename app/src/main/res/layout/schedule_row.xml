@@ -5,102 +5,133 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:id="@+id/relativeLayout">
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:touchscreenBlocksFocus="false">
 
         <FrameLayout
-            android:layout_width="60dp"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:id="@+id/frameLayout4"
-            android:background="#030303"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp" >
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/team1"
-                android:layout_gravity="center"
-                android:background="#9d9d9d"
-                android:layout_margin="2dp" />
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:id="@+id/frameLayout5"
-            android:background="#030303"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/frameLayout4">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/team2"
-                android:background="#9d9d9d"
-                android:layout_margin="2dp"
-                android:layout_weight="0.35"
-                android:layout_gravity="center" />
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:id="@+id/frameLayout6"
-            android:background="#030303"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/teamWin"
+                android:id="@+id/teamLogoOne"
                 android:layout_gravity="center"
-                android:background="#9d9d9d"
-                android:layout_margin="2dp" />
+                android:src="#b2b2b2" />
         </FrameLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:weightSum="1"
-            android:id="@+id/hlayout"
-            android:layout_toLeftOf="@+id/frameLayout6"
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/winnerTwo"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/frameLayout5"
+            android:layout_toStartOf="@+id/frameLayout5"
+            android:paddingRight="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/teamNameOne"
+            android:layout_alignParentTop="true"
+            android:text="team one"
+            android:layout_toLeftOf="@+id/dash"
             android:layout_toRightOf="@+id/frameLayout4"
-            android:layout_toEndOf="@+id/frameLayout4">
+            android:layout_toEndOf="@+id/frameLayout4"
+            android:gravity="left"
+            android:paddingLeft="5dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="VS"
-                android:id="@+id/versus"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/frameLayout4"
-                android:layout_toEndOf="@+id/frameLayout4"
-                android:layout_marginLeft="37dp"
-                android:layout_marginStart="37dp"
-                android:layout_weight="0.07" />
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/winnerOne"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_alignTop="@+id/winnerTwo"
+            android:layout_toRightOf="@+id/frameLayout4"
+            android:layout_toEndOf="@+id/frameLayout4"
+            android:paddingLeft="5dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Winner"
-                android:id="@+id/winner"
-                android:layout_alignTop="@+id/versus"
-                android:layout_toRightOf="@+id/frameLayout5"
-                android:gravity="fill_horizontal|center_vertical|center_horizontal" />
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/scoreOne"
+            android:layout_marginRight="13dp"
+            android:layout_marginEnd="13dp"
+            android:layout_alignTop="@+id/scoreTwo"
+            android:layout_toLeftOf="@+id/dash"
+            android:layout_toStartOf="@+id/dash" />
 
-        </LinearLayout>
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/scoreTwo"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_alignBottom="@+id/dash"
+            android:layout_toRightOf="@+id/gameNum"
+            android:layout_toEndOf="@+id/gameNum" />
 
+        <FrameLayout
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/frameLayout4"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/frameLayout5">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/teamLogoTwo"
+                android:layout_gravity="left|center_vertical"
+                android:src="#b2b2b2" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="-"
+            android:id="@+id/dash"
+            android:textSize="20dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/teamNameTwo"
+            android:text="team two"
+            android:gravity="right"
+            android:paddingRight="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/frameLayout5"
+            android:layout_toStartOf="@+id/frameLayout5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="#4"
+            android:id="@+id/gameNum"
+            android:gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 </RelativeLayout>

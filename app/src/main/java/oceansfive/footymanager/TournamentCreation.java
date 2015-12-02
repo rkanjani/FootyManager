@@ -119,7 +119,7 @@ if (resultCode == RESULT_OK) {
 
         //Tournament information must be filled out before continuing -- (f5c5c71) is the default image id
         if(numOfTeams.getValue()>1 && !name.getText().equals(null) && !type.getText().equals("Tournament Type")){
-            Tournament tournament = new Tournament(name.getText().toString(), type.getText().toString(), numOfTeams.getValue(), logo.getDrawable().toString());
+            Tournament tournament = new Tournament(name.getText().toString(), type.getText().toString(), numOfTeams.getValue(), logo.getDrawable().toString(), new Team[numOfTeams.getValue()]);
             data.tournaments.add(tournament);
             Toast.makeText(getApplicationContext(), goodToast, Toast.LENGTH_LONG).show();
             Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
