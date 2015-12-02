@@ -32,6 +32,8 @@
         </activity>
         <activity android:name=".EnterScore" >
         </activity>
+        <activity android:name=".SelectLogo" >
+        </activity>
     </application>
 
 </manifest>

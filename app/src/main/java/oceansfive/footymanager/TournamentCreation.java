@@ -1,6 +1,7 @@
 package oceansfive.footymanager;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
@@ -62,10 +63,21 @@ public class TournamentCreation extends AppCompatActivity {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == SELECT_LOGO) {
-            Uri selectedImageUri = data.getData();
-            System.out.println("URI "+ selectedImageUri);
-            ((ImageView) findViewById(R.id.tournamentLogo)).setImageURI(selectedImageUri);
+if (resultCode == RESULT_OK) {
+
+            if(requestCode == SELECT_LOGO){
+
+
+                String temp = data.getStringExtra("image");
+                int image = this.getResources().getIdentifier(temp, "drawable", this.getPackageName());
+                Context context = getApplicationContext();
+                CharSequence text = "result "+image;
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                ((ImageView) findViewById(R.id.tournamentLogo)).setImageResource(image);
+
+            }
         }
     }
 
@@ -87,10 +99,13 @@ public class TournamentCreation extends AppCompatActivity {
     }
 
     public void tournamentLogoSelect(View view){
-        Intent intent = new Intent();
+        /*Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_LOGO);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_LOGO);*/
+
+        Intent intent = new Intent(getApplicationContext(), SelectLogo.class); //Application Context and Activity
+        startActivityForResult(intent,SELECT_LOGO);
     }
     public void addTournament(View view){
         NumberPicker numOfTeams = (NumberPicker) findViewById(R.id.TextView);
@@ -112,10 +127,7 @@ public class TournamentCreation extends AppCompatActivity {
         }
 
         Toast.makeText(getApplicationContext(), badToast, Toast.LENGTH_LONG).show();
-
-
-
-
     }
+
 
 }
