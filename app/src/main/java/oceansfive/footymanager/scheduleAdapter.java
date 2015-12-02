@@ -66,9 +66,6 @@ public class scheduleAdapter extends BaseAdapter{
 
         TextView gameNumber = (TextView) vi.findViewById(R.id.gameNum);
 
-        ImageView logoOne = (ImageView) vi.findViewById(R.id.teamLogoOne);
-        ImageView logoTwo = (ImageView) vi.findViewById(R.id.teamLogoTwo);
-
         teamOne.setText(games.get(position).getTeam1().getTeamName());
         teamTwo.setText(games.get(position).getTeam2().getTeamName());
 
@@ -89,8 +86,17 @@ public class scheduleAdapter extends BaseAdapter{
 
         gameNumber.setText("#"+Integer.toString(position+1));
 
-        //*******Still need to set the images to something*******//
-        //logo.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
+        String logo1 = games.get(position).getTeam1().getTeamLogo();
+        int drawableResourceId = context.getResources().getIdentifier(logo1, "drawable", context.getPackageName());
+        ImageView imageView1 = (ImageView) vi.findViewById(R.id.teamLogoOne);
+        imageView1.setImageResource(drawableResourceId);
+
+        String logo2 = games.get(position).getTeam2().getTeamLogo();
+        int drawableResourceId2 = context.getResources().getIdentifier(logo2, "drawable", context.getPackageName());
+        ImageView imageView2 = (ImageView) vi.findViewById(R.id.teamLogoTwo);
+        imageView2.setImageResource(drawableResourceId2);
+
+
 
         return vi;
     }

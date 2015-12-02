@@ -66,7 +66,6 @@
                     android:ems="2"
                     android:id="@+id/home_score"
                     android:enabled="true"
-                    android:text="0"
                     android:textColor="#000000"
                     android:textSize="45dp"
                     android:paddingLeft="20px"
@@ -75,7 +74,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_toLeftOf="@+id/dash"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:hint="0" />
 
                 <TextView
                     android:layout_width="37dp"
@@ -100,14 +100,14 @@
                     android:id="@+id/away_score"
                     android:layout_gravity="center"
                     android:enabled="true"
-                    android:text="0"
                     android:textColor="#000000"
                     android:textSize="45dp"
                     android:gravity="bottom|center_horizontal"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/dash"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    android:layout_alignParentEnd="true"
+                    android:hint="0" />
 
             </RelativeLayout>
 
@@ -178,9 +178,9 @@
                 android:id="@+id/home_yellow"
                 android:textSize="45dp"
                 android:textColor="#000000"
-                android:text="0"
                 android:layout_gravity="center"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:hint="0" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -198,9 +198,9 @@
                 android:inputType="number"
                 android:ems="2"
                 android:id="@+id/away_yellow"
-                android:text="0"
                 android:textColor="#000000"
-                android:textSize="45dp" />
+                android:textSize="45dp"
+                android:hint="0" />
 
         </LinearLayout>
 
@@ -234,9 +234,9 @@
                 android:id="@+id/home_red"
                 android:textSize="45dp"
                 android:textColor="#000000"
-                android:text="0"
                 android:layout_gravity="center"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:hint="0" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -254,9 +254,9 @@
                 android:inputType="number"
                 android:ems="2"
                 android:id="@+id/away_red"
-                android:text="0"
                 android:textColor="#000000"
-                android:textSize="45dp" />
+                android:textSize="45dp"
+                android:hint="0" />
         </LinearLayout>
 
         <FrameLayout
