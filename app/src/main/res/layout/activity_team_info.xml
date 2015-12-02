@@ -12,32 +12,72 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:paddingBottom="20px">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/teamLogo"
-                android:src="@drawable/default_logo"
+                android:src="#9d9d9d"
                 android:background="#505050" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/teamName" />
+                android:layout_height="match_parent"
+                android:id="@+id/teamName"
+                android:textSize="30dp"
+                android:gravity="center|center_horizontal"
+                android:text="Real Madrid"
+                android:paddingLeft="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/teamLogo"
+                android:layout_toEndOf="@+id/teamLogo"
+                android:layout_alignParentBottom="true" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:paddingBottom="50px">
+            android:paddingBottom="50px"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Goals:"
+                android:id="@+id/textView8"
+                android:textSize="70px"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/totalGoals"
+                android:textColor="#000000"
+                android:textSize="70px"
+                android:gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="50px"
+            android:paddingTop="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -48,21 +88,26 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:id="@+id/numOfWin"
                 android:textColor="#000000"
-                android:textSize="70px" />
+                android:textSize="70px"
+                android:gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:paddingBottom="50px">
+            android:paddingBottom="50px"
+            android:paddingTop="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -74,20 +119,24 @@
                 android:textSize="70px" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="59dp"
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:id="@+id/numOfLoss"
                 android:textColor="#000000"
-                android:textSize="70px" />
+                android:textSize="70px"
+                android:gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:paddingTop="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -98,61 +147,32 @@
                 android:textColor="#000000"
                 android:layout_gravity="center" />
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:paddingLeft="50px"
-                android:paddingRight="50px"
-                android:layout_gravity="center">
+                android:text="0"
+                android:id="@+id/numOfRed"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#fc0000"
+                android:textSize="70px"
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@+id/numOfYellow"
+                android:layout_toLeftOf="@+id/numOfYellow"
+                android:gravity="center_horizontal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Red"
-                    android:id="@+id/redCards"
-                    android:textColor="#000000"
-                    android:textSize="70px" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:id="@+id/numOfRed"
-                    android:textSize="70px"
-                    android:textColor="#000000"
-                    android:layout_gravity="center_horizontal" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:paddingRight="50px"
-                android:paddingLeft="50px"
-                android:layout_gravity="center|right"
-                android:layout_marginRight="20px">
+                android:text="0"
+                android:id="@+id/numOfYellow"
+                android:textSize="70px"
+                android:textColor="#9cfaee01"
+                android:layout_gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_horizontal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Yellow"
-                    android:id="@+id/yellow"
-                    android:textColor="#000000"
-                    android:textSize="70px" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:id="@+id/numOfYellow"
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="#000000"
-                    android:textSize="70px" />
-
-            </LinearLayout>
-
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

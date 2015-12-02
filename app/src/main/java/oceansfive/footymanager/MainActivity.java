@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Active Tournaments");
         listAdapter = new tournamentListAdapter(this, data.tournaments);
-        View tournamentListView = (View)findViewById(R.id.addTournament);
+        View addTournamentButton = (View)findViewById(R.id.addTournament);
 
 
-        tournamentListView.bringToFront();
+        addTournamentButton.bringToFront();
 
 
         ListView tournamentList = (ListView) findViewById(R.id.tournamentList);
@@ -39,9 +39,17 @@ public class MainActivity extends AppCompatActivity {
         tournamentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 final String item = (String) parent.getItemAtPosition(position).toString();
-                Intent intent = new Intent(getApplicationContext(), EditTournament.class); //Application Context and Activity
-                intent.putExtra("tournament", position);
-                startActivityForResult(intent, position);
+
+                if(!data.tournaments.get(position).getTournamentStatus()){
+                    Intent intent = new Intent(getApplicationContext(), EditTournament.class); //Application Context and Activity
+                    intent.putExtra("tournament", position);
+                    startActivityForResult(intent, position);
+                }
+                else{
+                    Intent intent = new Intent(getApplicationContext(), Schedule.class); //Application Context and Activity
+                    intent.putExtra("tournament", position);
+                    startActivityForResult(intent, position);
+                }
             }
         });
 
@@ -50,12 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void arrayToList(String [] arr, ArrayList<String> list){
+    /*public void arrayToList(String [] arr, ArrayList<String> list){
         for(int x = 0; x<arr.length; x++){
             list.add(arr[x]);
         }
 
-    }
+    }*/
+
     public void addTournament(View view) {
         Intent intent = new Intent(getApplicationContext(), TournamentCreation.class); //Application Context and Activity
         startActivityForResult (intent,0);

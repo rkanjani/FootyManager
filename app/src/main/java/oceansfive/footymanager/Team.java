@@ -10,31 +10,35 @@ import java.util.*;
  */
 public class Team {
     private String teamName;
-    private Drawable teamLogo;
+    private String teamLogo;
     private List<Player> players = new ArrayList<Player>();
     private int wins;
+    private int losses;
     private int gamesPlayed;
     private int redCards;
     private int yellowCards;
+    private int totalGoals;
 
 
     //keeps track of the size of the team.
     private int teamSize = 0;
 
-    public Team(String teamName, Drawable teamLogo)
+    public Team(String teamName, String teamLogo)
     {
         this.teamName = teamName;
         this.teamLogo = teamLogo;
         this.wins = 0;
+        this.losses = 0;
         this.gamesPlayed = 0;
         this.redCards = 0;
         this.yellowCards = 0;
+        this.totalGoals = 0;
     }
 
     public String getTeamName(){
         return teamName;
     }
-    public Drawable getTeamLogo() { return teamLogo; }
+    public String getTeamLogo() { return teamLogo; }
 
     //adds player to the team
     public void addPlayer(String name, char position, int jerseyNumber){
@@ -54,7 +58,7 @@ public class Team {
     public void setTeamName(String teamName){
         this.teamName = teamName;
     }
-    public void setTeamLogo(Drawable teamLogo){
+    public void setTeamLogo(String teamLogo){
         this.teamLogo = teamLogo;
     }
 
@@ -67,9 +71,19 @@ public class Team {
         return wins;
     }
 
+    public void addWin(){
+        wins++;
+    }
+    public void addLoss(){
+        losses++;
+    }
+
     public int getLosses()
     {
-        return gamesPlayed - wins;
+        return losses;
+    }
+    public void addGoals(int goals){
+        totalGoals = totalGoals+goals;
     }
 
     public int getRedCards(){
@@ -80,13 +94,20 @@ public class Team {
         return yellowCards;
     }
 
-    public String winsToString()
-    {
-        return ("Wins: " + this.wins + "  Losses: " + getLosses());
+    public int getTotalGoals(){
+        return totalGoals;
     }
 
+    public void setYellowCards(int yellowCards){
+        this.yellowCards = yellowCards;
+    }
+    public void setRedCards(int redCards){
+        this.redCards = redCards;
+    }
 
-
-
+    public String winsToString()
+    {
+        return ("Wins: " + this.wins + "    Losses: " + getLosses());
+    }
 
 }
