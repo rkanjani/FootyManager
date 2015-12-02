@@ -1,6 +1,8 @@
 package oceansfive.footymanager;
 
 
+import android.graphics.drawable.Drawable;
+
 import java.util.*;
 
 import java.util.ArrayList;
@@ -15,33 +17,41 @@ public class Tournament {
     private String tournamentType;
     private String tournamentLogo;
     private int tournamentSize;
-    Team[] teams;
+    boolean tournamentStarted;
+    Team[] teams;         //This stores all the Teams that are in a given tournament
+    Team[] competingTeams;//(ONLY FOR KNOCKOUT) Used to store who is still alive in the tournament
     List<Game> games = new ArrayList<Game>();
 
-    public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo){
+
+    public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo, Team[] teams){
         this.tournamentName = tournamentName;
         this.tournamentType = tournamentType;
         this.tournamentSize = tournamentSize;
         this.tournamentLogo = tournamentLogo;
+        this.teams = teams;
+        this.tournamentStarted = false;
         teams = new Team[tournamentSize];
+        competingTeams = teams.clone();
+
     }
 
+    //Has to be fixed to take into account losses
     public Team[] getRanking()
     {
-        for (int i = teams.length - 1; i >= 0; i--)
+        for (int i = 0; i < teams.length; i++)
         {
-            for (int j = 1; j<= i; j++ )
+            for (int j = i+1; j<teams.length; j++ )
             {
-                if ( teams[j-1].getWins() > teams[j].getWins())
+                if ( teams[j].getWins() > teams[i].getWins())
                 {
-                    Team temp = teams[j-1];
-                    teams[j-1] = teams[j];
+                    Team temp = teams[i];
+                    teams[i] = teams[j];
                     teams[j] = temp;
                 }
             }
 
         }
-
+        competingTeams = teams.clone();
         return this.teams;
     }
 
@@ -70,29 +80,97 @@ public class Tournament {
     //Creates the games in a round robin
     public Game[] createRoundRobin(Team[] teams)
     {
-        Game games[] = new Game[teams.length*(teams.length-1)/2];
+        Game [] gameSchedule = new Game[teams.length*(teams.length-1)/2];
         int gameNum = 0;
         for(int i = 0; i < teams.length-1; i++)
         {
             for(int j=i+1; j < teams.length; j++)
             {
-                games[gameNum] = new Game(teams[i], teams[j]);
+                gameSchedule[gameNum] = new Game(teams[i], teams[j]);
+                gameNum++;
             }
         }
-        Collections.shuffle((Arrays.asList(games)));
-        return games;
+        for(int x=0;x<gameSchedule.length;x++)
+            System.out.println(gameSchedule[x]);
+
+        Collections.shuffle((Arrays.asList(gameSchedule)));
+
+        games = Arrays.asList(gameSchedule);
+        return gameSchedule;
     }
-    //Creates the games in a round robin
+
+    //Creates the games in a round of knockout
     public Game[] createKnockout(Team[] teams)
     {
-        Game games[] = new Game[teams.length / 2];
+        Game games[] = null;
 
-        for (int i = 0; i < teams.length -1; i++)
+        // Perfect Tournament of 2^n teams
+        if  (((Math.log(teams.length) / Math.log(2)) % 1) == 0) {
+            games = new Game[teams.length / 2];
+
+            for (int i = 0; i < teams.length - 1; i++) {
+                games[i] = new Game(teams[i], teams[teams.length - 1 - i]);
+            }
+
+
+        }
+        else // Tournament is not Perfect
         {
-            games[i] = new Game(teams[i], teams[teams.length-1-i]);
+            int n = 0;
+            double extraGames = 0;
+            while(teams.length - Math.pow(2, n) > 0) {
+                extraGames = teams.length - Math.pow(2, n);
+                n++;
+            }
+            n--;//Restores n to the proper power
+            games = new Game[(int)extraGames]; // Only plays extra games first round
+            int num = 0;
+            for (int i = teams.length; i > Math.pow(2,n) - extraGames;  i=i-2)
+            {
+                games[i] = new Game(teams[i-1], teams[i-2]);
+            }
+        }
+        return games;
+    }
+
+    //This method is called when a Round in a knockout tournament is completed.
+    public Team[] updateRound(Game[] games)
+    {
+        if  (((Math.log(competingTeams.length) / Math.log(2)) % 1) != 0) { //Tournament is not perfect
+            int n = 0;
+            double extraGames = 0;
+            while (teams.length - Math.pow(2, n) > 0) {
+                extraGames = teams.length - Math.pow(2, n);
+                n++;
+            }
+            n--; //Restores n to the proper power
+            Team newTeam[] = new Team[(int) Math.pow(2, n)];
+
+            for (int i = 0; i < teams.length - (extraGames * 2); i++) //Fills the first portion of the array
+            {
+                newTeam[i] = teams[i];
+            }
+            for(int i = teams.length - (int)(extraGames * 2); i < newTeam.length; i++ ) //Fills the second portion with the winners of the last games.
+            {
+                newTeam[i] = games[i - (teams.length - (int)(extraGames *2))].getWinner();
+            }
+            competingTeams = newTeam.clone();
+
+        }
+        else if(((Math.log(competingTeams.length) / Math.log(2)) % 1) == 0) //Tournament is perfect
+        {
+            Team newTeam[] = new Team[competingTeams.length/2];
+
+            for (int i = 0; i< newTeam.length; i++)
+            {
+                newTeam[i] = games[i].getWinner();
+            }
+            competingTeams = newTeam.clone(); //Updates competingteams with winners of the round
+
         }
 
-        return games;
+        return competingTeams;
+
     }
 
     /*public void createGames(List teams){
@@ -131,10 +209,19 @@ public class Tournament {
         }
     }
     */
+    public void updateGame(int index, Game game){
+        Collections.replaceAll(games, games.get(index), game);
+    }
 
     //creates bracket for combinational tournament
     public void createPlayoffs(List Teams){
 
+    }
+    public void startTournament(){
+        tournamentStarted = true;
+    }
+    public boolean getTournamentStatus(){
+        return tournamentStarted;
     }
     public void addTeam(Team t, int position){
         teams[position] = t;
@@ -148,5 +235,11 @@ public class Tournament {
 
     public String toString(){
         return tournamentName;
+    }
+
+    public void getGameSchedule(){
+        for(int x=0; x<games.size(); x++){
+            System.out.println("Game "+(x+1)+": "+games.get(x).getTeam1() + " plays" + games.get(x).getTeam2());
+        }
     }
 }

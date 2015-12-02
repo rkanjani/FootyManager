@@ -25,7 +25,9 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:id="@+id/standingsNum"
                 android:layout_gravity="center_horizontal|top"
-                android:gravity="center" />
+                android:gravity="center"
+                android:text="#1"
+                android:textStyle="bold" />
         </FrameLayout>
 
         <FrameLayout
@@ -58,7 +60,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
 
-                android:gravity="left|center" />
+                android:gravity="left|center"
+                android:text="Team Name"
+                android:paddingLeft="5dp" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -69,7 +73,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:text="Wins: 0 Losses: 0"
+                android:paddingLeft="5dp" />
         </RelativeLayout>
 
     </RelativeLayout>
