@@ -26,7 +26,7 @@ public class TournamentData {
     Team t1 = new Team("Real Madrid", "logo0");
     Team t2 = new Team("Man U", "logo1");
     Team t3 = new Team("Barcelona", "logo2");
-    Team t4 = new Team("TFC", "@drawable/logo3");
+    Team t4 = new Team("TFC", "logo3");
     Team t5 = new Team("Liverpool", "logo1");
     Team t6 = new Team("Chelsea", "logo0");
     Team t7 = new Team("Manchester City", "logo1");
