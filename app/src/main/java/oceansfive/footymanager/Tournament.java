@@ -18,6 +18,8 @@ public class Tournament {
     private String tournamentLogo;
     private int tournamentSize;
     boolean tournamentStarted;
+    boolean finished;
+    Team winner;
     Team[] teams;         //This stores all the Teams that are in a given tournament
     Team[] competingTeams;//(ONLY FOR KNOCKOUT) Used to store who is still alive in the tournament
     List<Game> games = new ArrayList<Game>();
@@ -133,7 +135,9 @@ public class Tournament {
         return games;
     }
 
-    //This method is called when a Round in a knockout tournament is completed.
+    //This method is called when a Round in a knockout tournament is completed to fill
+    //in the competingTeams with the winner of the round.
+    //After calling this, you must call createKnockout to make the next round
     public Team[] updateRound(Game[] games)
     {
         if  (((Math.log(competingTeams.length) / Math.log(2)) % 1) != 0) { //Tournament is not perfect
@@ -167,6 +171,12 @@ public class Tournament {
             }
             competingTeams = newTeam.clone(); //Updates competingteams with winners of the round
 
+        }
+        else if(games.length == 1)
+        {
+            winner = games[0].getWinner();
+            competingTeams = new Team[]{winner};
+            finished = true;
         }
 
         return competingTeams;
@@ -213,9 +223,9 @@ public class Tournament {
         Collections.replaceAll(games, games.get(index), game);
     }
 
-    //creates bracket for combinational tournament
-    public void createPlayoffs(List Teams){
-
+    public Team getWinner()
+    {
+        return getWinner();
     }
     public void startTournament(){
         tournamentStarted = true;
