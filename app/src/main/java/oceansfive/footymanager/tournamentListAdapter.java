@@ -57,14 +57,16 @@ public class tournamentListAdapter extends BaseAdapter {
         TextView size = (TextView) vi.findViewById(R.id.tournamentSize);
         TextView type = (TextView) vi.findViewById(R.id.tournamentType);
 
-        ImageView logo = (ImageView) vi.findViewById(R.id.tournamentLogo);
-        String uri = tournaments.get(position).getTournamentLogo();
+        String logo = tournaments.get(position).getTournamentLogo();
+        int drawableResourceId = context.getResources().getIdentifier(logo, "drawable", context.getPackageName());
+        ImageView imageView1 = (ImageView) vi.findViewById(R.id.tournamentLogo);
+        imageView1.setImageResource(drawableResourceId);
 
 
         name.setText(tournaments.get(position).getTournamentName());
         size.setText("Number of teams: " + tournaments.get(position).getTournamentSize());
         type.setText(tournaments.get(position).getTournamentType());
-        logo.setImageResource(this.context.getResources().getIdentifier(uri, "drawable", this.context.getPackageName()));
+
 
         return vi;
     }

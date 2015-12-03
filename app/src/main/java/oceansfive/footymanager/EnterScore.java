@@ -41,6 +41,7 @@ public class EnterScore extends AppCompatActivity {
         EditText teamOneRed = (EditText)findViewById(R.id.home_red);
         EditText teamTwoRed = (EditText)findViewById(R.id.away_red);
 
+<<<<<<< HEAD
         /*String logo = game.getTeam1().getTeamLogo();
         int drawableResourceId = this.getResources().getIdentifier(logo, "drawable", this.getPackageName());
         ImageView imageView1 = (ImageView) findViewById(R.id.home_team);
@@ -50,6 +51,21 @@ public class EnterScore extends AppCompatActivity {
         int drawableResourceId2 = this.getResources().getIdentifier(logo2, "drawable", this.getPackageName());
         ImageView imageView2 = (ImageView) findViewById(R.id.away_team_logo);
         imageView2.setImageResource(drawableResourceId2);*/
+=======
+        if(game.getTeam1().getTeamLogo() != null) {
+            String logo = game.getTeam1().getTeamLogo();
+            int drawableResourceId = this.getResources().getIdentifier(logo, "drawable", this.getPackageName());
+            ImageView imageView1 = (ImageView) findViewById(R.id.home_team);
+            imageView1.setImageResource(drawableResourceId);
+        }
+
+        if(game.getTeam2().getTeamLogo()!= null) {
+            String logo2 = game.getTeam2().getTeamLogo();
+            int drawableResourceId2 = this.getResources().getIdentifier(logo2, "drawable", this.getPackageName());
+            ImageView imageView2 = (ImageView) findViewById(R.id.away_team_logo);
+            imageView2.setImageResource(drawableResourceId2);
+        }
+>>>>>>> master
 
 
 
