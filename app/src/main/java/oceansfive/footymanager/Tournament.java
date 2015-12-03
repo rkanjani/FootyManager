@@ -233,7 +233,7 @@ public class Tournament {
 
     public Team getWinner()
     {
-        return getWinner();
+        return winner;
     }
     public void startTournament(){
         tournamentStarted = true;

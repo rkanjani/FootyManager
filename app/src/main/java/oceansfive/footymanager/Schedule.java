@@ -95,14 +95,14 @@ public class Schedule extends AppCompatActivity {
             this.tournament.createKnockout(tournament.updateRound(gamesArray));
             if(this.tournament.finished == true)
             {
-                int [] values = new int[2];
+                String [] info = {tournament.getWinner().getTeamName(),
+                                    Integer.toString(tournament.getWinner().getWins()),
+                                    Integer.toString(tournament.getWinner().getLosses())};
                 Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
                         Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), winner.class);
-                intent.putExtra("name",this.tournament.getWinner().getTeamName());
-                intent.putExtra("wins", this.tournament.getWinner().getWins());
-                intent.putExtra("losses", this.tournament.getWinner().getLosses());
-                startActivity(intent);
+                intent.putExtra("info", info);
+                startActivityForResult(intent,0);
                 return;
             }
            // adapter.notifyDataSetChanged();
