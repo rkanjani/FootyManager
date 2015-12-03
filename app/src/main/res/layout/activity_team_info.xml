@@ -12,54 +12,60 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="100dp"
+            android:paddingBottom="20px">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:id="@+id/team_logo"
-                android:background="#b2b2b2" />
+                android:id="@+id/teamLogo"
+                android:src="#9d9d9d"
+                android:background="#505050" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Default"
-                android:id="@+id/team_name"
-                android:textColor="#000000"
-                android:textSize="100px"
-                android:layout_gravity="center"
-                android:paddingLeft="25dp" />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:id="@+id/teamName"
+                android:textSize="30dp"
+                android:gravity="center|center_horizontal"
+                android:text="Real Madrid"
+                android:paddingLeft="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/teamLogo"
+                android:layout_toEndOf="@+id/teamLogo"
+                android:layout_alignParentBottom="true" />
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="50dp"
-            android:gravity="center">
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="50px"
+            android:paddingTop="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Goals: "
-                android:id="@+id/total_goals"
-                android:textColor="#000000"
+                android:text="Total Goals:"
+                android:id="@+id/textView8"
                 android:textSize="70px"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:textColor="#000000" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/num_total_goals"
-                android:textSize="70px"
+                android:id="@+id/totalGoals"
                 android:textColor="#000000"
-                android:paddingLeft="25dp"
+                android:textSize="70px"
+                android:gravity="center_horizontal"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
@@ -69,145 +75,106 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="50dp"
-            android:gravity="center">
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="50px"
+            android:paddingTop="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wins: "
-                android:id="@+id/wins"
+                android:text="Wins:"
+                android:id="@+id/teamWin"
+                android:textSize="70px"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/numOfWin"
+                android:textColor="#000000"
+                android:textSize="70px"
+                android:gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="50px"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Losses: "
+                android:id="@+id/teamLoss"
+                android:layout_gravity="center_horizontal"
                 android:textColor="#000000"
                 android:textSize="70px" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="59dp"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/num_wins"
+                android:id="@+id/numOfLoss"
                 android:textColor="#000000"
                 android:textSize="70px"
-                android:paddingLeft="25dp"
+                android:gravity="center_horizontal"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
+
         </RelativeLayout>
 
         <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="50dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Loss: "
-                android:id="@+id/losses"
-                android:textColor="#000000"
-                android:textSize="70px" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/num_losses"
-                android:textSize="70px"
-                android:textColor="#000000"
-                android:paddingLeft="25dp"
-                android:layout_alignTop="@+id/losses"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:paddingTop="50dp">
+            android:paddingTop="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cards: "
                 android:id="@+id/cards"
-                android:textColor="#000000"
                 android:textSize="70px"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="25dp"
-                android:layout_gravity="center"
-                android:id="@+id/linearLayout4">
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="25dp">
-
-            </LinearLayout>
+                android:textColor="#000000"
+                android:layout_gravity="center" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yellow "
-                android:id="@+id/yellow"
-                android:textColor="#000000"
-                android:textSize="70px"
-                android:layout_below="@+id/linearLayout4"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Red"
-                android:id="@+id/red"
-                android:textColor="#000000"
-                android:textSize="70px"
-                android:layout_marginRight="22dp"
-                android:layout_marginEnd="22dp"
-                android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/yellow"
-                android:layout_toStartOf="@+id/yellow" />
-
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/num_yellow"
+                android:id="@+id/numOfRed"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#000000"
+                android:textSize="70px"
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@+id/numOfYellow"
+                android:layout_toLeftOf="@+id/numOfYellow"
+                android:gravity="center_horizontal"
+                android:background="#fbbaba" />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/numOfYellow"
                 android:textSize="70px"
                 android:textColor="#000000"
                 android:layout_gravity="center_horizontal"
-                android:layout_below="@+id/yellow"
-                android:layout_alignLeft="@+id/yellow"
-                android:layout_alignStart="@+id/yellow"
-                android:layout_marginLeft="24dp"
-                android:layout_marginStart="24dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/num_red"
-                android:textColor="#000000"
-                android:textSize="70px"
-                android:layout_gravity="right"
-                android:layout_below="@+id/red"
-                android:layout_alignRight="@+id/red"
-                android:layout_alignEnd="@+id/red" />
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_horizontal"
+                android:background="#fff89c" />
 
         </RelativeLayout>
-
     </LinearLayout>
 </RelativeLayout>
