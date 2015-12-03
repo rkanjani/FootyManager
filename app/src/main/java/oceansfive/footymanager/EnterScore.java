@@ -12,8 +12,6 @@ public class EnterScore extends AppCompatActivity {
     TournamentData data  = TournamentData.getInstance();
     private static int tournamentIndex;
     private static int gameIndex;
-    boolean scoreEntered = false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +40,6 @@ public class EnterScore extends AppCompatActivity {
 
         EditText teamOneRed = (EditText)findViewById(R.id.home_red);
         EditText teamTwoRed = (EditText)findViewById(R.id.away_red);
-
         if(game.getTeam1().getTeamLogo() != null) {
             String logo = game.getTeam1().getTeamLogo();
             int drawableResourceId = this.getResources().getIdentifier(logo, "drawable", this.getPackageName());
@@ -56,6 +53,7 @@ public class EnterScore extends AppCompatActivity {
             ImageView imageView2 = (ImageView) findViewById(R.id.away_team_logo);
             imageView2.setImageResource(drawableResourceId2);
         }
+
 
 
 
@@ -79,8 +77,8 @@ public class EnterScore extends AppCompatActivity {
 
         EditText home_score = (EditText)findViewById(R.id.home_score);
         EditText away_score = (EditText)findViewById(R.id.away_score);
-        int homeScore = Integer.parseInt(home_score.getText().toString());
-        int awayScore = Integer.parseInt(away_score.getText().toString());
+        int homeScore = returnNumber(home_score.getText().toString());
+        int awayScore = returnNumber(away_score.getText().toString());
         game.enterScore(homeScore, awayScore);
 
         game.getTeam1().addGoals(homeScore);
