@@ -27,6 +27,7 @@ public class EditTournament extends AppCompatActivity {
     private static Tournament tournament = null;
     private String text = "";
     ListView teamList;
+    final private static int SELECT_LOGO = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,10 +91,8 @@ public class EditTournament extends AppCompatActivity {
 
     //Changes the logo for the selected team
     public void logoSelect(View view){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_TOURNAMENT_LOGO);
+        Intent intent = new Intent(getApplicationContext(), SelectLogo.class); //Application Context and Activity
+        startActivityForResult(intent,SELECT_LOGO);
     }
     //Code for when the tournament is started
     public void startTournament(View view){
@@ -118,9 +117,14 @@ public class EditTournament extends AppCompatActivity {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == SELECT_TOURNAMENT_LOGO) {
-            Uri selectedImageUri = data.getData();
-            ((ImageView) findViewById(R.id.tournamentLogo)).setImageURI(selectedImageUri);
+        if (resultCode == RESULT_OK && requestCode == SELECT_LOGO) {
+
+            String currentImage =data.getStringExtra("image");
+            int image = this.getResources().getIdentifier(currentImage, "drawable", this.getPackageName());
+
+            ((ImageView) findViewById(R.id.tournamentLogo)).setImageResource(image);
+
+            this.data.tournaments.get(this.data.tournaments.indexOf(tournament)).setTournamentLogo(currentImage);
         }
     }
 
