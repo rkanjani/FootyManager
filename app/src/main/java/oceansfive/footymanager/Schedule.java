@@ -88,12 +88,9 @@ public class Schedule extends AppCompatActivity {
             this.tournament.getRanking();
             Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
             this.tournament.updateRound(gamesArray);
-            Toast.makeText(getApplicationContext(), "Completed Round Robin", Toast.LENGTH_SHORT).show();
             String [] info = {this.tournament.getWinner().getTeamName(),
                     Integer.toString(tournament.getWinner().getWins()),
                     Integer.toString(tournament.getWinner().getLosses())};
-            Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
-                    Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), winner.class);
             intent.putExtra("info", info);
             this.tournament.setFinished();
@@ -117,8 +114,6 @@ public class Schedule extends AppCompatActivity {
                 String [] info = {tournament.getWinner().getTeamName(),
                                     Integer.toString(tournament.getWinner().getWins()),
                                     Integer.toString(tournament.getWinner().getLosses())};
-                Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
-                        Toast.LENGTH_SHORT).show();
                 this.tournament.setFinished();
                 Intent intent = new Intent(getApplicationContext(), winner.class);
                 intent.putExtra("info", info);
@@ -143,7 +138,7 @@ public class Schedule extends AppCompatActivity {
             }
             this.tournament.createKnockout(this.tournament.getRanking());
             this.tournament.comboRound = true;
-            Toast.makeText(getApplicationContext(), "YOU ARE NOW ENTERING THE PLAYOFF PORTION OF THE TOURNAMENT",
+            Toast.makeText(getApplicationContext(), "Starting Playoffs!",
                     Toast.LENGTH_LONG).show();
             finish();
             startActivity(getIntent());
