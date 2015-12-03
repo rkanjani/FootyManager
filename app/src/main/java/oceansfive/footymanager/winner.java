@@ -15,7 +15,8 @@ public class winner extends AppCompatActivity {
         setContentView(R.layout.activity_winner);
         setTitle("Winner!");
 
-        int tournamentIndex = getIntent().getIntArrayExtra("info")[0];
+
+      /*  int tournamentIndex = getIntent().getIntArrayExtra("info")[0];
         standings = data.tournaments.get(tournamentIndex).getRanking();
 
         Team winner = standings[0];
@@ -28,5 +29,6 @@ public class winner extends AppCompatActivity {
 
         TextView numLoss = (TextView) findViewById(R.id.winnerLoss);
         numLoss.setText(winner.getLosses());
+        */
     }
 }
