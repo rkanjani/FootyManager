@@ -68,10 +68,25 @@ public class Schedule extends AppCompatActivity {
         intent.putExtra("tournament", tournamentIndex);
         startActivityForResult(intent, 0);
     }
+    //Called when update button is pressed
     public void update(View view) {
         if (this.tournament.getTournamentName().equals("Round Robin")) {
-            Toast.makeText(getApplicationContext(), "Please play all games before updating",
-                    Toast.LENGTH_SHORT).show();
+            for(int i = 0; i < this.tournament.getGames().size(); i++)
+            {
+                if (this.tournament.getGames().get(i).getWinner() == null) //Checks if all games were played
+                {
+                    Toast.makeText(getApplicationContext(), "Please play all games before updating",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+            }
+            this.tournament.getRanking();
+            Intent intent = new Intent(getApplicationContext(), winner.class);
+            intent.putExtra("name",this.tournament.getWinner().getTeamName());
+            intent.putExtra("wins", this.tournament.getWinner().getWins());
+            intent.putExtra("losses", this.tournament.getWinner().getLosses());
+            startActivity(intent);
             return;
 
         }
@@ -90,7 +105,7 @@ public class Schedule extends AppCompatActivity {
                 startActivity(intent);
                 return;
             }
-            adapter.notifyDataSetChanged();
+           // adapter.notifyDataSetChanged();
             finish();
             startActivity(getIntent());
          }
