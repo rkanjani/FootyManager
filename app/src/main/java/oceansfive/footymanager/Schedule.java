@@ -71,10 +71,22 @@ public class Schedule extends AppCompatActivity {
     //Called when update button is pressed
     public void update(View view) {
         if (this.tournament.getTournamentName().equals("Round Robin")) {
-            for(int i = 0; i < this.tournament.competingTeams.length;)
+            for(int i = 0; i < this.tournament.getGames().size(); i++)
+            {
+                if (this.tournament.getGames().get(i).getWinner() == null) //Checks if all games were played
+                {
+                    Toast.makeText(getApplicationContext(), "Please play all games before updating",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-            Toast.makeText(getApplicationContext(), "Please play all games before updating",
-                    Toast.LENGTH_SHORT).show();
+            }
+            this.tournament.getRanking();
+            Intent intent = new Intent(getApplicationContext(), winner.class);
+            intent.putExtra("name",this.tournament.getWinner().getTeamName());
+            intent.putExtra("wins", this.tournament.getWinner().getWins());
+            intent.putExtra("losses", this.tournament.getWinner().getLosses());
+            startActivity(intent);
             return;
 
         }
