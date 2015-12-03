@@ -44,7 +44,7 @@
         android:enabled="true"
         android:layout_gravity="center"
         android:layout_weight="0.25"
-        android:onClick="goToRanking"
+        android:onClick="update"
         android:layout_above="@+id/standing"
         android:layout_centerHorizontal="true" />
 

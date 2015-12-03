@@ -104,14 +104,14 @@ public class Tournament {
     //Creates the games in a round of knockout
     public Game[] createKnockout(Team[] teams)
     {
-        Game games[] = null;
+        Game gameSchedule[] = null;
 
         // Perfect Tournament of 2^n teams
         if  (((Math.log(teams.length) / Math.log(2)) % 1) == 0) {
-            games = new Game[teams.length / 2];
+            gameSchedule = new Game[teams.length / 2];
 
-            for (int i = 0; i < teams.length - 1; i++) {
-                games[i] = new Game(teams[i], teams[teams.length - 1 - i]);
+            for (int i = 0; i < teams.length /2 ; i++) {
+                gameSchedule[i] = new Game(teams[i], teams[teams.length - 1 - i]);
             }
 
 
@@ -125,14 +125,16 @@ public class Tournament {
                 n++;
             }
             n--;//Restores n to the proper power
-            games = new Game[(int)extraGames]; // Only plays extra games first round
+            gameSchedule = new Game[(int)extraGames]; // Only plays extra games first round
             int num = 0;
             for (int i = teams.length; i > Math.pow(2,n) - extraGames;  i=i-2)
             {
-                games[i] = new Game(teams[i-1], teams[i-2]);
+                gameSchedule[num] = new Game(teams[i-1], teams[i-2]);
+                num++;
             }
         }
-        return games;
+        games = Arrays.asList(gameSchedule);
+        return gameSchedule;
     }
 
     //This method is called when a Round in a knockout tournament is completed to fill
