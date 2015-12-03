@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addTournament(View view) {
         Intent intent = new Intent(getApplicationContext(), TournamentCreation.class); //Application Context and Activity
-        startActivityForResult (intent,0);
+        startActivityForResult(intent, 0);
     }
 
     public void onCreateContextMenu(ContextMenu menu, View v,
@@ -96,9 +96,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void loadInstructions(View view){
+    public void loadInstructions(){
         Intent intent = new Intent(getApplicationContext(), Slideshow.class); //Application Context and Activity
-        String [] images= {"logo1", "logo2", "logo3", "logo4" };
+        String [] images= {"step_1", "step_2", "step_3", "step_4" };
         Bundle b = new Bundle();
         b.putStringArray("images", images); //Your id
         intent.putExtras(b); //Put your id to your next Intent
@@ -108,6 +108,18 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.help_action, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_info:
+                loadInstructions();
+                break;
+
+            default:
+                break;
+        }
+
         return true;
     }
 }
