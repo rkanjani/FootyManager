@@ -110,13 +110,9 @@ public class Tournament {
         if  (((Math.log(teams.length) / Math.log(2)) % 1) == 0) {
             gameSchedule = new Game[teams.length / 2];
 
-<<<<<<< HEAD
-            for (int i = 0; i < teams.length/2; i++) {
-                games[i] = new Game(teams[i], teams[teams.length - 1 - i]);
-=======
+
             for (int i = 0; i < teams.length /2 ; i++) {
                 gameSchedule[i] = new Game(teams[i], teams[teams.length - 1 - i]);
->>>>>>> master
             }
 
 
