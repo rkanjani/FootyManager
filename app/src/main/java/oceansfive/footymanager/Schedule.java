@@ -70,6 +70,8 @@ public class Schedule extends AppCompatActivity {
         Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
         this.tournament.createKnockout(tournament.updateRound(gamesArray));
         adapter.notifyDataSetChanged();
+        finish();
+        startActivity(getIntent());
 
     }
     @Override
