@@ -151,15 +151,16 @@ public class Tournament {
         if(games.length == 1) //Final game of Knockout
         {
             System.out.println("FINISHED");
-            winner = games[0].getWinner();
+            winner = getRanking()[0];
             competingTeams = new Team[]{winner};
             finished = true;
             return competingTeams;
         }
 
-        if(this.getTournamentType().equals("RoundRobin")) //Final Round Robin Game
+        if(this.getTournamentType().equals("Round Robin")) //Final Round Robin Game
         {
-            winner = this.getRanking()[0];
+            getRanking();
+            winner = getRanking()[0];
             competingTeams = new Team[]{winner};
             return competingTeams;
         }

@@ -85,7 +85,7 @@ public class Schedule extends AppCompatActivity {
             Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
             this.tournament.updateRound(gamesArray);
             Toast.makeText(getApplicationContext(), "Completed Round Robin", Toast.LENGTH_SHORT).show();
-            String [] info = {tournament.getWinner().getTeamName(),
+            String [] info = {this.tournament.getWinner().getTeamName(),
                     Integer.toString(tournament.getWinner().getWins()),
                     Integer.toString(tournament.getWinner().getLosses())};
             Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
@@ -96,8 +96,16 @@ public class Schedule extends AppCompatActivity {
             return;
 
         }
-        else { //Knockout
-            Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
+        else if (this.tournament.getTournamentType().equals("Knock-Out")) { //Knockout
+            for(int i = 0; i < this.tournament.getGames().size(); i++) {
+                if (this.tournament.getGames().get(i).getWinner() == null) //Checks if all games were played
+                {
+                    Toast.makeText(getApplicationContext(), "Please play all games before updating",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+                Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
             this.tournament.createKnockout(tournament.updateRound(gamesArray));
             if(this.tournament.finished == true)
             {
