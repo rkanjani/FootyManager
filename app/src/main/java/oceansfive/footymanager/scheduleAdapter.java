@@ -44,6 +44,15 @@ public class scheduleAdapter extends BaseAdapter{
     public Game getItem(int position) {
         return games.get(position);
     }
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return games.size();
+    }
 
     @Override
     public long getItemId(int position) {
@@ -55,6 +64,7 @@ public class scheduleAdapter extends BaseAdapter{
         View vi = convertView;
         if (vi == null)
             vi = inflater.inflate(R.layout.schedule_row, null);
+
         TextView teamOne = (TextView) vi.findViewById(R.id.teamNameOne);
         TextView teamTwo = (TextView) vi.findViewById(R.id.teamNameTwo);
 

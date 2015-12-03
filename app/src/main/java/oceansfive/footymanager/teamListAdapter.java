@@ -41,6 +41,15 @@ public class teamListAdapter extends BaseAdapter{
         // TODO Auto-generated method stub
         return teams.length;
     }
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return teams.length;
+    }
 
     @Override
     public Team getItem(int position) {

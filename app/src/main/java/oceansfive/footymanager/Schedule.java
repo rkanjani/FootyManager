@@ -56,8 +56,10 @@ public class Schedule extends AppCompatActivity {
             }
         });
 
+        adapter.notifyDataSetChanged();
+
     }
-    public void goToRanking(View view){
+    public void goToRanking(View view) {
         data.tournaments.set(tournamentIndex, tournament);
         Intent intent = new Intent(getApplicationContext(), Ranking.class);
         intent.putExtra("tournament", tournamentIndex);
@@ -73,5 +75,11 @@ public class Schedule extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivityForResult(intent, 0);
+
     }
 }
