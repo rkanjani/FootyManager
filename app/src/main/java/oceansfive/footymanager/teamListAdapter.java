@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -81,6 +82,8 @@ public class teamListAdapter extends BaseAdapter{
 
         ImageView logo = (ImageView) vi.findViewById(R.id.teamLogo);
 
+        logo.setTag(Integer.toString(position));
+
         //If the team has a name, fill it in, else leave it blank for user
         if(teams[index]!=null){
             name.setText(teams[index].getTeamName(), TextView.BufferType.EDITABLE);
@@ -100,6 +103,7 @@ public class teamListAdapter extends BaseAdapter{
                                       int count) {
             }
         };
+
 
         name.addTextChangedListener(teamNameWatcher);
         return vi;
