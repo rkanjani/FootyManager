@@ -28,20 +28,16 @@
         </activity>
         <activity
             android:name=".EditTournament"
-            android:windowSoftInputMode="adjustPan" >
-        </activity>
-        <activity android:name=".TeamInfo" >
-        </activity>
-        <activity android:name=".Ranking">
-        </activity>
-        <activity android:name=".EnterScore" >
-        </activity>
+            android:windowSoftInputMode="adjustPan">
 
-        <activity android:name=".SelectLogo" >
         </activity>
+        <activity android:name=".TeamInfo"></activity>
+        <activity android:name=".Ranking"></activity>
+        <activity android:name=".EnterScore"></activity>
+        <activity android:name=".SelectLogo"></activity>
+        <activity android:name=".Schedule"></activity>
+        <activity android:name=".Slideshow"></activity>
 
-        <activity android:name=".Schedule" >
-        </activity>
     </application>
 
 </manifest>
