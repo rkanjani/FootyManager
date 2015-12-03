@@ -28,5 +28,6 @@ public class winner extends AppCompatActivity {
 
         TextView numLoss = (TextView) findViewById(R.id.winnerLoss);
         numLoss.setText(winner.getLosses());
+
     }
 }

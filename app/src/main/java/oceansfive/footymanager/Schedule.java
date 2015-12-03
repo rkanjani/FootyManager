@@ -71,15 +71,20 @@ public class Schedule extends AppCompatActivity {
         if (this.tournament.getTournamentName().equals("Round Robin")) {
             Toast.makeText(getApplicationContext(), "Please play all games before updating",
                     Toast.LENGTH_SHORT).show();
+            return;
 
-        }
-        else if(this.tournament.finished == true)
-        {
-            Intent intent = new Intent(getApplicationContext(), Ranking.class);
         }
         else {
             Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
             this.tournament.createKnockout(tournament.updateRound(gamesArray));
+            if(this.tournament.finished == true)
+            {
+                Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
+                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), winner.class);
+                startActivity(intent);
+                return;
+            }
             adapter.notifyDataSetChanged();
             finish();
             startActivity(getIntent());
