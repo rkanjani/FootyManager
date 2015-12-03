@@ -20,7 +20,6 @@ public class LogoAdapter extends BaseAdapter {
 
     public int getCount() {
         return SelectLogo.logos.length;
-        //return mThumbIds.length;
     }
 
     public Object getItem(int position) {
@@ -65,25 +64,4 @@ public class LogoAdapter extends BaseAdapter {
         return drawableId;
 
     }
-
-    // references to our images
-    /*public Integer[] mThumbIds = {
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.sample_7,R.drawable.sample_7,
-            R.drawable.logo0,R.drawable.logo1,
-            R.drawable.logo2,R.drawable.logo3,
-            R.drawable.logo4
-    };*/
 }
