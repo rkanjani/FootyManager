@@ -70,7 +70,7 @@ public class Schedule extends AppCompatActivity {
     }
     //Called when update button is pressed
     public void update(View view) {
-        if (this.tournament.getTournamentName().equals("Round Robin")) {
+        if (this.tournament.getTournamentType().equals("Round Robin")) { //Round Robin
             for(int i = 0; i < this.tournament.getGames().size(); i++)
             {
                 if (this.tournament.getGames().get(i).getWinner() == null) //Checks if all games were played
@@ -82,15 +82,21 @@ public class Schedule extends AppCompatActivity {
 
             }
             this.tournament.getRanking();
+            Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
+            this.tournament.updateRound(gamesArray);
+            Toast.makeText(getApplicationContext(), "Completed Round Robin", Toast.LENGTH_SHORT).show();
+            String [] info = {tournament.getWinner().getTeamName(),
+                    Integer.toString(tournament.getWinner().getWins()),
+                    Integer.toString(tournament.getWinner().getLosses())};
+            Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
+                    Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), winner.class);
-            intent.putExtra("name",this.tournament.getWinner().getTeamName());
-            intent.putExtra("wins", this.tournament.getWinner().getWins());
-            intent.putExtra("losses", this.tournament.getWinner().getLosses());
-            startActivity(intent);
+            intent.putExtra("info", info);
+            startActivityForResult(intent, 0);
             return;
 
         }
-        else {
+        else { //Knockout
             Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
             this.tournament.createKnockout(tournament.updateRound(gamesArray));
             if(this.tournament.finished == true)
@@ -102,7 +108,7 @@ public class Schedule extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), winner.class);
                 intent.putExtra("info", info);
-                startActivityForResult(intent,0);
+                startActivityForResult(intent, 0);
                 return;
             }
            // adapter.notifyDataSetChanged();

@@ -144,12 +144,19 @@ public class Tournament {
     //After calling this, you must call createKnockout to make the next round
     public Team[] updateRound(Game[] games)
     {
-        if(games.length == 1)
+        if(games.length == 1) //Final game of Knockout
         {
             System.out.println("FINISHED");
             winner = games[0].getWinner();
             competingTeams = new Team[]{winner};
             finished = true;
+            return competingTeams;
+        }
+
+        if(this.getTournamentType().equals("RoundRobin")) //Final Round Robin Game
+        {
+            winner = this.getRanking()[0];
+            competingTeams = new Team[]{winner};
             return competingTeams;
         }
 
@@ -233,7 +240,7 @@ public class Tournament {
 
     public Team getWinner()
     {
-        return winner;
+        return this.winner;
     }
     public void startTournament(){
         tournamentStarted = true;
