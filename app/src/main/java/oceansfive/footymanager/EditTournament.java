@@ -1,10 +1,14 @@
 package oceansfive.footymanager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,6 +25,8 @@ public class EditTournament extends AppCompatActivity {
     private static final int SELECT_TOURNAMENT_LOGO = 1;
     private static boolean teamNamesFilled = false;
     private static Tournament tournament = null;
+    private String text = "";
+    ListView teamList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +45,6 @@ public class EditTournament extends AppCompatActivity {
         TextView numOfTeams = (TextView) findViewById(R.id.tournamentNumOfTeams);
         TextView style = (TextView) findViewById(R.id.tournamentStyle);
         ImageView logo = (ImageView) findViewById(R.id.tournamentLogo);
-        Button startTournament = (Button) findViewById(R.id.startTournament);
 
         tournamentName.setText(tournament.getTournamentName());
         numOfTeams.setText(Integer.toString(tournament.getTournamentSize()));
@@ -52,7 +57,7 @@ public class EditTournament extends AppCompatActivity {
             teamNamesFilled=false;
 
 
-        ListView teamList = (ListView) findViewById(R.id.teamList);
+        teamList = (ListView) findViewById(R.id.teamList);
         teamList.setAdapter(adapter);
 
         TextWatcher tournamentNameWatcher = new TextWatcher() {
@@ -63,7 +68,6 @@ public class EditTournament extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
         };
-
 
         tournamentName.addTextChangedListener(tournamentNameWatcher);
 
@@ -78,6 +82,7 @@ public class EditTournament extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     public void finishEditing() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class); //Application Context and Activity
         startActivityForResult (intent,0);
