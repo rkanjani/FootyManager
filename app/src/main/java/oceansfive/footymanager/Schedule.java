@@ -68,8 +68,11 @@ public class Schedule extends AppCompatActivity {
         intent.putExtra("tournament", tournamentIndex);
         startActivityForResult(intent, 0);
     }
+    //Called when update button is pressed
     public void update(View view) {
         if (this.tournament.getTournamentName().equals("Round Robin")) {
+            for(int i = 0; i < this.tournament.competingTeams.length;)
+
             Toast.makeText(getApplicationContext(), "Please play all games before updating",
                     Toast.LENGTH_SHORT).show();
             return;
@@ -90,7 +93,7 @@ public class Schedule extends AppCompatActivity {
                 startActivity(intent);
                 return;
             }
-            adapter.notifyDataSetChanged();
+           // adapter.notifyDataSetChanged();
             finish();
             startActivity(getIntent());
          }
