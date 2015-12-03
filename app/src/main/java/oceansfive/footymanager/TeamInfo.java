@@ -26,33 +26,33 @@ public class TeamInfo extends AppCompatActivity {
 
         setTitle("Team Information");
 
-        TextView teamName = (TextView) findViewById(R.id.team_name);
+        TextView teamName = (TextView) findViewById(R.id.teamName);
 
         teamName.setText(team.getTeamName());
 
         if(team.getTeamLogo() != null) {
             String logo = team.getTeamLogo();
             int drawableResourceId = this.getResources().getIdentifier(logo, "drawable", this.getPackageName());
-            ImageView imageView = (ImageView) findViewById(R.id.team_logo);
+            ImageView imageView = (ImageView) findViewById(R.id.teamLogo);
             imageView.setImageResource(drawableResourceId);
         }
 
 
         teamName.setKeyListener(null);
 
-        TextView totalGoals = (TextView) findViewById(R.id.num_total_goals);
+        TextView totalGoals = (TextView) findViewById(R.id.totalGoals);
         totalGoals.setText(Integer.toString(team.getTotalGoals()));
 
-        TextView wins = (TextView) findViewById(R.id.num_wins);
+        TextView wins = (TextView) findViewById(R.id.numOfWin);
         wins.setText(Integer.toString(team.getWins()));
 
-        TextView losses = (TextView) findViewById(R.id.num_losses);
+        TextView losses = (TextView) findViewById(R.id.numOfLoss);
         losses.setText(Integer.toString(team.getLosses()));
 
-        TextView red = (TextView) findViewById(R.id.num_yellow);
+        TextView red = (TextView) findViewById(R.id.numOfYellow);
         red.setText(Integer.toString(team.getYellowCards()));
 
-        TextView yellow = (TextView) findViewById(R.id.num_red);
+        TextView yellow = (TextView) findViewById(R.id.numOfRed);
         yellow.setText(Integer.toString(team.getRedCards()));
 
 
