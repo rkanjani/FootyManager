@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadInstructions(){
         Intent intent = new Intent(getApplicationContext(), Slideshow.class); //Application Context and Activity
-        String [] images= {"logo1", "logo2", "logo3", "logo4" };
+        String [] images= {"step_1", "step_2", "step_3", "step_4" };
         Bundle b = new Bundle();
         b.putStringArray("images", images); //Your id
         intent.putExtras(b); //Put your id to your next Intent
