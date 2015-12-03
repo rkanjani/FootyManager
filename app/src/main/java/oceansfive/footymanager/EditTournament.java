@@ -70,6 +70,8 @@ public class EditTournament extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
         };
 
+
+
         tournamentName.addTextChangedListener(tournamentNameWatcher);
 
     }
@@ -126,6 +128,12 @@ public class EditTournament extends AppCompatActivity {
 
             this.data.tournaments.get(this.data.tournaments.indexOf(tournament)).setTournamentLogo(currentImage);
         }
+    }
+    public void teamLogoSelect(View v){
+        System.out.println(v.getTag());
+
+
+
     }
 
 }
