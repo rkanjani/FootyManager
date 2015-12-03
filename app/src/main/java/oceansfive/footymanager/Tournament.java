@@ -34,6 +34,7 @@ public class Tournament {
         this.tournamentStarted = false;
         teams = new Team[tournamentSize];
         competingTeams = teams.clone();
+        finished = false;
 
     }
 
@@ -177,6 +178,7 @@ public class Tournament {
         }
         else if(games.length == 1)
         {
+            System.out.println("FINISHED");
             winner = games[0].getWinner();
             competingTeams = new Team[]{winner};
             finished = true;
