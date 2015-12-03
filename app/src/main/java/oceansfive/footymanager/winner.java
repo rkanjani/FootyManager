@@ -15,6 +15,7 @@ public class winner extends AppCompatActivity {
         setContentView(R.layout.activity_winner);
         setTitle("Winner!");
 
+
       /*  int tournamentIndex = getIntent().getIntArrayExtra("info")[0];
         standings = data.tournaments.get(tournamentIndex).getRanking();
 
