@@ -75,7 +75,7 @@ public class Schedule extends AppCompatActivity {
         }
         else if(this.tournament.finished == true)
         {
-            //Victory Screen
+            Intent intent = new Intent(getApplicationContext(), Ranking.class);
         }
         else {
             Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
