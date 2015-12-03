@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
     public void loadInstructions(View view){
         Intent intent = new Intent(getApplicationContext(), Slideshow.class); //Application Context and Activity
         String [] images= {"logo1", "logo2", "logo3", "logo4" };
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtras(b); //Put your id to your next Intent
         startActivity(intent);
     }
+
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.help_action, menu);
