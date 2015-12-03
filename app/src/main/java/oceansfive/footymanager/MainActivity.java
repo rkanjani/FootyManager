@@ -44,12 +44,20 @@ public class MainActivity extends AppCompatActivity {
                 if(!data.tournaments.get(position).getTournamentStatus()){
                     Intent intent = new Intent(getApplicationContext(), EditTournament.class); //Application Context and Activity
                     intent.putExtra("tournament", position);
-                    startActivityForResult(intent, position);
+                    startActivityForResult(intent, 0);
+                }
+                else if(data.tournaments.get(position).getFinished()){
+                    String [] info = {data.tournaments.get(position).getWinner().getTeamName(),
+                                      Integer.toString(data.tournaments.get(position).getWinner().getWins()),
+                                      Integer.toString(data.tournaments.get(position).getWinner().getLosses())};
+                    Intent intent = new Intent(getApplicationContext(), winner.class); //Application Context and Activity
+                    intent.putExtra("info", info);
+                    startActivityForResult(intent, 0);
                 }
                 else{
                     Intent intent = new Intent(getApplicationContext(), Schedule.class); //Application Context and Activity
                     intent.putExtra("tournament", position);
-                    startActivityForResult(intent, position);
+                    startActivityForResult(intent, 0);
                 }
             }
         });
