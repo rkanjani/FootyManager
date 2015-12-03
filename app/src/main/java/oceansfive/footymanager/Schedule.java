@@ -18,6 +18,8 @@ public class Schedule extends AppCompatActivity {
     Tournament tournament;
     private static int tournamentIndex;
     Context context;
+    scheduleAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class Schedule extends AppCompatActivity {
 
 
         ListView gameList = (ListView) findViewById(R.id.schedule);
-        scheduleAdapter adapter = new scheduleAdapter(this, tournament.games);
+        adapter = new scheduleAdapter(this, tournament.games);
 
 
         gameList.setAdapter(adapter);
@@ -62,6 +64,15 @@ public class Schedule extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), Ranking.class);
         intent.putExtra("tournament", tournamentIndex);
         startActivityForResult(intent, 0);
+    }
+    public void update(View view)
+    {
+        Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
+        this.tournament.createKnockout(tournament.updateRound(gamesArray));
+        adapter.notifyDataSetChanged();
+        finish();
+        startActivity(getIntent());
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
