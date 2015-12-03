@@ -19,12 +19,11 @@ public class EnterScore extends AppCompatActivity {
         setContentView(R.layout.activity_enter_score);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Enter Score");
-        int [] locations = getIntent().getIntArrayExtra("tournamentGameInfo");
-        tournamentIndex = locations[0];
-        gameIndex = locations[1];
+        tournamentIndex = getIntent().getIntArrayExtra("tournamentGameInfo")[0];
+        gameIndex = getIntent().getIntArrayExtra("tournamentGameInfo")[1];
 
-        Tournament tournament = data.tournaments.get(locations[0]);
-        Game game = tournament.getGames().get(locations[1]);
+        Tournament tournament = data.tournaments.get(tournamentIndex);
+        Game game = tournament.getGames().get(gameIndex);
 
         TextView teamOneName = (TextView) findViewById(R.id.teamOne);
         TextView teamTwoName = (TextView) findViewById(R.id.teamTwo);
