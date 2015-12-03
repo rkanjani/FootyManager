@@ -126,7 +126,7 @@ if (resultCode == RESULT_OK) {
         String badToast = "Could not "+name.getText();
 
 
-        //Tournament information must be filled out before continuing -- (f5c5c71) is the default image id
+        //Tournament information must be filled out before continuing
         if(numOfTeams.getValue()>1 && !name.getText().equals(null) && !type.getText().equals("Tournament Type")){
             Tournament tournament = new Tournament(name.getText().toString(), type.getText().toString(), numOfTeams.getValue(), this.currentImage, new Team[numOfTeams.getValue()]);
             data.tournaments.add(tournament);
