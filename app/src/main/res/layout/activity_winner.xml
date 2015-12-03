@@ -13,7 +13,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="350dp"
+        android:id="@+id/linearLayout3">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,11 +23,8 @@
             android:id="@+id/winnerTitle"
             android:textColor="#000000"
             android:textSize="150px"
-            android:layout_gravity="right" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="850px" />
+            android:layout_gravity="right"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -36,67 +34,90 @@
             android:gravity="center_horizontal"
             android:paddingTop="25px">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Default"
-                android:id="@+id/winnerName"
-                android:textColor="#000000"
-                android:textSize="150px" />
-
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:layout_gravity="center_horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wins: "
-                android:id="@+id/textView7"
-                android:textColor="#000000"
-                android:textSize="70px" />
+        </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/winnerWins"
-                android:textColor="#000000"
-                android:textSize="70px" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Loss: "
-                android:id="@+id/losses"
-                android:gravity="right"
-                android:textColor="#000000"
-                android:textSize="70px"
-                android:layout_gravity="center_vertical|right" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/winnerLoss"
-                android:textColor="#000000"
-                android:textSize="70px"
-                android:layout_gravity="center_vertical" />
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Default"
+            android:id="@+id/winnerName"
+            android:textColor="#000000"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loss: "
+            android:id="@+id/losses"
+            android:gravity="right"
+            android:textColor="#000000"
+            android:textSize="70px"
+            android:layout_gravity="left|bottom"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wins: "
+            android:id="@+id/textView7"
+            android:textColor="#000000"
+            android:textSize="70px"
+            android:textStyle="bold"
+            android:layout_gravity="left|center_vertical" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/winnerLoss"
+            android:textColor="#000000"
+            android:textSize="70px"
+            android:layout_gravity="right|bottom"
+            android:textStyle="bold"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/winnerWins"
+            android:textColor="#000000"
+            android:textSize="70px"
+            android:textStyle="bold"
+            android:layout_gravity="right|center_vertical" />
+    </FrameLayout>
 
 </RelativeLayout>
