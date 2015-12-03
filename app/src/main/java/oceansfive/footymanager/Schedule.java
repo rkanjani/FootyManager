@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -33,6 +34,9 @@ public class Schedule extends AppCompatActivity {
 
 
         tournament = data.tournaments.get(tournamentIndex);
+
+        if(tournament.getTournamentType().equals("Round Robin"))
+            ((Button)(findViewById(R.id.updateRound))).setText("Complete Tournament");
 
 
         setTitle("League Schedule");
@@ -102,7 +106,7 @@ public class Schedule extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), winner.class);
                 intent.putExtra("info", info);
-                startActivityForResult(intent,0);
+                startActivityForResult(intent, 0);
                 return;
             }
            // adapter.notifyDataSetChanged();
