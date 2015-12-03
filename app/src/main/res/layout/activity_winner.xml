@@ -22,11 +22,12 @@
             android:id="@+id/winnerTitle"
             android:textColor="#000000"
             android:textSize="150px"
-            android:layout_gravity="right" />
+            android:layout_gravity="right"
+            android:textStyle="bold" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="850px" />
+            android:layout_height="310dp" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -42,7 +43,8 @@
                 android:text="Default"
                 android:id="@+id/winnerName"
                 android:textColor="#000000"
-                android:textSize="150px" />
+                android:textSize="150px"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -59,7 +61,8 @@
                 android:text="Wins: "
                 android:id="@+id/textView7"
                 android:textColor="#000000"
-                android:textSize="70px" />
+                android:textSize="70px"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +70,8 @@
                 android:text="0"
                 android:id="@+id/winnerWins"
                 android:textColor="#000000"
-                android:textSize="70px" />
+                android:textSize="70px"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -85,7 +89,8 @@
                 android:gravity="right"
                 android:textColor="#000000"
                 android:textSize="70px"
-                android:layout_gravity="center_vertical|right" />
+                android:layout_gravity="center_vertical|right"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -94,7 +99,8 @@
                 android:id="@+id/winnerLoss"
                 android:textColor="#000000"
                 android:textSize="70px"
-                android:layout_gravity="center_vertical" />
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
