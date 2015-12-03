@@ -34,6 +34,7 @@ public class Tournament {
         this.tournamentStarted = false;
         teams = new Team[tournamentSize];
         competingTeams = teams.clone();
+        finished = false;
 
     }
 
@@ -143,6 +144,15 @@ public class Tournament {
     //After calling this, you must call createKnockout to make the next round
     public Team[] updateRound(Game[] games)
     {
+        if(games.length == 1)
+        {
+            System.out.println("FINISHED");
+            winner = games[0].getWinner();
+            competingTeams = new Team[]{winner};
+            finished = true;
+            return competingTeams;
+        }
+
         if  (((Math.log(competingTeams.length) / Math.log(2)) % 1) != 0) { //Tournament is not perfect
             int n = 0;
             double extraGames = 0;
@@ -175,12 +185,7 @@ public class Tournament {
             competingTeams = newTeam.clone(); //Updates competingteams with winners of the round
 
         }
-        else if(games.length == 1)
-        {
-            winner = games[0].getWinner();
-            competingTeams = new Team[]{winner};
-            finished = true;
-        }
+
 
         return competingTeams;
 
@@ -228,7 +233,7 @@ public class Tournament {
 
     public Team getWinner()
     {
-        return getWinner();
+        return winner;
     }
     public void startTournament(){
         tournamentStarted = true;
@@ -245,6 +250,8 @@ public class Tournament {
     public void setTournamentName(String name){
         tournamentName = name;
     }
+    public boolean getFinished(){return this.finished;};
+
 
     public String toString(){
         return tournamentName;

@@ -19,12 +19,11 @@ public class EnterScore extends AppCompatActivity {
         setContentView(R.layout.activity_enter_score);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Enter Score");
-        int [] locations = getIntent().getIntArrayExtra("tournamentGameInfo");
-        tournamentIndex = locations[0];
-        gameIndex = locations[1];
+        tournamentIndex = getIntent().getIntArrayExtra("tournamentGameInfo")[0];
+        gameIndex = getIntent().getIntArrayExtra("tournamentGameInfo")[1];
 
-        Tournament tournament = data.tournaments.get(locations[0]);
-        Game game = tournament.getGames().get(locations[1]);
+        Tournament tournament = data.tournaments.get(tournamentIndex);
+        Game game = tournament.getGames().get(gameIndex);
 
         TextView teamOneName = (TextView) findViewById(R.id.teamOne);
         TextView teamTwoName = (TextView) findViewById(R.id.teamTwo);
@@ -77,29 +76,81 @@ public class EnterScore extends AppCompatActivity {
 
         EditText home_score = (EditText)findViewById(R.id.home_score);
         EditText away_score = (EditText)findViewById(R.id.away_score);
-        int homeScore = returnNumber(home_score.getText().toString());
-        int awayScore = returnNumber(away_score.getText().toString());
+
+
+        //checks if the user entered a value before entering the score
+        String homeScoreString = home_score.getText().toString();
+        int homeScore;
+        if (homeScoreString.equals("")) {
+            homeScore = 0;
+        }
+
+        else {
+            homeScore = Integer.parseInt(homeScoreString);
+        }
+
+        String awayScoreString = away_score.getText().toString();
+        int awayScore;
+        if(awayScoreString.equals(""))
+            awayScore = 0;
+        else
+        awayScore = Integer.parseInt(awayScoreString);
+        
         game.enterScore(homeScore, awayScore);
 
+
+        //adds the goals to each team
         game.getTeam1().addGoals(homeScore);
         game.getTeam2().addGoals(awayScore);
 
+
         EditText home_yellow = (EditText) findViewById(R.id.home_yellow);
         Team team1 = game.getTeam1();
-        int homeYellow = returnNumber(home_yellow.getText().toString());
+        int homeYellow;
+        String homeYellowString = home_yellow.getText().toString();
+
+        if(homeYellowString.equals(""))
+            homeYellow = 0;
+        else
+            homeYellow = returnNumber(homeYellowString);
+
         team1.setYellowCards(homeYellow);
+
 
         EditText away_yellow = (EditText) findViewById(R.id.away_yellow);
         Team team2 = game.getTeam2();
-        int awayYellow = returnNumber(away_yellow.getText().toString());
+        int awayYellow;
+        String awayYellowString = away_yellow.getText().toString();
+
+        if(awayYellowString.equals(""))
+            awayYellow = 0;
+        else
+            awayYellow = returnNumber(awayYellowString);
+
         team2.setYellowCards(awayYellow);
 
+
         EditText home_red = (EditText) findViewById(R.id.home_red);
-        int homeRed = returnNumber(home_red.getText().toString());
+        int homeRed;
+        String homeRedString = home_red.getText().toString();
+
+        if(homeRedString.equals(""))
+            homeRed = 0;
+        else
+            homeRed = returnNumber(homeRedString);
+
         team1.setRedCards(homeRed);
 
+
         EditText away_red = (EditText) findViewById(R.id.away_red);
-        int awayRed = returnNumber(away_red.getText().toString());
+        int awayRed;
+        String awayRedString = away_red.getText().toString();
+
+        if(awayRedString.equals(""))
+            awayRed = 0;
+        else
+            awayRed = returnNumber(awayRedString);
+
         team2.setRedCards(awayRed);
 
         game.finishGame();

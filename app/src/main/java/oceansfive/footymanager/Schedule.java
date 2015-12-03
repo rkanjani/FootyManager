@@ -21,6 +21,7 @@ public class Schedule extends AppCompatActivity {
     scheduleAdapter adapter;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,14 +68,47 @@ public class Schedule extends AppCompatActivity {
         intent.putExtra("tournament", tournamentIndex);
         startActivityForResult(intent, 0);
     }
-    public void update(View view)
-    {
-        Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
-        this.tournament.createKnockout(tournament.updateRound(gamesArray));
-        adapter.notifyDataSetChanged();
-        finish();
-        startActivity(getIntent());
+    //Called when update button is pressed
+    public void update(View view) {
+        if (this.tournament.getTournamentName().equals("Round Robin")) {
+            for(int i = 0; i < this.tournament.getGames().size(); i++)
+            {
+                if (this.tournament.getGames().get(i).getWinner() == null) //Checks if all games were played
+                {
+                    Toast.makeText(getApplicationContext(), "Please play all games before updating",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
+            }
+            this.tournament.getRanking();
+            Intent intent = new Intent(getApplicationContext(), winner.class);
+            intent.putExtra("name",this.tournament.getWinner().getTeamName());
+            intent.putExtra("wins", this.tournament.getWinner().getWins());
+            intent.putExtra("losses", this.tournament.getWinner().getLosses());
+            startActivity(intent);
+            return;
+
+        }
+        else {
+            Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
+            this.tournament.createKnockout(tournament.updateRound(gamesArray));
+            if(this.tournament.finished == true)
+            {
+                String [] info = {tournament.getWinner().getTeamName(),
+                                    Integer.toString(tournament.getWinner().getWins()),
+                                    Integer.toString(tournament.getWinner().getLosses())};
+                Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
+                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), winner.class);
+                intent.putExtra("info", info);
+                startActivityForResult(intent,0);
+                return;
+            }
+           // adapter.notifyDataSetChanged();
+            finish();
+            startActivity(getIntent());
+         }
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

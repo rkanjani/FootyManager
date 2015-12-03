@@ -6,27 +6,24 @@ import android.widget.*;
 
 public class winner extends AppCompatActivity {
 
-    TournamentData data = TournamentData.getInstance();
-    Team[] standings;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_winner);
         setTitle("Winner!");
 
-        int tournamentIndex = getIntent().getIntArrayExtra("info")[0];
-        standings = data.tournaments.get(tournamentIndex).getRanking();
+        String [] info = getIntent().getStringArrayExtra("info");
 
-        Team winner = standings[0];
+
 
         TextView winnerName = (TextView) findViewById(R.id.winnerName);
-        winnerName.setText(winner.getTeamName());
+        winnerName.setText(info[0]);
 
         TextView numWin = (TextView) findViewById(R.id.winnerWins);
-        numWin.setText(winner.getWins());
+        numWin.setText(info[1]);
 
         TextView numLoss = (TextView) findViewById(R.id.winnerLoss);
-        numLoss.setText(winner.getLosses());
+        numLoss.setText(info[2]);
+
     }
 }
