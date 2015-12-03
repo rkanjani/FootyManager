@@ -80,6 +80,10 @@ public class Tournament {
         return tournamentSize;
     }
 
+    public void setTournamentLogo(String logo){
+        this.tournamentLogo=logo;
+    }
+
     //Creates the games in a round robin
     public Game[] createRoundRobin(Team[] teams)
     {
