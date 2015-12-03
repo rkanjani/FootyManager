@@ -67,14 +67,23 @@ public class Schedule extends AppCompatActivity {
         intent.putExtra("tournament", tournamentIndex);
         startActivityForResult(intent, 0);
     }
-    public void update(View view)
-    {
-        Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
-        this.tournament.createKnockout(tournament.updateRound(gamesArray));
-        adapter.notifyDataSetChanged();
-        finish();
-        startActivity(getIntent());
+    public void update(View view) {
+        if (this.tournament.getTournamentName().equals("Round Robin")) {
+            Toast.makeText(getApplicationContext(), "Please play all games before updating",
+                    Toast.LENGTH_SHORT).show();
 
+        }
+        else if(this.tournament.finished == true)
+        {
+            Intent intent = new Intent(getApplicationContext(), Ranking.class);
+        }
+        else {
+            Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
+            this.tournament.createKnockout(tournament.updateRound(gamesArray));
+            adapter.notifyDataSetChanged();
+            finish();
+            startActivity(getIntent());
+         }
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
