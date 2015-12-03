@@ -77,7 +77,7 @@ public class EnterScore extends AppCompatActivity {
 
         EditText home_score = (EditText)findViewById(R.id.home_score);
         EditText away_score = (EditText)findViewById(R.id.away_score);
-<<<<<<< HEAD
+
 
         //checks if the user entered a value before entering the score
         String homeScoreString = home_score.getText().toString();
@@ -96,11 +96,7 @@ public class EnterScore extends AppCompatActivity {
             awayScore = 0;
         else
         awayScore = Integer.parseInt(awayScoreString);
-
-=======
-        int homeScore = returnNumber(home_score.getText().toString());
-        int awayScore = returnNumber(away_score.getText().toString());
->>>>>>> master
+        
         game.enterScore(homeScore, awayScore);
 
 
