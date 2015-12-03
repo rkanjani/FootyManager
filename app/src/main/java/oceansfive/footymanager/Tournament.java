@@ -23,6 +23,8 @@ public class Tournament {
     Team[] teams;         //This stores all the Teams that are in a given tournament
     Team[] competingTeams;//(ONLY FOR KNOCKOUT) Used to store who is still alive in the tournament
     List<Game> games = new ArrayList<Game>();
+    boolean weakGames =false;// 0th round where the weak teams play each other.
+    boolean comboRound = false; // false if still in roundrobin
 
 
     public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo, Team[] teams){
@@ -124,6 +126,7 @@ public class Tournament {
         }
         else // Tournament is not Perfect
         {
+            weakGames = true;
             int n = 0;
             double extraGames = 0;
             while(teams.length - Math.pow(2, n) > 0) {
@@ -148,12 +151,22 @@ public class Tournament {
     //After calling this, you must call createKnockout to make the next round
     public Team[] updateRound(Game[] games)
     {
-        if(games.length == 1)
+
+
+        if(games.length == 1 && weakGames == false) //Final game of Knockout
         {
             System.out.println("FINISHED");
-            winner = games[0].getWinner();
+            winner = getRanking()[0];
             competingTeams = new Team[]{winner};
             finished = true;
+            return competingTeams;
+        }
+
+        if(this.getTournamentType().equals("Round Robin")) //Final Round Robin Game
+        {
+            getRanking();
+            winner = getRanking()[0];
+            competingTeams = new Team[]{winner};
             return competingTeams;
         }
 
@@ -190,7 +203,7 @@ public class Tournament {
 
         }
 
-
+        weakGames = false;
         return competingTeams;
 
     }
@@ -237,7 +250,7 @@ public class Tournament {
 
     public Team getWinner()
     {
-        return winner;
+        return this.winner;
     }
     public void startTournament(){
         tournamentStarted = true;
@@ -254,8 +267,12 @@ public class Tournament {
     public void setTournamentName(String name){
         tournamentName = name;
     }
-    public boolean getFinished(){return this.finished;};
-
+    public void setTournamentType(String type)
+    {
+        this.tournamentType = type;
+    }
+    public boolean getFinished(){return this.finished;}
+    public void setFinished(){this.finished = true;}
 
     public String toString(){
         return tournamentName;

@@ -74,7 +74,7 @@ public class Schedule extends AppCompatActivity {
     }
     //Called when update button is pressed
     public void update(View view) {
-        if (this.tournament.getTournamentName().equals("Round Robin")) {
+        if (this.tournament.getTournamentType().equals("Round Robin")) { //Round Robin
             for(int i = 0; i < this.tournament.getGames().size(); i++)
             {
                 if (this.tournament.getGames().get(i).getWinner() == null) //Checks if all games were played
@@ -86,16 +86,31 @@ public class Schedule extends AppCompatActivity {
 
             }
             this.tournament.getRanking();
+            Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
+            this.tournament.updateRound(gamesArray);
+            Toast.makeText(getApplicationContext(), "Completed Round Robin", Toast.LENGTH_SHORT).show();
+            String [] info = {this.tournament.getWinner().getTeamName(),
+                    Integer.toString(tournament.getWinner().getWins()),
+                    Integer.toString(tournament.getWinner().getLosses())};
+            Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
+                    Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), winner.class);
-            intent.putExtra("name",this.tournament.getWinner().getTeamName());
-            intent.putExtra("wins", this.tournament.getWinner().getWins());
-            intent.putExtra("losses", this.tournament.getWinner().getLosses());
-            startActivity(intent);
+            intent.putExtra("info", info);
+            this.tournament.setFinished();
+            startActivityForResult(intent, 0);
             return;
 
         }
-        else {
-            Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
+        else if (this.tournament.getTournamentType().equals("Knock-Out") || this.tournament.comboRound == true) { //Knockout
+            for(int i = 0; i < this.tournament.getGames().size(); i++) {
+                if (this.tournament.getGames().get(i).getWinner() == null) //Checks if all games were played
+                {
+                    Toast.makeText(getApplicationContext(), "Please play all games before updating",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+                Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
             this.tournament.createKnockout(tournament.updateRound(gamesArray));
             if(this.tournament.finished == true)
             {
@@ -104,6 +119,7 @@ public class Schedule extends AppCompatActivity {
                                     Integer.toString(tournament.getWinner().getLosses())};
                 Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
                         Toast.LENGTH_SHORT).show();
+                this.tournament.setFinished();
                 Intent intent = new Intent(getApplicationContext(), winner.class);
                 intent.putExtra("info", info);
                 startActivityForResult(intent, 0);
@@ -113,6 +129,26 @@ public class Schedule extends AppCompatActivity {
             finish();
             startActivity(getIntent());
          }
+        else if(this.tournament.getTournamentType().equals("Combinational"))
+        {
+            for(int i = 0; i < this.tournament.getGames().size(); i++)
+            {
+                if (this.tournament.getGames().get(i).getWinner() == null) //Checks if all games were played
+                {
+                    Toast.makeText(getApplicationContext(), "Please play all games before updating",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+            }
+            this.tournament.createKnockout(this.tournament.getRanking());
+            this.tournament.comboRound = true;
+            Toast.makeText(getApplicationContext(), "YOU ARE NOW ENTERING THE PLAYOFF PORTION OF THE TOURNAMENT",
+                    Toast.LENGTH_LONG).show();
+            finish();
+            startActivity(getIntent());
+
+        }
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
