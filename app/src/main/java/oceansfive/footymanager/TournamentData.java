@@ -15,6 +15,8 @@ import java.util.ListIterator;
 public class TournamentData {
 
     static String [] logos={"logo1","logo2","logo3","logo4"};
+    static String [] teamLogos={"logo1","logo2"};
+
 
     private static TournamentData ourInstance = new TournamentData();
 
