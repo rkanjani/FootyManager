@@ -1,6 +1,7 @@
 package oceansfive.footymanager;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,16 @@ public class tournamentListAdapter extends BaseAdapter {
         size.setText("Number of teams: " + tournaments.get(position).getTournamentSize());
         type.setText(tournaments.get(position).getTournamentType());
 
+        if(tournaments.get(position).finished)
+            ((TextView) vi.findViewById(R.id.finished)).setText("FINISHED");
+        else if(tournaments.get(position).tournamentStarted) {
+            ((TextView) vi.findViewById(R.id.finished)).setText("STARTED");
+            ((TextView) vi.findViewById(R.id.finished)).setTextColor(Color.parseColor("#99b3ff"));
+        }
+        else{
+            ((TextView) vi.findViewById(R.id.finished)).setText("PENDING");
+            ((TextView) vi.findViewById(R.id.finished)).setTextColor(Color.parseColor("#ff8080"));
+        }
 
         return vi;
     }

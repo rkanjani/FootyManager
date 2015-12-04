@@ -25,6 +25,7 @@ public class EnterScore extends AppCompatActivity {
         Tournament tournament = data.tournaments.get(tournamentIndex);
         Game game = tournament.getGames().get(gameIndex);
 
+        //initializes the views and variables
         TextView teamOneName = (TextView) findViewById(R.id.teamOne);
         TextView teamTwoName = (TextView) findViewById(R.id.teamTwo);
 
@@ -70,7 +71,7 @@ public class EnterScore extends AppCompatActivity {
 
     }
 
-    public void enterGame(View view){
+    public void enterGame(){
         Tournament tournament = data.tournaments.get(tournamentIndex);
         Game game = tournament.games.get(gameIndex);
 
@@ -104,6 +105,7 @@ public class EnterScore extends AppCompatActivity {
         game.getTeam2().addGoals(awayScore);
 
 
+        //adds the yellow cards from the games to the team
         EditText home_yellow = (EditText) findViewById(R.id.home_yellow);
         Team team1 = game.getTeam1();
         int homeYellow;
@@ -130,6 +132,7 @@ public class EnterScore extends AppCompatActivity {
         team2.setYellowCards(awayYellow);
 
 
+        // Adds the red cards from the game to the team
         EditText home_red = (EditText) findViewById(R.id.home_red);
         int homeRed;
         String homeRedString = home_red.getText().toString();
@@ -171,6 +174,7 @@ public class EnterScore extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     public int returnNumber(String s){
         if(s.equals("") || s == null){
             return 0;
@@ -180,4 +184,21 @@ public class EnterScore extends AppCompatActivity {
         }
 
     }
+
+    //Checks to see if the game resulted in a tie
+    public void checkTie(View view){
+        EditText homeScore = (EditText) findViewById(R.id.home_score);
+        String homeScoreString = homeScore.getText().toString();
+
+        EditText awayScore = (EditText) findViewById(R.id.away_score);
+        String awayScoreString = awayScore.getText().toString();
+
+        if(awayScoreString.equals(homeScoreString)){
+            Toast.makeText(getApplicationContext(), "Cannot be a tie",
+                    Toast.LENGTH_LONG).show();
+        }
+        else
+            enterGame();
+    }
+
 }

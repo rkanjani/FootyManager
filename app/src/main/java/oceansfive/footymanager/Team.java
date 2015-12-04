@@ -59,7 +59,6 @@ public class Team {
         this.teamName = teamName;
     }
     public void setTeamLogo(String teamLogo){
-        //System.out.println("TEAM "+this.teamName+" CHANGED FROM: "+this.teamLogo+" to :"+teamLogo );
         this.teamLogo = teamLogo;
     }
 

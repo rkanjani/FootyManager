@@ -113,8 +113,6 @@ if (resultCode == RESULT_OK) {
         startActivityForResult(intent,SELECT_LOGO);
     }
     public void addTournament(View view){
-
-        Toast.makeText(getApplicationContext(), "whats up "+currentImage, Toast.LENGTH_LONG).show();
         NumberPicker numOfTeams = (NumberPicker) findViewById(R.id.TextView);
         EditText name = (EditText) findViewById(R.id.tournamentName);
         ImageView logo = (ImageView) findViewById(R.id.tournamentLogo);
@@ -123,10 +121,9 @@ if (resultCode == RESULT_OK) {
 
 
         String goodToast = "Successfully added "+name.getText();
-        String badToast = "Could not "+name.getText();
 
 
-        //Tournament information must be filled out before continuing -- (f5c5c71) is the default image id
+        //Tournament information must be filled out before continuing
         if(numOfTeams.getValue()>1 && !name.getText().equals(null) && !type.getText().equals("Tournament Type")){
             Tournament tournament = new Tournament(name.getText().toString(), type.getText().toString(), numOfTeams.getValue(), this.currentImage, new Team[numOfTeams.getValue()]);
             data.tournaments.add(tournament);
@@ -134,8 +131,6 @@ if (resultCode == RESULT_OK) {
             Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
             startActivityForResult(myIntent, 0);
         }
-
-        Toast.makeText(getApplicationContext(), badToast, Toast.LENGTH_LONG).show();
     }
 
 
