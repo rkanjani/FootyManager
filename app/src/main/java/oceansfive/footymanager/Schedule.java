@@ -89,10 +89,11 @@ public class Schedule extends AppCompatActivity {
             Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
             this.tournament.updateRound(gamesArray);
             this.tournament.checkforTie();
-            Toast.makeText(getApplicationContext(), "Completed Round Robin", Toast.LENGTH_SHORT).show();
             String [] info = {this.tournament.getWinner().getTeamName(),
                     Integer.toString(tournament.getWinner().getWins()),
-                    Integer.toString(tournament.getWinner().getLosses())};
+                    Integer.toString(tournament.getWinner().getLosses()),
+                    tournament.getWinner().getTeamLogo()
+            };
 
             Intent intent = new Intent(getApplicationContext(), winner.class);
             intent.putExtra("info", info);
@@ -116,7 +117,8 @@ public class Schedule extends AppCompatActivity {
             {
                 String [] info = {tournament.getWinner().getTeamName(),
                         Integer.toString(tournament.getWinner().getWins()),
-                        Integer.toString(tournament.getWinner().getLosses())};
+                        Integer.toString(tournament.getWinner().getLosses()),
+                        tournament.getWinner().getTeamLogo()};
                 this.tournament.setFinished();
                 Intent intent = new Intent(getApplicationContext(), winner.class);
                 intent.putExtra("info", info);
