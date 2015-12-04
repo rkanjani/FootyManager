@@ -47,7 +47,9 @@ public class standingsAdapter extends BaseAdapter {
         winLossRatio.setText("Wins: " + standings[position].getWins() + " Losses: " + standings[position].getLosses());
         standing.setText("#"+Integer.toString(position+1));
 
+
         if(standings[position].getTeamLogo() != null) {
+            //displays the teams logo
             String logo = standings[position].getTeamLogo();
             int drawableResourceId = context.getResources().getIdentifier(logo, "drawable", context.getPackageName());
             ImageView imageView1 = (ImageView) vi.findViewById(R.id.teamLogo);
