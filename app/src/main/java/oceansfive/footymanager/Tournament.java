@@ -211,6 +211,13 @@ public class Tournament {
         return competingTeams;
 
     }
+    public boolean checkTeamNames(){
+        for(int x=0; x<teams.length;x++){
+            if(teams[x]==null || teams[x].getTeamName().equals(""))
+                return false;
+        }
+        return true;
+    }
 
     public void updateGame(int index, Game game){
         Collections.replaceAll(games, games.get(index), game);

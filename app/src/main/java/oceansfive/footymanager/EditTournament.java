@@ -19,6 +19,7 @@ import android.content.Context;
 import android.view.MenuItem;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.Toast;
 
 public class EditTournament extends AppCompatActivity {
 
@@ -99,19 +100,22 @@ public class EditTournament extends AppCompatActivity {
     //Code for when the tournament is started
     public void startTournament(View view){
 
-        data.tournaments.get(data.tournaments.indexOf(tournament)).startTournament();
-        if(tournament.getTournamentType().equals("Round Robin")){
-            data.tournaments.get(data.tournaments.indexOf(tournament)).createRoundRobin(tournament.getTeams());
+        if(!data.tournaments.get(data.tournaments.indexOf(tournament)).checkTeamNames()){
+            Toast.makeText(getApplicationContext(), "Please enter all team names", Toast.LENGTH_SHORT).show();
         }
-        else if(tournament.getTournamentType().equals("Knock-Out")){
-            data.tournaments.get(data.tournaments.indexOf(tournament)).createKnockout(tournament.getTeams());
+        else {
+            data.tournaments.get(data.tournaments.indexOf(tournament)).startTournament();
+            if (tournament.getTournamentType().equals("Round Robin")) {
+                data.tournaments.get(data.tournaments.indexOf(tournament)).createRoundRobin(tournament.getTeams());
+            } else if (tournament.getTournamentType().equals("Knock-Out")) {
+                data.tournaments.get(data.tournaments.indexOf(tournament)).createKnockout(tournament.getTeams());
+            } else if (tournament.getTournamentType().equals("Combinational")) {
+                data.tournaments.get(data.tournaments.indexOf(tournament)).createRoundRobin(tournament.getTeams());
+            }
+            Intent intent = new Intent(getApplicationContext(), Schedule.class); //Application Context and Activity
+            intent.putExtra("tournament", data.tournaments.indexOf(tournament));
+            startActivityForResult(intent, 0);
         }
-        else if(tournament.getTournamentType().equals("Combinational")){
-            data.tournaments.get(data.tournaments.indexOf(tournament)).createRoundRobin(tournament.getTeams());
-        }
-        Intent intent = new Intent(getApplicationContext(), Schedule.class); //Application Context and Activity
-        intent.putExtra("tournament", data.tournaments.indexOf(tournament));
-        startActivityForResult(intent, 0);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
