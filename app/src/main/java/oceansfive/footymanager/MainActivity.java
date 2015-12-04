@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 else if(data.tournaments.get(position).getFinished()){
                     String [] info = {data.tournaments.get(position).getWinner().getTeamName(),
                                       Integer.toString(data.tournaments.get(position).getWinner().getWins()),
-                                      Integer.toString(data.tournaments.get(position).getWinner().getLosses())};
+                                      Integer.toString(data.tournaments.get(position).getWinner().getLosses()),
+                                      data.tournaments.get(position).getWinner().getTeamLogo()};
                     Intent intent = new Intent(getApplicationContext(), winner.class); //Application Context and Activity
                     intent.putExtra("info", info);
                     startActivityForResult(intent, 0);
@@ -81,29 +82,39 @@ public class MainActivity extends AppCompatActivity {
             menu.setHeaderTitle(data.tournaments.get(info.position).toString());
 
             String[] menuItems = new String[] {"Edit", "Delete"};
+            String[] finishedMenuItems = new String[] {"Standings", "Delete"};
             for (int i = 0; i<menuItems.length; i++) {
-                menu.add(Menu.NONE, i, i, menuItems[i]);
+                if(data.tournaments.get(info.position).finished)
+                    menu.add(Menu.NONE, i, i, finishedMenuItems[i]);
+                else
+                    menu.add(Menu.NONE, i, i, menuItems[i]);
             }
         }
     }
     public boolean onContextItemSelected(MenuItem item){
-        if(item.getTitle()=="Edit"){
-            if(!data.tournaments.get(menuItemSelected).getTournamentStatus()){
-                Intent intent = new Intent(getApplicationContext(), EditTournament.class); //Application Context and Activity
+        if(data.tournaments.get(menuItemSelected).getFinished() && item.getTitle() == "Standings"){
+                Intent intent = new Intent(getApplicationContext(), Ranking.class); //Application Context and Activity
                 intent.putExtra("tournament", menuItemSelected);
                 startActivityForResult(intent, 0);
-            }
-            else{
-                Toast.makeText(getApplicationContext(), "Cannot edit tournament in progress",Toast.LENGTH_LONG).show();
-            }
-
         }
-        else if(item.getTitle()=="Delete"){
-            int position = menuItemSelected;
-            String name = data.tournaments.get(position).toString().concat(" removed!");
-            data.tournaments.remove(position);
-            listAdapter.notifyDataSetChanged();
-            Toast.makeText(getApplicationContext(), name,Toast.LENGTH_LONG).show();
+        else {
+            if (item.getTitle() == "Edit") {
+                if (!data.tournaments.get(menuItemSelected).tournamentStarted) {
+                    Intent intent = new Intent(getApplicationContext(), EditTournament.class); //Application Context and Activity
+                    intent.putExtra("tournament", menuItemSelected);
+                    startActivityForResult(intent, 0);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Cannot edit tournament in progress", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        }
+        if(item.getTitle()=="Delete"){
+                int position = menuItemSelected;
+                String name = data.tournaments.get(position).toString().concat(" removed!");
+                data.tournaments.remove(position);
+                listAdapter.notifyDataSetChanged();
+                Toast.makeText(getApplicationContext(), name,Toast.LENGTH_LONG).show();
         }
         return true;
     }
@@ -111,7 +122,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadInstructions(){
         Intent intent = new Intent(getApplicationContext(), Slideshow.class); //Application Context and Activity
-        String [] images= {"step_1", "step_2", "step_3", "step_4" };
+        String [] images= {"step_1", "step_2", "step_3", "step_4","step_5", "step_6", "step_7", "step_8",
+                            "step_9", "step_10", "step_11", "step_12", "step_13", "step_14"};
         Bundle b = new Bundle();
         b.putStringArray("images", images); //Your id
         intent.putExtras(b); //Put your id to your next Intent

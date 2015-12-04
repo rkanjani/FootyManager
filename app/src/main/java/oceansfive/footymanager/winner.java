@@ -1,6 +1,7 @@
 package oceansfive.footymanager;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class winner extends AppCompatActivity {
         setContentView(R.layout.activity_winner);
         setTitle("Winner!");
         getSupportActionBar().hide();
+        Context context = getApplicationContext();
 
         String [] info = getIntent().getStringArrayExtra("info");
 
@@ -29,6 +31,10 @@ public class winner extends AppCompatActivity {
 
         TextView numLoss = (TextView) findViewById(R.id.winnerLoss);
         numLoss.setText(info[2]);
+
+        ImageView logo = (ImageView) findViewById(R.id.teamLogo);
+        if(info[3]!=null)
+            logo.setImageResource(context.getResources().getIdentifier(info[3], "drawable", context.getPackageName()));
 
     }
     public void onBackPressed(){

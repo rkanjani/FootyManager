@@ -14,8 +14,10 @@ import java.util.ListIterator;
  */
 public class TournamentData {
 
-    static String [] logos={"logo1","logo2","logo3","logo4"};
-    static String [] teamLogos={"logo1","logo2"};
+    static String [] logos={"logo1","logo2","logo8","logo4"};
+    static String [] teamLogos={"logo0","logo1","logo2", "logo3","logo4", "logo5", "logo6","logo7",
+            "logo8","logo9", "logo10","logo11", "logo12","logo13","logo14", "logo15","logo16",
+            "logo17"};
 
 
     private static TournamentData ourInstance = new TournamentData();
