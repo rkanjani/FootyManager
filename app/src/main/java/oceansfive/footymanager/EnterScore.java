@@ -189,7 +189,7 @@ public class EnterScore extends AppCompatActivity {
         String awayScoreString = awayScore.getText().toString();
 
         if(awayScoreString.equals(homeScoreString)){
-            Toast.makeText(getApplicationContext(), "Can't be ties",
+            Toast.makeText(getApplicationContext(), "Cannot be a tie",
                     Toast.LENGTH_LONG).show();
         }
         else
