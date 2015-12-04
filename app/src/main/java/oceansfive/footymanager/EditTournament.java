@@ -19,7 +19,6 @@ import android.content.Context;
 import android.view.MenuItem;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Toast;
 
 public class EditTournament extends AppCompatActivity {
 
@@ -147,9 +146,6 @@ public class EditTournament extends AppCompatActivity {
         }
     }
     public void teamLogoSelect(View v){
-        System.out.println(v.getTag());
-        Toast.makeText(this, "" + v.getTag(), Toast.LENGTH_SHORT).show();
-
         Intent intent = new Intent(getApplicationContext(), SelectLogo.class); //Application Context and Activity
         int teamPos= Integer.parseInt(""+v.getTag());
         Bundle b = new Bundle();
