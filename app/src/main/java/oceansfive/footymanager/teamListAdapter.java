@@ -73,16 +73,8 @@ public class teamListAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //System.out.println("GET VIEW CALLED");
         refreshTeams();
 
-        /*System.out.println("teams:");
-        for(int i=0;i<this.teams.length;i++){
-            System.out.println(teams[i]);
-            System.out.println("");
-        }*/
-
-        //System.out.println("POSITION: "+position);
         // TODO Auto-generated method stub
         View vi = convertView;
         if (vi == null)
@@ -102,27 +94,7 @@ public class teamListAdapter extends BaseAdapter{
                 int image = context.getResources().getIdentifier(teams[index].getTeamLogo(), "drawable", context.getPackageName());
                 logo.setImageResource(image);
             }
-            else{
-                System.out.println("team logo is null: " + teams[index]);
-            }
-
         }
-        else{
-            System.out.println("NULL TEAMM!");
-        }
-
-
-
-        /*
-        if(teams[index].getTeamLogo()!=null){
-            int image = context.getResources().getIdentifier(teams[index].getTeamLogo(), "drawable", context.getPackageName());
-            logo.setImageResource(image);
-        }
-        else{
-            System.out.println("THIS IS THE FUCK thing .... TEAMNAME: "+teams[index].getTeamName()+"   TEAMLOGO: "+teams[index].getTeamLogo());
-        }
-        */
-
 
         TextWatcher teamNameWatcher = new TextWatcher() {
             int tournamentIndex = data.tournaments.indexOf(tournament);
@@ -133,7 +105,6 @@ public class teamListAdapter extends BaseAdapter{
                     tempTeamLogo=teams[index].getTeamLogo();
                 }
                 data.tournaments.get(tournamentIndex).teams[index] = new Team(s.toString(), tempTeamLogo);
-               // data.tournaments.get(tournamentIndex).teams[index].setTeamName(s.toString());
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

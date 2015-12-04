@@ -34,6 +34,7 @@ public class SelectLogo  extends AppCompatActivity {
    public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_select_logo);
+    setTitle("Logo Select");
 
        Intent i = getIntent();
        Bundle extras = i.getExtras();
@@ -51,7 +52,6 @@ public class SelectLogo  extends AppCompatActivity {
     gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
             Intent data = new Intent();
-            //Toast.makeText(SelectLogo.this, "" + logos[position], Toast.LENGTH_SHORT).show();
             setResult(RESULT_OK, data);
             if(isTeam){
                 data.putExtra("teamPos",""+teamPos);
