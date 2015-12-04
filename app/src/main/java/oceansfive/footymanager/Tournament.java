@@ -242,6 +242,48 @@ public class Tournament {
     public boolean getFinished(){return this.finished;}
     public void setFinished(){this.finished = true;}
 
+    //Checks if there is a tie in Round Robin Tournament
+    public void checkforTie()
+    {
+        Team[] tieTeams;
+        int topWins = winner.getWins();
+        int tiedTeams = 0;
+
+        if (topWins == teams[1].getWins())
+        {
+            for (int i = 1; i < teams.length; i++)
+            {
+                if (topWins == teams[i].getWins()) {
+                    tiedTeams++;
+                }
+                else {
+                    break;
+                }
+
+            }
+            tieTeams = new Team[tiedTeams+1];
+            for (int i = 0; i <= tiedTeams; i++)
+            {
+                tieTeams[i] = teams[i];
+            }
+
+            for(int i = 0; i < tieTeams.length; i++)
+            {
+                if(tieTeams[i].getTotalGoals() > winner.getTotalGoals())
+                    winner = tieTeams[i];
+            }
+
+
+        }
+        else{
+            return;
+        }
+
+
+
+    }
+
+
     public String toString(){
         return tournamentName;
     }
