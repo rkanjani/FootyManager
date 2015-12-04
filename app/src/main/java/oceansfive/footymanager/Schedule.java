@@ -88,6 +88,7 @@ public class Schedule extends AppCompatActivity {
             this.tournament.getRanking();
             Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
             this.tournament.updateRound(gamesArray);
+            this.tournament.checkforTie();
             Toast.makeText(getApplicationContext(), "Completed Round Robin", Toast.LENGTH_SHORT).show();
             String [] info = {this.tournament.getWinner().getTeamName(),
                     Integer.toString(tournament.getWinner().getWins()),
