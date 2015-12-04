@@ -26,6 +26,8 @@ public class TeamInfo extends AppCompatActivity {
 
         setTitle("Team Information");
 
+
+        //initializes the views with the teams info
         TextView teamName = (TextView) findViewById(R.id.teamName);
 
         teamName.setText(team.getTeamName());
