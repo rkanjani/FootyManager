@@ -25,6 +25,7 @@ public class TournamentData {
     }
     ////THESE LISTS NEED TO BE REPLACED BY INSTANCES OF A TOURNAMENT
 
+    /*These objects were used in the testing and creation of the app*
     Team t1 = new Team("Real Madrid", "logo0");
     Team t2 = new Team("Man U", "logo1");
     Team t3 = new Team("Barcelona", "logo2");
@@ -51,18 +52,14 @@ public class TournamentData {
 
     Tournament one = new Tournament("La Liga", "Round Robin", 8, "logo0", teams8);
     Tournament two = new Tournament("English Premier League", "Combinational", 8, "logo1", teams8);
-    Tournament three = new Tournament("Bundesliga", "Knock Out", 8, "logo2", teams8);
+    Tournament three = new Tournament("Bundesliga", "Knock Out", 8, "logo2", teams8);*/
 
 
 
 
 
 
-    List<Tournament> tournaments = new LinkedList<Tournament>(Arrays.asList(
-            one,
-            two,
-            three
-    ));
+    List<Tournament> tournaments = new LinkedList<Tournament>();
 
 
 

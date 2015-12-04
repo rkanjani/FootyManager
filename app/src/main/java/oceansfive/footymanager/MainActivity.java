@@ -88,9 +88,14 @@ public class MainActivity extends AppCompatActivity {
     }
     public boolean onContextItemSelected(MenuItem item){
         if(item.getTitle()=="Edit"){
-            Intent intent = new Intent(getApplicationContext(), EditTournament.class); //Application Context and Activity
-            intent.putExtra("tournament", menuItemSelected);
-            startActivityForResult(intent, 0);
+            if(!data.tournaments.get(menuItemSelected).getTournamentStatus()){
+                Intent intent = new Intent(getApplicationContext(), EditTournament.class); //Application Context and Activity
+                intent.putExtra("tournament", menuItemSelected);
+                startActivityForResult(intent, 0);
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "Cannot edit tournament in progress",Toast.LENGTH_LONG).show();
+            }
 
         }
         else if(item.getTitle()=="Delete"){
