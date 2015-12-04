@@ -80,23 +80,11 @@ public class EnterScore extends AppCompatActivity {
 
 
         //checks if the user entered a value before entering the score
-        String homeScoreString = home_score.getText().toString();
-        int homeScore;
-        if (homeScoreString.equals("")) {
-            homeScore = 0;
-        }
 
-        else {
-            homeScore = Integer.parseInt(homeScoreString);
-        }
+        int homeScore = returnNumber(home_score.getText().toString());
 
-        String awayScoreString = away_score.getText().toString();
-        int awayScore;
-        if(awayScoreString.equals(""))
-            awayScore = 0;
-        else
-        awayScore = Integer.parseInt(awayScoreString);
-        
+        int awayScore = returnNumber(away_score.getText().toString());
+
         game.enterScore(homeScore, awayScore);
 
 
@@ -188,14 +176,14 @@ public class EnterScore extends AppCompatActivity {
     //Checks to see if the game resulted in a tie
     public void checkTie(View view){
         EditText homeScore = (EditText) findViewById(R.id.home_score);
-        String homeScoreString = homeScore.getText().toString();
+        int home = returnNumber(homeScore.getText().toString());
 
         EditText awayScore = (EditText) findViewById(R.id.away_score);
-        String awayScoreString = awayScore.getText().toString();
+        int away = returnNumber(awayScore.getText().toString());
 
-        if(awayScoreString.equals(homeScoreString)){
+        if(away == home || (away == 0 && home == 0)){
             Toast.makeText(getApplicationContext(), "Cannot be a tie",
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
         }
         else
             enterGame();
