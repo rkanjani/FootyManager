@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,11 +24,10 @@ public class EditTournament extends AppCompatActivity {
 
     TournamentData data = TournamentData.getInstance();
     private static final int SELECT_TOURNAMENT_LOGO = 1;
+    private static final int SELECT_TEAM_LOGO = 2;
     private static boolean teamNamesFilled = false;
     private static Tournament tournament = null;
-    private String text = "";
     ListView teamList;
-    final private static int SELECT_LOGO = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,15 +94,11 @@ public class EditTournament extends AppCompatActivity {
     //Changes the logo for the selected team
     public void logoSelect(View view){
         Intent intent = new Intent(getApplicationContext(), SelectLogo.class); //Application Context and Activity
-        startActivityForResult(intent,SELECT_LOGO);
+        startActivityForResult(intent,SELECT_TOURNAMENT_LOGO);
     }
     //Code for when the tournament is started
     public void startTournament(View view){
-        EditText tournamentName = (EditText) findViewById(R.id.tournamentNameDisplay);
 
-        /*if(!teamNamesFilled || tournamentName.getText()==null)
-            return;*/
-        //System.out.println(tournament.teams.length);
         data.tournaments.get(data.tournaments.indexOf(tournament)).startTournament();
         if(tournament.getTournamentType().equals("Round Robin")){
             data.tournaments.get(data.tournaments.indexOf(tournament)).createRoundRobin(tournament.getTeams());
@@ -119,7 +115,7 @@ public class EditTournament extends AppCompatActivity {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == SELECT_LOGO) {
+        if (resultCode == RESULT_OK && requestCode == SELECT_TOURNAMENT_LOGO) {
 
             String currentImage =data.getStringExtra("image");
             int image = this.getResources().getIdentifier(currentImage, "drawable", this.getPackageName());
@@ -128,12 +124,31 @@ public class EditTournament extends AppCompatActivity {
 
             this.data.tournaments.get(this.data.tournaments.indexOf(tournament)).setTournamentLogo(currentImage);
         }
+        else if (resultCode == RESULT_OK && requestCode == SELECT_TEAM_LOGO){
+            String teamImage =data.getStringExtra("image");
+            int teamPos=Integer.parseInt(data.getStringExtra("teamPos"));
+
+            int indexOfTournament = this.data.tournaments.indexOf(tournament);
+            Team tempTeam =this.data.tournaments.get(indexOfTournament).teams[teamPos];
+            if(tempTeam==null){
+                this.data.tournaments.get(indexOfTournament).teams[teamPos]=new Team("",teamImage);
+            }
+            else{
+                this.data.tournaments.get(indexOfTournament).teams[teamPos].setTeamLogo(teamImage);
+            }
+
+            teamListAdapter temp =(teamListAdapter) this.teamList.getAdapter();
+            temp.update();
+
+        }
     }
     public void teamLogoSelect(View v){
-        System.out.println(v.getTag());
-
-
-
+        Intent intent = new Intent(getApplicationContext(), SelectLogo.class); //Application Context and Activity
+        int teamPos= Integer.parseInt(""+v.getTag());
+        Bundle b = new Bundle();
+        b.putInt("teamPos", teamPos); //Your id
+        intent.putExtras(b); //Put your id to your next Intent
+        startActivityForResult(intent, SELECT_TEAM_LOGO);
     }
 
 }

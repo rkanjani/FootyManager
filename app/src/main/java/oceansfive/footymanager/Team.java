@@ -109,5 +109,8 @@ public class Team {
     {
         return ("Wins: " + this.wins + "    Losses: " + getLosses());
     }
+    public String toString(){
+        return "teamname: "+this.teamName+" teamLogo: "+teamLogo;
+    }
 
 }
