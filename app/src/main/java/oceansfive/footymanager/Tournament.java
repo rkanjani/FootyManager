@@ -40,7 +40,6 @@ public class Tournament {
 
     }
 
-    //Has to be fixed to take into account losses
     public Team[] getRanking()
     {
         for (int i = 0; i < teams.length; i++)
@@ -56,7 +55,8 @@ public class Tournament {
             }
 
         }
-        competingTeams = teams.clone();
+        if (this.comboRound == false)
+            competingTeams = teams.clone();
         return this.teams;
     }
 
@@ -112,6 +112,7 @@ public class Tournament {
     public Game[] createKnockout(Team[] teams)
     {
         Game gameSchedule[] = null;
+        comboRound = true;
 
         // Perfect Tournament of 2^n teams
         if  (((Math.log(teams.length) / Math.log(2)) % 1) == 0) {
@@ -155,8 +156,10 @@ public class Tournament {
 
         if(games.length == 1 && weakGames == false) //Final game of Knockout
         {
+
             System.out.println("FINISHED");
-            winner = getRanking()[0];
+            this.comboRound = false;
+            winner = games[0].getWinner();
             competingTeams = new Team[]{winner};
             finished = true;
             return competingTeams;
@@ -208,42 +211,6 @@ public class Tournament {
 
     }
 
-    /*public void createGames(List teams){
-        Collections.shuffle(teams);
-        Team[] teamArr = new Team[teams.size()];
-        teams.toArray(teamArr);
-
-        if(tournamentType.equals("Round Robin") || tournamentType.equals("Combinational")){
-            for(int i=0; i<teamArr.length-1; i++){
-                for(int j=i+1; j<teamArr.length; j++){
-                    Game game1 = new Game(teamArr[i], teamArr[j]);
-                }
-            }
-        }
-        else if(tournamentType.equals("Knock Out")) {
-            int i = 0;
-            int j = teamArr.length;
-
-            if (j % 2 == 0) {
-                while (i < j) {
-                    Game game1 = new Game(teamArr[i], teamArr[j]);
-                    i++;
-                    j--;
-                }
-            } else {
-                while (i <= j) {
-                    if (i == j) {
-                        Game game3 = new Game(teamArr[i], null);
-                        i++;
-                    }
-                    Game game2 = new Game(teamArr[i], teamArr[j]);
-                    i++;
-                    j--;
-                }
-            }
-        }
-    }
-    */
     public void updateGame(int index, Game game){
         Collections.replaceAll(games, games.get(index), game);
     }
