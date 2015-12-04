@@ -43,6 +43,8 @@ public class Tournament {
 
     public Team[] getRanking()
     {
+        if (this.weakGames == true)
+            return teams;
         for (int i = 0; i < teams.length; i++)
         {
             for (int j = i+1; j<teams.length; j++ )
