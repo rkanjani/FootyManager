@@ -26,12 +26,24 @@ import android.widget.Toast;
 public class SelectLogo  extends AppCompatActivity {
 
     static String [] logos=TournamentData.logos;
+    public boolean isTeam = false;
+    public int teamPos=-1;
 
 
 
    public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_select_logo);
+
+       Intent i = getIntent();
+       Bundle extras = i.getExtras();
+       if(extras!=null){
+           this.logos=TournamentData.teamLogos;
+           this.teamPos= extras.getInt("teamPos");
+           isTeam=true;
+       }
+
+
 
     GridView gridview = (GridView) findViewById(R.id.gridview);
     gridview.setAdapter(new LogoAdapter(this));
@@ -41,6 +53,10 @@ public class SelectLogo  extends AppCompatActivity {
             Intent data = new Intent();
             //Toast.makeText(SelectLogo.this, "" + logos[position], Toast.LENGTH_SHORT).show();
             setResult(RESULT_OK, data);
+            if(isTeam){
+                data.putExtra("teamPos",""+teamPos);
+            }
+
             data.putExtra("image", ""+logos[position]);
             finish();
         }
