@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,11 +19,14 @@ import android.content.Context;
 import android.view.MenuItem;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.Toast;
 
 public class EditTournament extends AppCompatActivity {
 
     TournamentData data = TournamentData.getInstance();
     private static final int SELECT_TOURNAMENT_LOGO = 1;
+    private static final int SELECT_TEAM_LOGO = 2;
+
     private static boolean teamNamesFilled = false;
     private static Tournament tournament = null;
     private String text = "";
@@ -94,7 +98,7 @@ public class EditTournament extends AppCompatActivity {
     //Changes the logo for the selected team
     public void logoSelect(View view){
         Intent intent = new Intent(getApplicationContext(), SelectLogo.class); //Application Context and Activity
-        startActivityForResult(intent,SELECT_LOGO);
+        startActivityForResult(intent,SELECT_TOURNAMENT_LOGO);
     }
     //Code for when the tournament is started
     public void startTournament(View view){
@@ -119,7 +123,7 @@ public class EditTournament extends AppCompatActivity {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == SELECT_LOGO) {
+        if (resultCode == RESULT_OK && requestCode == SELECT_TOURNAMENT_LOGO) {
 
             String currentImage =data.getStringExtra("image");
             int image = this.getResources().getIdentifier(currentImage, "drawable", this.getPackageName());
@@ -128,12 +132,65 @@ public class EditTournament extends AppCompatActivity {
 
             this.data.tournaments.get(this.data.tournaments.indexOf(tournament)).setTournamentLogo(currentImage);
         }
+        else if (resultCode == RESULT_OK && requestCode == SELECT_TEAM_LOGO){
+            String teamImage =data.getStringExtra("image");
+            int teamPos=Integer.parseInt(data.getStringExtra("teamPos"));
+
+            int indexOfTournament = this.data.tournaments.indexOf(tournament);
+            Team tempTeam =this.data.tournaments.get(indexOfTournament).teams[teamPos];
+            if(tempTeam==null){
+                this.data.tournaments.get(indexOfTournament).teams[teamPos]=new Team("",teamImage);
+            }
+            else{
+                this.data.tournaments.get(indexOfTournament).teams[teamPos].setTeamLogo(teamImage);
+            }
+
+            //System.out.println(this.data.tournaments.get(this.data.tournaments.indexOf(tournament)).teams[teamPos].getTeamLogo());
+
+            //insert team id change here
+
+
+
+            int length =this.data.tournaments.get(this.data.tournaments.indexOf(tournament)).teams.length ;
+            //System.out.println("team index: "+indexOfTournament);
+
+
+            teamListAdapter temp =(teamListAdapter) this.teamList.getAdapter();
+            temp.update();
+
+            /*String temp = teamList.getItemAtPosition(teamPos).toString();
+            System.out.println("item at " + temp);
+            System.out.println("teamImage " + teamImage);
+            System.out.println("teamPos " + teamPos);
+            View teamImageView = teamList.getItemViewType(teamPos);
+            System.out.println(teamImageView);*/
+
+            //int image = this.getResources().getIdentifier(teamImage, "drawable", this.getPackageName());
+            //teamImageView.setImageResource(image);
+        }
+
+
     }
     public void teamLogoSelect(View v){
         System.out.println(v.getTag());
+        Toast.makeText(this, "" + v.getTag(), Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(getApplicationContext(), SelectLogo.class); //Application Context and Activity
+        int teamPos= Integer.parseInt(""+v.getTag());
+        Bundle b = new Bundle();
+        b.putInt("teamPos", teamPos); //Your id
+        intent.putExtras(b); //Put your id to your next Intent
+        startActivityForResult(intent, SELECT_TEAM_LOGO);
+
 
 
 
     }
+
+    /*public void onResume() {
+        super.onResume();
+        teamListAdapter temp =(teamListAdapter)this.teamList.getAdapter();
+        temp.update();
+    }*/
 
 }
