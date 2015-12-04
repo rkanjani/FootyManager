@@ -77,7 +77,7 @@ public class Schedule extends AppCompatActivity {
         if (this.tournament.getTournamentType().equals("Round Robin")) { //Round Robin
             for(int i = 0; i < this.tournament.getGames().size(); i++)
             {
-                if (this.tournament.getGames().get(i).getWinner() == null) //Checks if all games were played
+                if (!this.tournament.getGames().get(i).isGamePlayed()) //Checks if all games were played
                 {
                     Toast.makeText(getApplicationContext(), "Please play all games before updating",
                             Toast.LENGTH_SHORT).show();
