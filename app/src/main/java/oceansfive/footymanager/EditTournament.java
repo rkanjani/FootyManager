@@ -19,7 +19,6 @@ import android.content.Context;
 import android.view.MenuItem;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Toast;
 
 public class EditTournament extends AppCompatActivity {
 
@@ -102,11 +101,7 @@ public class EditTournament extends AppCompatActivity {
     }
     //Code for when the tournament is started
     public void startTournament(View view){
-        EditText tournamentName = (EditText) findViewById(R.id.tournamentNameDisplay);
 
-        /*if(!teamNamesFilled || tournamentName.getText()==null)
-            return;*/
-        //System.out.println(tournament.teams.length);
         data.tournaments.get(data.tournaments.indexOf(tournament)).startTournament();
         if(tournament.getTournamentType().equals("Round Robin")){
             data.tournaments.get(data.tournaments.indexOf(tournament)).createRoundRobin(tournament.getTeams());
@@ -145,52 +140,18 @@ public class EditTournament extends AppCompatActivity {
                 this.data.tournaments.get(indexOfTournament).teams[teamPos].setTeamLogo(teamImage);
             }
 
-            //System.out.println(this.data.tournaments.get(this.data.tournaments.indexOf(tournament)).teams[teamPos].getTeamLogo());
-
-            //insert team id change here
-
-
-
-            int length =this.data.tournaments.get(this.data.tournaments.indexOf(tournament)).teams.length ;
-            //System.out.println("team index: "+indexOfTournament);
-
-
             teamListAdapter temp =(teamListAdapter) this.teamList.getAdapter();
             temp.update();
 
-            /*String temp = teamList.getItemAtPosition(teamPos).toString();
-            System.out.println("item at " + temp);
-            System.out.println("teamImage " + teamImage);
-            System.out.println("teamPos " + teamPos);
-            View teamImageView = teamList.getItemViewType(teamPos);
-            System.out.println(teamImageView);*/
-
-            //int image = this.getResources().getIdentifier(teamImage, "drawable", this.getPackageName());
-            //teamImageView.setImageResource(image);
         }
-
-
     }
     public void teamLogoSelect(View v){
-        System.out.println(v.getTag());
-        Toast.makeText(this, "" + v.getTag(), Toast.LENGTH_SHORT).show();
-
         Intent intent = new Intent(getApplicationContext(), SelectLogo.class); //Application Context and Activity
         int teamPos= Integer.parseInt(""+v.getTag());
         Bundle b = new Bundle();
         b.putInt("teamPos", teamPos); //Your id
         intent.putExtras(b); //Put your id to your next Intent
         startActivityForResult(intent, SELECT_TEAM_LOGO);
-
-
-
-
     }
-
-    /*public void onResume() {
-        super.onResume();
-        teamListAdapter temp =(teamListAdapter)this.teamList.getAdapter();
-        temp.update();
-    }*/
 
 }
