@@ -93,8 +93,7 @@ public class Schedule extends AppCompatActivity {
             String [] info = {this.tournament.getWinner().getTeamName(),
                     Integer.toString(tournament.getWinner().getWins()),
                     Integer.toString(tournament.getWinner().getLosses())};
-            Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
-                    Toast.LENGTH_SHORT).show();
+
             Intent intent = new Intent(getApplicationContext(), winner.class);
             intent.putExtra("info", info);
             this.tournament.setFinished();
@@ -118,8 +117,6 @@ public class Schedule extends AppCompatActivity {
                 String [] info = {tournament.getWinner().getTeamName(),
                         Integer.toString(tournament.getWinner().getWins()),
                         Integer.toString(tournament.getWinner().getLosses())};
-                Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
-                        Toast.LENGTH_SHORT).show();
                 this.tournament.setFinished();
                 Intent intent = new Intent(getApplicationContext(), winner.class);
                 intent.putExtra("info", info);
