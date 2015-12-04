@@ -25,12 +25,9 @@ public class EditTournament extends AppCompatActivity {
     TournamentData data = TournamentData.getInstance();
     private static final int SELECT_TOURNAMENT_LOGO = 1;
     private static final int SELECT_TEAM_LOGO = 2;
-
     private static boolean teamNamesFilled = false;
     private static Tournament tournament = null;
-    private String text = "";
     ListView teamList;
-    final private static int SELECT_LOGO = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

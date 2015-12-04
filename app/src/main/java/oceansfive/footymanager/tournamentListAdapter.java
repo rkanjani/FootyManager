@@ -70,9 +70,13 @@ public class tournamentListAdapter extends BaseAdapter {
 
         if(tournaments.get(position).finished)
             ((TextView) vi.findViewById(R.id.finished)).setText("FINISHED");
-        if(tournaments.get(position).tournamentStarted) {
+        else if(tournaments.get(position).tournamentStarted) {
             ((TextView) vi.findViewById(R.id.finished)).setText("STARTED");
-            ((TextView) vi.findViewById(R.id.finished)).setTextColor(Color.parseColor("#005555"));
+            ((TextView) vi.findViewById(R.id.finished)).setTextColor(Color.parseColor("#99b3ff"));
+        }
+        else{
+            ((TextView) vi.findViewById(R.id.finished)).setText("PENDING");
+            ((TextView) vi.findViewById(R.id.finished)).setTextColor(Color.parseColor("#ff8080"));
         }
 
         return vi;
