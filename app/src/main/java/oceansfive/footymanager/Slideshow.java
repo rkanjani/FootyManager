@@ -19,7 +19,7 @@ public class Slideshow extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slideshow);
         setTitle("Instructions");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().hide();
 
 
 

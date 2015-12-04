@@ -14,7 +14,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="320dp"
         android:id="@+id/linearLayout3">
 
         <TextView
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="Winner!"
             android:id="@+id/winnerTitle"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="150px"
             android:layout_gravity="right"
             android:textStyle="bold" />
@@ -54,32 +54,22 @@
 
         </RelativeLayout>
 
+        <ImageView
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:id="@+id/teamLogo"
+            android:layout_gravity="center_horizontal" />
+
     </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayout3"
         android:paddingBottom="40dp"
         android:paddingTop="50dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Default"
-            android:id="@+id/winnerName"
-            android:textColor="#000000"
-            android:textSize="40dp"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal|top"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout3">
 
         <TextView
             android:layout_width="wrap_content"
@@ -87,17 +77,17 @@
             android:text="Loss: "
             android:id="@+id/losses"
             android:gravity="right"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="70px"
             android:layout_gravity="left|bottom"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="43dp"
             android:text="Wins: "
             android:id="@+id/textView7"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="70px"
             android:textStyle="bold"
             android:layout_gravity="left|center_vertical" />
@@ -107,7 +97,7 @@
             android:layout_height="wrap_content"
             android:text="0"
             android:id="@+id/winnerLoss"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="70px"
             android:layout_gravity="right|bottom"
             android:textStyle="bold"
@@ -120,11 +110,26 @@
             android:layout_height="wrap_content"
             android:text="0"
             android:id="@+id/winnerWins"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="70px"
             android:textStyle="bold"
             android:layout_gravity="right|center_vertical"
             android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="245dp"
+            android:layout_height="81dp"
+            android:text="Default"
+            android:id="@+id/winnerName"
+            android:textColor="#ffffff"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:paddingBottom="20dp" />
     </FrameLayout>
 
 </RelativeLayout>

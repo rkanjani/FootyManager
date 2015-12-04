@@ -51,13 +51,20 @@ public class Ranking extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intent = new Intent(getApplicationContext(), Schedule.class);
-                intent.putExtra("tournament", tournamentPosition);
-                startActivityForResult(intent, 0);
+                if(data.tournaments.get(tournamentPosition).getFinished()){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivityForResult(intent, 0);
+                }
+                else{
+                    Intent intent = new Intent(getApplicationContext(), Schedule.class);
+                    intent.putExtra("tournament", tournamentPosition);
+                    startActivityForResult(intent, 0);
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
 }
