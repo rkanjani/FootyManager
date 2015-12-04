@@ -88,9 +88,12 @@ public class Schedule extends AppCompatActivity {
             this.tournament.getRanking();
             Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
             this.tournament.updateRound(gamesArray);
+            Toast.makeText(getApplicationContext(), "Completed Round Robin", Toast.LENGTH_SHORT).show();
             String [] info = {this.tournament.getWinner().getTeamName(),
                     Integer.toString(tournament.getWinner().getWins()),
                     Integer.toString(tournament.getWinner().getLosses())};
+            Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
+                    Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), winner.class);
             intent.putExtra("info", info);
             this.tournament.setFinished();
@@ -107,23 +110,25 @@ public class Schedule extends AppCompatActivity {
                     return;
                 }
             }
-                Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
+            Game[] gamesArray = tournament.getGames().toArray(new Game[tournament.getGames().size()]);
             this.tournament.createKnockout(tournament.updateRound(gamesArray));
             if(this.tournament.finished == true)
             {
                 String [] info = {tournament.getWinner().getTeamName(),
-                                    Integer.toString(tournament.getWinner().getWins()),
-                                    Integer.toString(tournament.getWinner().getLosses())};
+                        Integer.toString(tournament.getWinner().getWins()),
+                        Integer.toString(tournament.getWinner().getLosses())};
+                Toast.makeText(getApplicationContext(), "FINISHED TOURNAMENT",
+                        Toast.LENGTH_SHORT).show();
                 this.tournament.setFinished();
                 Intent intent = new Intent(getApplicationContext(), winner.class);
                 intent.putExtra("info", info);
                 startActivityForResult(intent, 0);
                 return;
             }
-           // adapter.notifyDataSetChanged();
+            // adapter.notifyDataSetChanged();
             finish();
             startActivity(getIntent());
-         }
+        }
         else if(this.tournament.getTournamentType().equals("Combinational"))
         {
             for(int i = 0; i < this.tournament.getGames().size(); i++)
@@ -138,7 +143,7 @@ public class Schedule extends AppCompatActivity {
             }
             this.tournament.createKnockout(this.tournament.getRanking());
             this.tournament.comboRound = true;
-            Toast.makeText(getApplicationContext(), "Starting Playoffs!",
+            Toast.makeText(getApplicationContext(), "Starting Playoffs",
                     Toast.LENGTH_LONG).show();
             finish();
             startActivity(getIntent());
