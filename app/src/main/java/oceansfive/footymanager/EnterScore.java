@@ -70,7 +70,7 @@ public class EnterScore extends AppCompatActivity {
 
     }
 
-    public void enterGame(View view){
+    public void enterGame(){
         Tournament tournament = data.tournaments.get(tournamentIndex);
         Game game = tournament.games.get(gameIndex);
 
@@ -180,4 +180,20 @@ public class EnterScore extends AppCompatActivity {
         }
 
     }
+
+    public void checkTie(View view){
+        EditText homeScore = (EditText) findViewById(R.id.home_score);
+        String homeScoreString = homeScore.getText().toString();
+
+        EditText awayScore = (EditText) findViewById(R.id.away_score);
+        String awayScoreString = awayScore.getText().toString();
+
+        if(awayScoreString.equals(homeScoreString)){
+            Toast.makeText(getApplicationContext(), "Can't be ties",
+                    Toast.LENGTH_LONG).show();
+        }
+        else
+            enterGame();
+    }
+
 }

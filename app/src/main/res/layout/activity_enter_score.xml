@@ -271,7 +271,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="16dp"
                 android:src="@drawable/checkmark"
-                android:onClick="enterGame" />
+                android:onClick="checkTie" />
         </FrameLayout>
     </LinearLayout>
 </RelativeLayout>

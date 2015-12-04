@@ -67,6 +67,8 @@ public class tournamentListAdapter extends BaseAdapter {
         size.setText("Number of teams: " + tournaments.get(position).getTournamentSize());
         type.setText(tournaments.get(position).getTournamentType());
 
+        if(tournaments.get(position).finished)
+            ((TextView) vi.findViewById(R.id.finished)).setText("FINISHED");
 
         return vi;
     }
