@@ -24,7 +24,7 @@ public class Tournament {
     Team[] competingTeams;//(ONLY FOR KNOCKOUT) Used to store who is still alive in the tournament
     List<Game> games = new ArrayList<Game>();
     boolean weakGames =false;// 0th round where the weak teams play each other.
-    boolean comboRound = false; // false if still in roundrobin
+    boolean comboRound; // false if still in roundrobin
 
 
     public Tournament(String tournamentName, String tournamentType, int tournamentSize, String tournamentLogo, Team[] teams){
@@ -37,6 +37,7 @@ public class Tournament {
         teams = new Team[tournamentSize];
         competingTeams = teams.clone();
         finished = false;
+        comboRound = false;
 
     }
 
